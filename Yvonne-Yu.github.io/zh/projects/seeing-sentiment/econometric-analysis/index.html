@@ -1,0 +1,481 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      计量分析
+       | 余奕
+    </title>
+    <meta name='description' content='按波动状态分样本进行 Newey–West 回归，并将图像情绪对文本指标正交化；图像指标保留84%的残差方差，高波动期创业板呈现增量预测信息。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/seeing-sentiment/econometric-analysis/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/'>
+    <meta property='og:title' content='计量分析'>
+    <meta property='og:description' content='按波动状态分样本进行 Newey–West 回归，并将图像情绪对文本指标正交化；图像指标保留84%的残差方差，高波动期创业板呈现增量预测信息。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/econometric-analysis/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#research' data-return-to-list>科研经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-econometric-analysis'>新闻图像情绪研究</a
+    ><span aria-hidden='true'>/</span
+    ><span>计量分析</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>新闻图像情绪研究 / 工作概览</p>
+      <h1>
+        计量分析
+      </h1>
+      <p>
+        按波动状态分样本进行 Newey–West 回归，并将图像情绪对文本指标正交化；图像指标保留84%的残差方差，高波动期创业板呈现增量预测信息。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/research-design/'
+              
+              ><span>01</span>研究设计与数据构建</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/'
+              
+              ><span>02</span>图文情绪测量</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/'
+              
+                aria-current='page'
+              
+              ><span>03</span>计量分析</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/'
+              
+              ><span>04</span>稳健性检验与解释</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/out-of-sample-validation/'
+              
+              ><span>05</span>样本外验证</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-econometric-analysis'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='econometric-analysis--1'
+  data-scene
+  data-chapter='计量分析'
+  aria-labelledby='title-econometric-analysis-1'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 计量分析</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>回归设计</p>
+    <h2 id='title-econometric-analysis-1'>先联合比较，再检验文本未解释的图像信息</h2>
+    <p>使用 R 回归比较图文情绪通道，并检验高波动状态下的关系。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='先联合比较，再检验文本未解释的图像信息'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='signals'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>日频情绪指标</strong>
+          <p>PhotoPes、TextPes 及其滞后项。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='joint'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>联合预测回归</strong>
+          <p>日对数收益；按波动状态分样本。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='inference'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Newey–West 推断</strong>
+          <p>处理自相关与异方差。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='orthogonal'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>文本正交化</strong>
+          <p>以 TextPes 及滞后项解释 PhotoPes。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='residual'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>残差信号检验</strong>
+          <p>滞后三期；高波动期创业板。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='signals'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            日频情绪指标 → 联合预测回归
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='joint'
+            data-edge-to='inference'
+            data-edge-label=''
+          >
+            联合预测回归 → Newey–West 推断
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='signals'
+            data-edge-to='orthogonal'
+            data-edge-label=''
+          >
+            日频情绪指标 → 文本正交化
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='orthogonal'
+            data-edge-to='residual'
+            data-edge-label=''
+          >
+            文本正交化 → 残差信号检验
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Newey–West 处理误差相关性，正交化检验与文本重叠之外的信息。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='econometric-analysis--2'
+  data-scene
+  data-chapter='计量分析'
+  aria-labelledby='title-econometric-analysis-2'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 计量分析</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>增量信息证据</p>
+    <h2 id='title-econometric-analysis-2'>特定设定下，图像残差仍含预测信息</h2>
+    <p>文本及其滞后项解释部分图像方差，再检验剩余信号与收益的关系。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='特定设定下，图像残差仍含预测信息'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>环节</th>
+            
+              <th scope='col'>证据</th>
+            
+              <th scope='col'>适用范围</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>文本解释图像</th>
+                
+                  <td>R² = 0.16</td>
+                
+                  <td>PhotoPes 对 TextPes 及滞后项回归</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>剩余图像波动</th>
+                
+                  <td>残差方差占84%</td>
+                
+                  <td>依赖该回归设定</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>残差预测收益</th>
+                
+                  <td>|t| = 2.42</td>
+                
+                  <td>高波动期创业板，滞后三期</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>残差检验针对高波动期创业板样本，并不代表所有指数或市场状态。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>结果支持有条件的增量预测信息，但不能证明一般意义的独立性或因果关系。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-econometric-analysis'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/'>下一项贡献: 稳健性检验与解释 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-econometric-analysis'>新闻图像情绪研究</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/econometric-analysis/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/?present=1#robustness-interpretation--1'
+      aria-label='下一项贡献: 稳健性检验与解释'
+      title='稳健性检验与解释'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>稳健性检验与解释</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

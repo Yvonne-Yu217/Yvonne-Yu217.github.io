@@ -1,0 +1,390 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Dual-Granularity Query Foundation
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='Rebuilt SQL/Spark Module and Query datasets with shared funnel definitions, quality checks, and dashboards for monitoring and diagnosis.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/query-foundation/'>
+    <meta property='og:title' content='Dual-Granularity Query Foundation'>
+    <meta property='og:description' content='Rebuilt SQL/Spark Module and Query datasets with shared funnel definitions, quality checks, and dashboards for monitoring and diagnosis.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/bytedance/query-foundation/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#industry' data-return-to-list>Industry</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-query-foundation'>E-commerce search</a
+    ><span aria-hidden='true'>/</span
+    ><span>Dual-Granularity Query Foundation</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>E-commerce search / Project work</p>
+      <h1>
+        Dual-Granularity Query Foundation
+      </h1>
+      <p>
+        Rebuilt SQL/Spark Module and Query datasets with shared funnel definitions, quality checks, and dashboards for monitoring and diagnosis.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/query-research/'
+              
+              ><span>01</span>Product & Query Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'
+              
+              ><span>02</span>A/B Experimentation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'
+              
+              ><span>03</span>Repeat-Search Causal Analysis</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/'
+              
+                aria-current='page'
+              
+              ><span>04</span>Dual-Granularity Query Foundation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/'
+              
+              ><span>05</span>AI Experiment Automation</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-query-foundation'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='query-foundation--1'
+  data-scene
+  data-chapter='Dual-Granularity Query Foundation'
+  aria-labelledby='title-query-foundation-1'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · Dual-Granularity Query Foundation</span>
+    <span>1 / 1</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Architecture</p>
+    <h2 id='title-query-foundation-1'>Two analysis levels with shared checks</h2>
+    <p>SQL/Spark combines placement mapping, funnel metrics, and data checks before serving dashboards.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Two analysis levels with shared checks'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='sources'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Source records</strong>
+          <p>Exposure, clicks, and attributed orders.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='definitions'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Shared definitions</strong>
+          <p>Placement mapping and exposure–click–purchase metrics.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='checks'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Quality checks</strong>
+          <p>Partitions, duplicates, reconciliation, and trend anomalies.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='module'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Module dataset</strong>
+          <p>Placement trends and experiment monitoring.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='query'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Query dataset</strong>
+          <p>Word-level diagnosis and anomaly drill-down.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='sources'
+            data-edge-to='definitions'
+            data-edge-label=''
+          >
+            Source records → Shared definitions
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='definitions'
+            data-edge-to='checks'
+            data-edge-label=''
+          >
+            Shared definitions → Quality checks
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='checks'
+            data-edge-to='module'
+            data-edge-label=''
+          >
+            Quality checks → Module dataset
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='checks'
+            data-edge-to='query'
+            data-edge-label=''
+          >
+            Quality checks → Query dataset
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>One definition set supports aggregate monitoring and detailed diagnosis.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-query-foundation'>← Back to project</a><a href='/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/'>Next contribution: AI Experiment Automation →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-query-foundation'>E-commerce search</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/bytedance/query-foundation/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/?present=1#experiment-automation--1'
+      aria-label='Next contribution: AI Experiment Automation'
+      title='AI Experiment Automation'
+      hidden
+    >
+      <span>Next contribution →</span
+      >
+      <strong>AI Experiment Automation</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

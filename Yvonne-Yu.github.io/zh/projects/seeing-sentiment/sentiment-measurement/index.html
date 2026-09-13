@@ -1,0 +1,490 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      图文情绪测量
+       | 余奕
+    </title>
+    <meta name='description' content='微调 ViT-B/16，配合中文 RoBERTa 构建日频悲观情绪指标；PCNN 留出测试集准确率为88.1%。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/seeing-sentiment/sentiment-measurement/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/'>
+    <meta property='og:title' content='图文情绪测量'>
+    <meta property='og:description' content='微调 ViT-B/16，配合中文 RoBERTa 构建日频悲观情绪指标；PCNN 留出测试集准确率为88.1%。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/sentiment-measurement/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#research' data-return-to-list>科研经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-sentiment-measurement'>新闻图像情绪研究</a
+    ><span aria-hidden='true'>/</span
+    ><span>图文情绪测量</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>新闻图像情绪研究 / 工作概览</p>
+      <h1>
+        图文情绪测量
+      </h1>
+      <p>
+        微调 ViT-B/16，配合中文 RoBERTa 构建日频悲观情绪指标；PCNN 留出测试集准确率为88.1%。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/research-design/'
+              
+              ><span>01</span>研究设计与数据构建</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/'
+              
+                aria-current='page'
+              
+              ><span>02</span>图文情绪测量</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/'
+              
+              ><span>03</span>计量分析</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/'
+              
+              ><span>04</span>稳健性检验与解释</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/out-of-sample-validation/'
+              
+              ><span>05</span>样本外验证</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-sentiment-measurement'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='sentiment-measurement--1'
+  data-scene
+  data-chapter='图文情绪测量'
+  aria-labelledby='title-sentiment-measurement-1'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 图文情绪测量</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>情绪测量流程</p>
+    <h2 id='title-sentiment-measurement-1'>图像分类与文本评分采用不同的日级汇总方式</h2>
+    <p>使用 PyTorch 与 Hugging Face 微调 ViT-B/16，分别构建图像和文本日频情绪指标。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='图像分类与文本评分采用不同的日级汇总方式'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='photos'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>新闻图片</strong>
+          <p>图像通道。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='vit'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>ViT-B/16</strong>
+          <p>PCNN：人工标注的 Twitter 图像集。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='photo'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>图像悲观指数</strong>
+          <p>每日悲观概率大于0.5的图片占比。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='articles'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>新闻文章</strong>
+          <p>文本通道。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='roberta'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>中文 RoBERTa</strong>
+          <p>输出文章级悲观评分。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='text'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>文本悲观指数</strong>
+          <p>文章悲观评分的日均值。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='photos'
+            data-edge-to='vit'
+            data-edge-label=''
+          >
+            新闻图片 → ViT-B/16
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='vit'
+            data-edge-to='photo'
+            data-edge-label=''
+          >
+            ViT-B/16 → 图像悲观指数
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='articles'
+            data-edge-to='roberta'
+            data-edge-label=''
+          >
+            新闻文章 → 中文 RoBERTa
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='roberta'
+            data-edge-to='text'
+            data-edge-label=''
+          >
+            中文 RoBERTa → 文本悲观指数
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>PhotoPes 统计悲观图片占比；TextPes 计算文本情绪评分均值。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='sentiment-measurement--2'
+  data-scene
+  data-chapter='图文情绪测量'
+  aria-labelledby='title-sentiment-measurement-2'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 图文情绪测量</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>测量验证</p>
+    <h2 id='title-sentiment-measurement-2'>PCNN 准确率不能代表财经新闻分类效果</h2>
+    <p>验证分别考察源领域分类表现，以及财经新闻中的跨模型一致性。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='PCNN 准确率不能代表财经新闻分类效果'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>样本</th>
+            
+              <th scope='col'>指标</th>
+            
+              <th scope='col'>衡量对象</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>PCNN：177张留出图像</th>
+                
+                  <td>准确率88.14%</td>
+                
+                  <td>相对人工标签的分类表现</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>财经新闻：1,229张图像</th>
+                
+                  <td>AUC 0.54</td>
+                
+                  <td>与语言模型标签的一致性</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>高共识子集：309张图像</th>
+                
+                  <td>AUC 0.71</td>
+                
+                  <td>筛选样本中的一致性</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>AUC 以0.5为随机排序参照，越高表示越能区分参照标签中的两类图像。它与准确率不同；高共识筛选排除了约75%的图像。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>高共识子集经过筛选，不能代表完整财经新闻分布。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-sentiment-measurement'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/'>下一项贡献: 计量分析 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-sentiment-measurement'>新闻图像情绪研究</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/sentiment-measurement/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/?present=1#econometric-analysis--1'
+      aria-label='下一项贡献: 计量分析'
+      title='计量分析'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>计量分析</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

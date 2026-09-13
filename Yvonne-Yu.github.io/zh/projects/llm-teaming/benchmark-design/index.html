@@ -1,0 +1,362 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      基准评估设计
+       | 余奕
+    </title>
+    <meta name='description' content='在四个推理基准上评估七个模型与十种策略，同一任务统一提示词并使用官方验证集。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'>
+    <meta property='og:title' content='基准评估设计'>
+    <meta property='og:description' content='在四个推理基准上评估七个模型与十种策略，同一任务统一提示词并使用官方验证集。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#research' data-return-to-list>科研经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-benchmark-design'>小语言模型协作研究</a
+    ><span aria-hidden='true'>/</span
+    ><span>基准评估设计</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>小语言模型协作研究 / 工作概览</p>
+      <h1>
+        基准评估设计
+      </h1>
+      <p>
+        在四个推理基准上评估七个模型与十种策略，同一任务统一提示词并使用官方验证集。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'
+              
+                aria-current='page'
+              
+              ><span>01</span>基准评估设计</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'
+              
+              ><span>02</span>协作失效分析</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'
+              
+              ><span>03</span>证据协作流程设计</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/validation-audit/'
+              
+              ><span>04</span>效果验证与证据审计</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-benchmark-design'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='benchmark-design--1'
+  data-scene
+  data-chapter='基准评估设计'
+  aria-labelledby='title-benchmark-design-1'
+>
+  <div class='scene-meta'>
+    <span>小语言模型协作研究 · 基准评估设计</span>
+    <span>1 / 1</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>评估设置</p>
+    <h2 id='title-benchmark-design-1'>四个基准覆盖不同的模型协作条件</h2>
+    <p>在短上下文问答和长篇章推断任务中比较七个模型与十种策略。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='四个基准覆盖不同的模型协作条件'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>基准</th>
+            
+              <th scope='col'>验证样本数</th>
+            
+              <th scope='col'>任务结构</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>ReClor</th>
+                
+                  <td>500</td>
+                
+                  <td>短上下文逻辑推理</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>LogiQA 2.0</th>
+                
+                  <td>651</td>
+                
+                  <td>短上下文形式逻辑</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>CommonsenseQA</th>
+                
+                  <td>1,221</td>
+                
+                  <td>无篇章常识问答</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>ConTRoL</th>
+                
+                  <td>805</td>
+                
+                  <td>长篇章自然语言推断</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>使用官方验证集，同一任务统一提示词；不同实验覆盖的模型与策略组合不同。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>任务结构决定了是否存在可供协作的证据选择环节。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-benchmark-design'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'>下一项贡献: 协作失效分析 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-benchmark-design'>小语言模型协作研究</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/?present=1#failure-diagnosis--1'
+      aria-label='下一项贡献: 协作失效分析'
+      title='协作失效分析'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>协作失效分析</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

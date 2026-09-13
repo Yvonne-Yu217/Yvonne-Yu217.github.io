@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Page not found · Yvonne Yu</title>
+    <meta name='robots' content='noindex'>
+    <link rel='stylesheet' href='/Yvonne-Yu.github.io/assets/styles/site.css'>
+    <style>
+      .error-language {
+        display: none;
+      }
+      html[lang='en'] .error-language[data-error-language='en'],
+      html[lang='zh-CN'] .error-language[data-error-language='zh'] {
+        display: block;
+      }
+    </style>
+    <script>
+      (() => {
+        let preferred = 'en';
+        try {
+          if (localStorage.getItem('portfolio-language') === 'zh') preferred = 'zh';
+        } catch {}
+        const query = new URL(location.href).searchParams.get('lang');
+        const route = location.pathname.match(/\/(en|zh)(?:\/|$)/)?.[1];
+        const selected = ['en', 'zh'].includes(query) ? query : route || preferred;
+        document.documentElement.lang = selected === 'zh' ? 'zh-CN' : 'en';
+        document.title = selected === 'zh' ? '页面未找到 · 余奕' : 'Page not found · Yvonne Yu';
+      })();
+    </script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-kind='error' data-base='/Yvonne-Yu.github.io'>
+    
+      <div class='error-language' data-error-language='en'>
+        <a class='skip-link' href='#error-en'>Skip to content</a>
+        <header class='site-header'>
+          <div class='header-inner'>
+            <a class='wordmark' href='/Yvonne-Yu.github.io/en/'
+              ><span class='monogram' aria-hidden='true'>y.</span>Yvonne Yu</a>
+            <nav class='main-nav' aria-label='Main navigation'>
+              <a href='/Yvonne-Yu.github.io/en/#work'>Experience</a
+              ><a href='/Yvonne-Yu.github.io/en/#contact'>Contact</a>
+            </nav>
+            <nav class='language-switch' aria-label='Language'>
+              <a
+                href='?lang=en'
+                lang='en'
+                data-language='en'
+                
+                  aria-current='true'
+                
+                >EN</a
+              ><span aria-hidden='true'>/</span
+              ><a
+                href='?lang=zh'
+                lang='zh-CN'
+                data-language='zh'
+                
+                >中文</a
+              >
+            </nav>
+          </div>
+        </header>
+        <main class='container not-found' id='error-en'>
+          <p class='eyebrow'>404</p>
+          <h1>
+            This page has moved or does not exist.
+          </h1>
+          <a class='button primary' href='/Yvonne-Yu.github.io/en/'>Return home
+            <span aria-hidden='true'>→</span></a
+          >
+        </main>
+      </div>
+    
+      <div class='error-language' data-error-language='zh'>
+        <a class='skip-link' href='#error-zh'>跳至正文</a>
+        <header class='site-header'>
+          <div class='header-inner'>
+            <a class='wordmark' href='/Yvonne-Yu.github.io/zh/'
+              ><span class='monogram' aria-hidden='true'>y.</span>余奕</a>
+            <nav class='main-nav' aria-label='主导航'>
+              <a href='/Yvonne-Yu.github.io/zh/#work'>经历</a
+              ><a href='/Yvonne-Yu.github.io/zh/#contact'>联系方式</a>
+            </nav>
+            <nav class='language-switch' aria-label='语言切换'>
+              <a
+                href='?lang=en'
+                lang='en'
+                data-language='en'
+                
+                >EN</a
+              ><span aria-hidden='true'>/</span
+              ><a
+                href='?lang=zh'
+                lang='zh-CN'
+                data-language='zh'
+                
+                  aria-current='true'
+                
+                >中文</a
+              >
+            </nav>
+          </div>
+        </header>
+        <main class='container not-found' id='error-zh'>
+          <p class='eyebrow'>404</p>
+          <h1>
+            页面已移动，或暂时无法找到。
+          </h1>
+          <a class='button primary' href='/Yvonne-Yu.github.io/zh/'>返回首页
+            <span aria-hidden='true'>→</span></a
+          >
+        </main>
+      </div>
+    
+  </body>
+</html>

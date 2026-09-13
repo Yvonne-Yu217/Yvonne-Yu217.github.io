@@ -1,0 +1,467 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Three Heads Are Better Than One, If They Share Notes: When and How LLM Teaming Helps Short-horizon Reasoning Tasks
+       | 余奕
+    </title>
+    <meta name='description' content='研究小语言模型在何种条件下能够通过协作改善推理，比较答案聚合与“共享证据、核验后单模型回答”的流程。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/'>
+    <meta property='og:title' content='Three Heads Are Better Than One, If They Share Notes: When and How LLM Teaming Helps Short-horizon Reasoning Tasks'>
+    <meta property='og:description' content='研究小语言模型在何种条件下能够通过协作改善推理，比较答案聚合与“共享证据、核验后单模型回答”的流程。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='project' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/llm-teaming/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<article class='container paper-overview'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#research' data-return-to-list>科研经历</a>
+    <span aria-hidden='true'>/</span><span>小语言模型协作研究</span>
+  </nav>
+  <header class='paper-header'>
+    <h1>Three Heads Are Better Than One, If They Share Notes: When and How LLM Teaming Helps Short-horizon Reasoning Tasks</h1>
+<p class='paper-authors'>
+  Caijun Wang, Yishu Yang, Yvonne Yu
+  
+  
+</p>
+<p class='project-byline'>
+  研究合作者
+  <span>2026年2月 — 2026年5月</span>
+</p>
+
+    <p class='paper-abstract'>本研究考察异构语言模型在推理任务中何时适合协作，以及应在哪个环节协作。短上下文基准上的投票、辩论和裁判方法均弱于单模型直接回答。转向 ConTRoL 长篇章任务后，我们让模型共同检索和核验证据，再由单个模型回答。固定 Qwen3-8B 后，包含直接回答回退的 F1 完整流程准确率为71.7%，单模型检索基线为65.5%。字符级审计检查原文支持，接受率与回退率刻画证据筛选行为；结论限于已评估的任务和模型配置。</p>
+    <div class='project-actions'>
+      <a
+        class='button primary paper-present'
+        href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/present/?present=1'
+      >
+        论文演示 · 8
+        页
+        <span aria-hidden='true'>▷</span>
+      </a>
+      <a class='text-link' href='https://drive.google.com/file/d/1MQG2vjSPQdG26ZZFFt7IVm1g-C1HQQjy/view?usp=sharing' target='_blank' rel='noopener noreferrer'>论文原文 ↗</a
+      >
+    </div>
+  </header>
+  <div class='paper-poster' aria-label='研究概览'>
+    <span id='work-benchmark-design' class='legacy-work-anchor' aria-hidden='true'></span><span id='work-failure-diagnosis' class='legacy-work-anchor' aria-hidden='true'></span><span id='work-pipeline-design' class='legacy-work-anchor' aria-hidden='true'></span><span id='work-validation-audit' class='legacy-work-anchor' aria-hidden='true'></span>
+    
+      
+      <section
+        class='poster-panel'
+        id='paper-verified-evidence-framework'
+        aria-labelledby='poster-title-verified-evidence-framework'
+      >
+        <div class='poster-copy'>
+          <p class='eyebrow'>证据协作架构</p>
+          <h2 id='poster-title-verified-evidence-framework'>共享证据先核验，再由单个模型回答</h2>
+          <p>核验实验改用 Qwen3-8B 回答；模型共同检索和检查证据，再选择一条回答路径。</p>
+        </div>
+        
+        
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='共享证据先核验，再由单个模型回答'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 4'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='input'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>原始输入</strong>
+          <p>问题与给定篇章。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='parallel-retrieval'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>并行检索</strong>
+          <p>三个异构模型分别摘取原文语句。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='union'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>候选证据并集</strong>
+          <p>汇集三个模型的候选集合。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='verification'
+          style='grid-column: 4; grid-row: 1'
+        >
+          <strong>核验候选证据</strong>
+          <p>F1：至少2/3接受；F2：回答模型核验。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='with-evidence'
+          style='grid-column: 4; grid-row: 2'
+        >
+          <strong>有证据通过</strong>
+          <p>结合原始输入与保留证据作答。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='fallback'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>无证据通过</strong>
+          <p>同一回答模型，仅使用原始输入。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='input'
+            data-edge-to='parallel-retrieval'
+            data-edge-label=''
+          >
+            原始输入 → 并行检索
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='parallel-retrieval'
+            data-edge-to='union'
+            data-edge-label=''
+          >
+            并行检索 → 候选证据并集
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='union'
+            data-edge-to='verification'
+            data-edge-label=''
+          >
+            候选证据并集 → 核验候选证据
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='verification'
+            data-edge-to='with-evidence'
+            data-edge-label='有证据通过'
+          >
+            核验候选证据 → 有证据通过: 有证据通过
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='verification'
+            data-edge-to='fallback'
+            data-edge-label='无证据通过'
+          >
+            核验候选证据 → 无证据通过: 无证据通过
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+        <p class='takeaway'>保留证据作答与直接回答回退互斥，两条路径都保留原始输入，并使用同一个回答模型。</p>
+      </section>
+    
+      
+      <section
+        class='poster-panel'
+        id='paper-verification-results'
+        aria-labelledby='poster-title-verification-results'
+      >
+        <div class='poster-copy'>
+          <p class='eyebrow'>主要对照结果</p>
+          <h2 id='poster-title-verification-results'>完整 F1 流程提高6.2个百分点</h2>
+          <p>固定 Qwen3-8B 为回答模型时，F1 准确率为71.7%，单模型检索基线为65.5%。</p>
+        </div>
+        
+        
+
+
+  <figure class='brief-figure bars-figure' aria-label='完整 F1 流程提高6.2个百分点'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>100
+          %</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>直接回答 DQA</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 61.4%'
+            ></span>
+          </div>
+          <strong>61.4%</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>单模型检索 RQA</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 65.5%'
+            ></span>
+          </div>
+          <strong>65.5%</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>单模型核验流程 F2</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 71.1%'
+            ></span>
+          </div>
+          <strong>71.1%</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>交叉核验流程 F1</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 71.7%'
+            ></span>
+          </div>
+          <strong>71.7%</strong>
+        </div>
+      
+    </div>
+    <figcaption>ConTRoL 共805题；团队为 Qwen3-8B、Ministral、nano。图示描述性点估计，见第5页表5–6。</figcaption>
+  </figure>
+
+
+        <p class='takeaway'>提升对应包含回退的完整 F1 与 RQA 的比较，不能单独归因于核验模块。</p>
+      </section>
+    
+      
+      <section
+        class='poster-panel'
+        id='paper-study-synthesis'
+        aria-labelledby='poster-title-study-synthesis'
+      >
+        <div class='poster-copy'>
+          <p class='eyebrow'>研究结论</p>
+          <h2 id='poster-title-study-synthesis'>让协作方式与任务结构相匹配</h2>
+          <p>实验区分答案聚合、证据汇集和证据核验；结果来自不同任务与模型配置，需分别解释。</p>
+        </div>
+        
+        
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='让协作方式与任务结构相匹配'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>环节</th>
+            
+              <th scope='col'>观察结果</th>
+            
+              <th scope='col'>比较范围</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>答案聚合</th>
+                
+                  <td>准确率低于单模型</td>
+                
+                  <td>三个短上下文基准</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>证据汇集</th>
+                
+                  <td>接近单模型检索</td>
+                
+                  <td>ConTRoL；两种14B回答模型</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>核验与回退</th>
+                
+                  <td>F1 较 RQA 高6.2个百分点</td>
+                
+                  <td>ConTRoL；Qwen3-8B回答</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>部署效率</th>
+                
+                  <td>尚未测量</td>
+                
+                  <td>尚无时延和成本的实测比较</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>以上为独立实验，并非逐模块累加消融。F1/F2仅在 ConTRoL 评估，实测效率仍需后续研究。</figcaption>
+    
+  </figure>
+
+
+        <p class='takeaway'>结果支持进一步研究证据环节的协作；跨任务推广与部署效率仍待验证。</p>
+      </section>
+    
+  </div>
+  <div class='paper-contribution'>
+    <h2>我的工作</h2>
+    <p>作为研究合作者，我参与基准评估、配对误差分析、证据协作流程设计与验证审计。</p>
+  </div>
+  <p class='paper-reading-link'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/present/'>
+      连续阅读完整展示 →
+    </a>
+  </p>
+</article>
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

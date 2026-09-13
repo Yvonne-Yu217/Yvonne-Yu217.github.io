@@ -1,0 +1,485 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      AI Experiment Automation
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='Automated experiment-parameter, traffic, Pre-AA, lift, and guardrail checks with agent cross-checks, human review, and cross-experiment monitoring.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/experiment-automation/'>
+    <meta property='og:title' content='AI Experiment Automation'>
+    <meta property='og:description' content='Automated experiment-parameter, traffic, Pre-AA, lift, and guardrail checks with agent cross-checks, human review, and cross-experiment monitoring.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/bytedance/experiment-automation/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#industry' data-return-to-list>Industry</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-experiment-automation'>E-commerce search</a
+    ><span aria-hidden='true'>/</span
+    ><span>AI Experiment Automation</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>E-commerce search / Project work</p>
+      <h1>
+        AI Experiment Automation
+      </h1>
+      <p>
+        Automated experiment-parameter, traffic, Pre-AA, lift, and guardrail checks with agent cross-checks, human review, and cross-experiment monitoring.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/query-research/'
+              
+              ><span>01</span>Product & Query Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'
+              
+              ><span>02</span>A/B Experimentation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'
+              
+              ><span>03</span>Repeat-Search Causal Analysis</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/'
+              
+              ><span>04</span>Dual-Granularity Query Foundation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/'
+              
+                aria-current='page'
+              
+              ><span>05</span>AI Experiment Automation</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-experiment-automation'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='experiment-automation--1'
+  data-scene
+  data-chapter='AI Experiment Automation'
+  aria-labelledby='title-experiment-automation-1'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · AI Experiment Automation</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Architecture</p>
+    <h2 id='title-experiment-automation-1'>Separate retrieval, checks, and judgment</h2>
+    <p>I converted recurring experiment checks into a structured AI Skill with cross-checks and human review.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Separate retrieval, checks, and judgment'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='request'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Experiment + version</strong>
+          <p>Choose treatment and control.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='retrieve'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Read evidence</strong>
+          <p>Parameters, traffic history, dates, and metrics.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='rules'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Run checks</strong>
+          <p>Activation, complete days, Pre-AA, lift, and guardrails.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='explain'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Explain results</strong>
+          <p>Use retrieved values; flag missing evidence.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='review'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Review exceptions</strong>
+          <p>Agent cross-checks and human spot checks.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='output'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>Report + dashboard</strong>
+          <p>Summarize validated findings across experiments.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='request'
+            data-edge-to='retrieve'
+            data-edge-label=''
+          >
+            Experiment + version → Read evidence
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='retrieve'
+            data-edge-to='rules'
+            data-edge-label=''
+          >
+            Read evidence → Run checks
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='rules'
+            data-edge-to='explain'
+            data-edge-label=''
+          >
+            Run checks → Explain results
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='explain'
+            data-edge-to='review'
+            data-edge-label=''
+          >
+            Explain results → Review exceptions
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='review'
+            data-edge-to='output'
+            data-edge-label=''
+          >
+            Review exceptions → Report + dashboard
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Tools supply data; rules verify it; reviewers retain the final decision.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='experiment-automation--2'
+  data-scene
+  data-chapter='AI Experiment Automation'
+  aria-labelledby='title-experiment-automation-2'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · AI Experiment Automation</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Validation</p>
+    <h2 id='title-experiment-automation-2'>Case testing exposed a missing rollout history</h2>
+    <p>A recorded test lacked the rollout trajectory; discussion led to a skill revision.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Case testing exposed a missing rollout history'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Test focus</th>
+            
+              <th scope='col'>Recorded case</th>
+            
+              <th scope='col'>Check or response</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Experiment selection</th>
+                
+                  <td>Different target experiments</td>
+                
+                  <td>Confirm report context</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Version selection</th>
+                
+                  <td>Requested treatment/model variants</td>
+                
+                  <td>Repeat checks per version</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Rollout history</th>
+                
+                  <td>Missing trajectory in one case</td>
+                
+                  <td>Discuss the gap; revise the skill</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>These cases document test coverage, not a measured accuracy rate.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Check missing and inconsistent inputs before accepting an automated conclusion.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-experiment-automation'>← Back to project</a>
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-experiment-automation'>E-commerce search</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/bytedance/experiment-automation/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

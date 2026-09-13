@@ -1,0 +1,1227 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Mars · Idle cloud resource detection and ranking
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='Built a two-stage resource ranking pipeline with Azure ML scoring and operations feedback.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/present/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/present/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/present/'>
+    <meta property='og:title' content='Mars · Idle cloud resource detection and ranking'>
+    <meta property='og:description' content='Built a two-stage resource ranking pipeline with Azure ML scoring and operations feedback.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/present/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='deck' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/mars/present/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/mars/present/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#industry' data-return-to-list>Industry</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/mars/'>Cloud resource ranking</a
+    ><span aria-hidden='true'>/</span
+    ><span>Present project</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>Cloud resource ranking / Project work</p>
+      <h1>
+        Idle cloud resource detection and ranking
+      </h1>
+      <p>
+        Built a two-stage resource ranking pipeline with Azure ML scoring and operations feedback.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <strong>Feature & Candidate Pipeline</strong>
+            <a href='#candidate-pipeline--1'>From Azure sources to daily candidates</a><a href='#candidate-pipeline--2'>Complementary detectors cover different idle patterns</a>
+          
+            <strong>Supervised Ranking & Evaluation</strong>
+            <a href='#supervised-ranking--1'>XGBoost learns from mature operations labels</a><a href='#supervised-ranking--2'>Approximately 85% precision in the reviewed top 100</a>
+          
+            <strong>Production & Monitoring</strong>
+            <a href='#production-monitoring--1'>Weekly training, daily batch scoring in Azure ML</a><a href='#production-monitoring--2'>Power BI separates drift from reviewed performance</a>
+          
+            <strong>Calibration & Governance</strong>
+            <a href='#calibration-governance--1'>From calibrated probability to an appealable recommendation</a>
+          
+            <strong>Feedback & Cost Closure</strong>
+            <a href='#feedback-closure--1'>Review decisions become labels; executed changes get verified</a><a href='#feedback-closure--2'>Investigation time fell from 52 to 31 minutes</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/mars/'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='candidate-pipeline--1'
+  data-scene
+  data-chapter='Feature &amp; Candidate Pipeline'
+  aria-labelledby='title-candidate-pipeline-1'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Feature & Candidate Pipeline</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Pipeline</p>
+    <h2 id='title-candidate-pipeline-1'>From Azure sources to daily candidates</h2>
+    <p>Joined telemetry, metadata, and billing at resource-by-day grain.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='From Azure sources to daily candidates'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='sources'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Azure sources</strong>
+          <p>Monitor, Resource Graph, Cost Management.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='etl'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Incremental ETL</strong>
+          <p>Dated joins; late-billing reconciliation.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='features'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>7/30/90-day features</strong>
+          <p>Past utilization, trends, missingness.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='detection'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Three detection paths</strong>
+          <p>Isolation Forest, Z-score, low-use rules.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='output'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Review dataset</strong>
+          <p>Candidate union with billing context.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='sources'
+            data-edge-to='etl'
+            data-edge-label=''
+          >
+            Azure sources → Incremental ETL
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='etl'
+            data-edge-to='features'
+            data-edge-label=''
+          >
+            Incremental ETL → 7/30/90-day features
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='features'
+            data-edge-to='detection'
+            data-edge-label=''
+          >
+            7/30/90-day features → Three detection paths
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='detection'
+            data-edge-to='output'
+            data-edge-label=''
+          >
+            Three detection paths → Review dataset
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='etl'
+            data-edge-to='output'
+            data-edge-label=''
+          >
+            Incremental ETL → Review dataset
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Cost accompanies review priority; usage features determine candidate detection.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='candidate-pipeline--2'
+  data-scene
+  data-chapter='Feature &amp; Candidate Pipeline'
+  aria-labelledby='title-candidate-pipeline-2'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Feature & Candidate Pipeline</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Detection methods</p>
+    <h2 id='title-candidate-pipeline-2'>Complementary detectors cover different idle patterns</h2>
+    <p>Combined candidate flags before supervised ranking.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Complementary detectors cover different idle patterns'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Path</th>
+            
+              <th scope='col'>Pattern</th>
+            
+              <th scope='col'>Output</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Isolation Forest</th>
+                
+                  <td>Unusual multivariate usage</td>
+                
+                  <td>Anomaly candidate</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Robust Z-score</th>
+                
+                  <td>Single-metric extremes</td>
+                
+                  <td>Interpretable flag</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Low-utilization rules</th>
+                
+                  <td>Persistent quiet usage</td>
+                
+                  <td>Rule-based candidate</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Union supports candidate coverage; it does not confirm releasability.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Preserve missingness; absent telemetry is not zero utilization.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='supervised-ranking--1'
+  data-scene
+  data-chapter='Supervised Ranking &amp; Evaluation'
+  aria-labelledby='title-supervised-ranking-1'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Supervised Ranking & Evaluation</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Training and validation</p>
+    <h2 id='title-supervised-ranking-1'>XGBoost learns from mature operations labels</h2>
+    <p>Ranked candidates for a fixed review budget.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='XGBoost learns from mature operations labels'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Stage</th>
+            
+              <th scope='col'>Implementation</th>
+            
+              <th scope='col'>Purpose</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Labels</th>
+                
+                  <td>Confirmed idle / valid use</td>
+                
+                  <td>Unreviewed ≠ negative</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Time split</th>
+                
+                  <td>Earlier training; later testing</td>
+                
+                  <td>Prevent temporal leakage</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>XGBoost</th>
+                
+                  <td>Class weights</td>
+                
+                  <td>Learn rare positive cases</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Review output</th>
+                
+                  <td>Ranked candidates + SHAP</td>
+                
+                  <td>Resource-level reasons</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+  </figure>
+
+
+  <p class='takeaway'>SHAP explains a resource score; it does not establish causality.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='supervised-ranking--2'
+  data-scene
+  data-chapter='Supervised Ranking &amp; Evaluation'
+  aria-labelledby='title-supervised-ranking-2'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Supervised Ranking & Evaluation</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Manual validation</p>
+    <h2 id='title-supervised-ranking-2'>Approximately 85% precision in the reviewed top 100</h2>
+    <p>Operations checked whether ranked candidates were releasable or downsizable.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure bars-figure' aria-label='Approximately 85% precision in the reviewed top 100'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>100
+          %</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>Precision@100</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 85.0%'
+            ></span>
+          </div>
+          <strong>≈85%</strong>
+        </div>
+      
+    </div>
+    <figcaption>About 85 confirmed cases among the top 100 manually reviewed candidates.</figcaption>
+  </figure>
+
+
+  <p class='takeaway'>This is queue-specific Precision@100, not accuracy across all cloud resources.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+          <div class='chapter-appendix has-demo' data-chapter-id='supervised-ranking'>
+            <section class='demo' data-demo='ranking' aria-label='Explore the idea'>
+  <p class='eyebrow'>Explore the idea</p>
+  <h3>
+    Who gets reviewed first?
+  </h3>
+  <p class='demo-note'>Illustrative data · not actual business or research results</p>
+  <div class='demo-controls'>
+    <label for='review-budget'>Review budget K</label
+    ><input id='review-budget' type='range' min='5' max='50' step='5' value='15'
+    ><output for='review-budget' data-budget>15</output
+    ><button class='button secondary' type='button' data-reset>Reset</button>
+  </div>
+  <div class='demo-metrics' role='status' aria-live='polite'>
+    <div>
+      <strong data-precision>—</strong
+      ><span>Simulated Precision@K</span>
+    </div>
+    <div>
+      <strong data-reviewed>15 / 50</strong><span>Candidates reviewed</span>
+    </div>
+  </div>
+  <div class='demo-grid' aria-hidden='true'></div>
+  <div class='demo-legend'>
+    <span>Confirmed idle</span><span>Not idle</span>
+  </div>
+  <p class='demo-note'>
+    Each square is one synthetic candidate, ordered by a fixed score. Increasing K spends more
+      review capacity; precision can fall as less certain candidates enter the queue. This example
+      does not reproduce the reported Precision@100.
+  </p>
+  <noscript>
+    <p>
+      Enable JavaScript to adjust the simulation. The reported project evaluation remains
+        available above.
+    </p>
+  </noscript>
+</section>
+
+          </div>
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='production-monitoring--1'
+  data-scene
+  data-chapter='Production &amp; Monitoring'
+  aria-labelledby='title-production-monitoring-1'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Production & Monitoring</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Deployment</p>
+    <h2 id='title-production-monitoring-1'>Weekly training, daily batch scoring in Azure ML</h2>
+    <p>Versioned releases keep training and scoring definitions consistent.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Weekly training, daily batch scoring in Azure ML'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='snapshot'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Versioned inputs</strong>
+          <p>Data snapshots and feature code.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='train'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Weekly training</strong>
+          <p>Matured operations labels.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='release'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Model package</strong>
+          <p>Model, calibrator, Top-K policy.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='score'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Daily scoring</strong>
+          <p>Current resource features.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='queue'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Review queue</strong>
+          <p>Scored candidates for operations.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='snapshot'
+            data-edge-to='train'
+            data-edge-label=''
+          >
+            Versioned inputs → Weekly training
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='train'
+            data-edge-to='release'
+            data-edge-label=''
+          >
+            Weekly training → Model package
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='release'
+            data-edge-to='score'
+            data-edge-label=''
+          >
+            Model package → Daily scoring
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='score'
+            data-edge-to='queue'
+            data-edge-label=''
+          >
+            Daily scoring → Review queue
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>New SKUs and definition changes pass backtests and shadow evaluation before release.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='production-monitoring--2'
+  data-scene
+  data-chapter='Production &amp; Monitoring'
+  aria-labelledby='title-production-monitoring-2'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Production & Monitoring</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Monitoring</p>
+    <h2 id='title-production-monitoring-2'>Power BI separates drift from reviewed performance</h2>
+    <p>Monitored data health, model behavior, and operational workload.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Power BI separates drift from reviewed performance'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Layer</th>
+            
+              <th scope='col'>Signal</th>
+            
+              <th scope='col'>Response</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Data</th>
+                
+                  <td>Coverage, missingness, delay</td>
+                
+                  <td>Check input quality</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Drift</th>
+                
+                  <td>PSI, score distribution</td>
+                
+                  <td>Investigate population changes</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Performance</th>
+                
+                  <td>Precision@K by resource type</td>
+                
+                  <td>Validate reviewed outcomes</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Workflow</th>
+                
+                  <td>Alert volume, review / appeal states</td>
+                
+                  <td>Track operational workload</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+  </figure>
+
+
+  <p class='takeaway'>PSI prompts investigation; review precision requires matured labels.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='calibration-governance--1'
+  data-scene
+  data-chapter='Calibration &amp; Governance'
+  aria-labelledby='title-calibration-governance-1'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Calibration & Governance</span>
+    <span>1 / 1</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Calibration and governance</p>
+    <h2 id='title-calibration-governance-1'>From calibrated probability to an appealable recommendation</h2>
+    <p>Checked reliability and Brier score on a later holdout.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='From calibrated probability to an appealable recommendation'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='score'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Ranking score</strong>
+          <p>Raw model output.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='calibrate'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Isotonic Regression</strong>
+          <p>Separate forward calibration window.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='probability'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Idle probability</strong>
+          <p>Calibrated estimate.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='capacity'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Capacity-based Top-K</strong>
+          <p>Operations review budget.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='appeal'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Candidate tags</strong>
+          <p>14-day owner appeal window.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='ticket'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>ServiceNow ticketing</strong>
+          <p>Human-reviewed recommendations.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='score'
+            data-edge-to='calibrate'
+            data-edge-label=''
+          >
+            Ranking score → Isotonic Regression
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='calibrate'
+            data-edge-to='probability'
+            data-edge-label=''
+          >
+            Isotonic Regression → Idle probability
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='probability'
+            data-edge-to='capacity'
+            data-edge-label=''
+          >
+            Idle probability → Capacity-based Top-K
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='capacity'
+            data-edge-to='appeal'
+            data-edge-label=''
+          >
+            Capacity-based Top-K → Candidate tags
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='appeal'
+            data-edge-to='ticket'
+            data-edge-label=''
+          >
+            Candidate tags → ServiceNow ticketing
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Operations approves actions; the model does not release resources automatically.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='feedback-closure--1'
+  data-scene
+  data-chapter='Feedback &amp; Cost Closure'
+  aria-labelledby='title-feedback-closure-1'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Feedback & Cost Closure</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Feedback</p>
+    <h2 id='title-feedback-closure-1'>Review decisions become labels; executed changes get verified</h2>
+    <p>Structured ServiceNow outcomes by their operational meaning.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Review decisions become labels; executed changes get verified'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='outcomes'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>ServiceNow outcomes</strong>
+          <p>Review, appeal, action status.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='labels'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Confirmed labels</strong>
+          <p>Idle, valid use, accepted appeal.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='retrain'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Retraining</strong>
+          <p>Update mature-label training data.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='actions'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Executed changes</strong>
+          <p>Released or downsized resources.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='verify'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Billing verification</strong>
+          <p>Stable before/after windows; exclude pricing changes.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='outcomes'
+            data-edge-to='labels'
+            data-edge-label=''
+          >
+            ServiceNow outcomes → Confirmed labels
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='labels'
+            data-edge-to='retrain'
+            data-edge-label=''
+          >
+            Confirmed labels → Retraining
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='outcomes'
+            data-edge-to='actions'
+            data-edge-label=''
+          >
+            ServiceNow outcomes → Executed changes
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='actions'
+            data-edge-to='verify'
+            data-edge-label=''
+          >
+            Executed changes → Billing verification
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>No response remains unresolved; it is not a training label.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='feedback-closure--2'
+  data-scene
+  data-chapter='Feedback &amp; Cost Closure'
+  aria-labelledby='title-feedback-closure-2'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Feedback & Cost Closure</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Workflow result</p>
+    <h2 id='title-feedback-closure-2'>Investigation time fell from 52 to 31 minutes</h2>
+    <p>Pre-filled utilization evidence and recommended actions reduced repeated investigation work.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure bars-figure' aria-label='Investigation time fell from 52 to 31 minutes'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>60
+          min</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>Before</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 86.66666666666667%'
+            ></span>
+          </div>
+          <strong>52 min</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>After</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 51.666666666666664%'
+            ></span>
+          </div>
+          <strong>31 min</strong>
+        </div>
+      
+    </div>
+    <figcaption>Reported time per investigation: 52→31 minutes, about 40% lower.</figcaption>
+  </figure>
+
+
+  <p class='takeaway'>The comparison concerns the investigation workflow, not model runtime.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/mars/'>← Back to project</a>
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/mars/'>Cloud resource ranking</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/mars/present/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/mars/present/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

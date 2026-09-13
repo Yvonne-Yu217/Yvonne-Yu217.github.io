@@ -1,0 +1,491 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      特征与候选流水线
+       | 余奕
+    </title>
+    <meta name='description' content='按资源与日期建设增量 ETL 和 7／30／90 日特征，以三路检测并集生成每日候选池。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'>
+    <meta property='og:title' content='特征与候选流水线'>
+    <meta property='og:description' content='按资源与日期建设增量 ETL 和 7／30／90 日特征，以三路检测并集生成每日候选池。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#industry' data-return-to-list>实习经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/mars/#work-candidate-pipeline'>云资源排序</a
+    ><span aria-hidden='true'>/</span
+    ><span>特征与候选流水线</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>云资源排序 / 工作概览</p>
+      <h1>
+        特征与候选流水线
+      </h1>
+      <p>
+        按资源与日期建设增量 ETL 和 7／30／90 日特征，以三路检测并集生成每日候选池。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'
+              
+                aria-current='page'
+              
+              ><span>01</span>特征与候选流水线</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'
+              
+              ><span>02</span>监督排序与评估</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'
+              
+              ><span>03</span>生产部署与监控</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/calibration-governance/'
+              
+              ><span>04</span>概率校准与发布治理</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/'
+              
+              ><span>05</span>反馈与成本核验</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/mars/#work-candidate-pipeline'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='candidate-pipeline--1'
+  data-scene
+  data-chapter='特征与候选流水线'
+  aria-labelledby='title-candidate-pipeline-1'
+>
+  <div class='scene-meta'>
+    <span>云资源排序 · 特征与候选流水线</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>流水线</p>
+    <h2 id='title-candidate-pipeline-1'>从 Azure 数据到每日候选</h2>
+    <p>将遥测、元数据和账单对齐到资源与日期粒度。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='从 Azure 数据到每日候选'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='sources'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Azure 数据源</strong>
+          <p>Monitor、Resource Graph、Cost Management。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='etl'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>增量 ETL</strong>
+          <p>按时点关联；回补迟到账单。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='features'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>7／30／90 日特征</strong>
+          <p>历史利用率、趋势、缺失率。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='detection'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>三路候选检测</strong>
+          <p>Isolation Forest、Z-score、低利用规则。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='output'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>审核数据集</strong>
+          <p>候选并集，附带账单背景。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='sources'
+            data-edge-to='etl'
+            data-edge-label=''
+          >
+            Azure 数据源 → 增量 ETL
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='etl'
+            data-edge-to='features'
+            data-edge-label=''
+          >
+            增量 ETL → 7／30／90 日特征
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='features'
+            data-edge-to='detection'
+            data-edge-label=''
+          >
+            7／30／90 日特征 → 三路候选检测
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='detection'
+            data-edge-to='output'
+            data-edge-label=''
+          >
+            三路候选检测 → 审核数据集
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='etl'
+            data-edge-to='output'
+            data-edge-label=''
+          >
+            增量 ETL → 审核数据集
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>成本用于审核优先级，利用率特征用于候选检测。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='candidate-pipeline--2'
+  data-scene
+  data-chapter='特征与候选流水线'
+  aria-labelledby='title-candidate-pipeline-2'
+>
+  <div class='scene-meta'>
+    <span>云资源排序 · 特征与候选流水线</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>检测方法</p>
+    <h2 id='title-candidate-pipeline-2'>不同检测方法覆盖不同闲置模式</h2>
+    <p>先合并候选标记，再进入监督排序。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='不同检测方法覆盖不同闲置模式'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>检测路径</th>
+            
+              <th scope='col'>覆盖模式</th>
+            
+              <th scope='col'>输出</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Isolation Forest</th>
+                
+                  <td>多变量利用率的罕见组合</td>
+                
+                  <td>异常候选</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>稳健 Z-score</th>
+                
+                  <td>单项指标的极端值</td>
+                
+                  <td>可解释异常标记</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>低利用规则</th>
+                
+                  <td>持续低利用状态</td>
+                
+                  <td>规则候选</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>候选并集用于扩大覆盖，不直接确认资源可释放。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>保留缺失信息，监控缺失不等于零利用率。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/mars/#work-candidate-pipeline'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'>下一项贡献: 监督排序与评估 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/mars/#work-candidate-pipeline'>云资源排序</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/?present=1#supervised-ranking--1'
+      aria-label='下一项贡献: 监督排序与评估'
+      title='监督排序与评估'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>监督排序与评估</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Diagnose extreme propensity estimates and explain what hidden-confounding sensitivity can establish.">
+
+<title>Overlap, Polarized Scores, and Sensitivity Analysis – Data Science Interview Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../chapters/07-causal/difference-in-differences.html" rel="next">
+<link href="../../chapters/07-causal/propensity-score-matching.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f8efec0032af3a9199f76a3197562f89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/07-causal/potential-outcomes.html">Causal inference</a></li><li class="breadcrumb-item"><a href="../../chapters/07-causal/propensity-diagnostics.html"><span class="chapter-title">Overlap, Polarized Scores, and Sensitivity Analysis</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Data Science Interview Notes</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Science Interview Notes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Probability and descriptive statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/01-foundations/probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Probability, Random Variables, and Distribution Shape</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/01-foundations/descriptive-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Descriptive Statistics, Association, and Visual Checks</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Statistical inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/scientific-reasoning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Scientific Reasoning and Hypothesis Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/sampling-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sampling, Standard Error, and Experimental Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/classical-tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Classical Tests: z, t, Ranks, and Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/permutation-tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Permutation Tests and Exchangeability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/replication-effect-sizes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Replication, Effect Size, and Research Flexibility</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/power-confidence-resampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Power, Confidence Intervals, Bootstrap, and Jackknife</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bayesian inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/03-bayesian/bayesian-inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bayesian Updating, Bayes Factors, and Predictive Value</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Regression and classification</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/04-regression-classification/linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Linear Regression: Projection, Interpretation, and Assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/04-regression-classification/regularization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Regularization and Cross-Validation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/04-regression-classification/logistic-classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Logistic Regression and Classification Metrics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/04-regression-classification/support-vector-machines.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Support Vector Machines: Margins and Hinge Loss</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Tree ensembles</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/05-ensemble-trees/decision-trees.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Decision Trees: From a Rule to CART</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/05-ensemble-trees/random-forest.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Random Forest: Averaging, Correlation, and OOB Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/05-ensemble-trees/gradient-boosting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gradient Boosting: Learning an Update Function</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/05-ensemble-trees/xgboost.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">XGBoost: Deriving Leaf Weights and Split Gain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/05-ensemble-trees/lightgbm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">LightGBM: Histograms, Sampling, and Leaf Growth</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unsupervised learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/pca-svd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">PCA and SVD: A Smaller Representation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/kmeans.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">K-Means: Optimization, Initialization, and Choosing K</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/clustering-variants.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Clustering Variants: Medoids, Mini-Batches, and Directions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/gaussian-mixtures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gaussian Mixtures and Expectation–Maximization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/density-clustering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DBSCAN, OPTICS, and Density Connectivity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/isolation-forest.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Isolation Forest: From Short Paths to Useful Alerts</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Causal inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/potential-outcomes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Potential Outcomes and Causal Identification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/propensity-score-matching.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Propensity Scores: Matching and Weighting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/propensity-diagnostics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Overlap, Polarized Scores, and Sensitivity Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/difference-in-differences.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Difference-in-Differences and Event Studies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/synthetic-control.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Synthetic Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/instrumental-variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Instrumental Variables, 2SLS, and LATE</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Treatment effects and experiments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/08-treatment-effects/double-machine-learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Double Machine Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/08-treatment-effects/uplift-learners.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Uplift Modeling and Heterogeneous Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/08-treatment-effects/uplift-evaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Evaluating Uplift: Gains, Qini, and Policy Value</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/08-treatment-effects/cuped.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">CUPED and Experiment Variance Reduction</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Time series</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/09-time-series/arima.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ARIMA and Seasonal ARIMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/09-time-series/ets.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exponential Smoothing and ETS</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
+ <span class="menu-text">Reference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/10-reference/interview-reference.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Interview Reference and Method Selection</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
+  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition">Intuition</a></li>
+  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example">Worked example</a>
+  <ul class="collapse">
+  <li><a href="#extreme-weights-and-effective-information" id="toc-extreme-weights-and-effective-information" class="nav-link" data-scroll-target="#extreme-weights-and-effective-information">Extreme weights and effective information</a></li>
+  <li><a href="#rosenbaums-assignment-odds-bound" id="toc-rosenbaums-assignment-odds-bound" class="nav-link" data-scroll-target="#rosenbaums-assignment-odds-bound">Rosenbaum’s assignment-odds bound</a></li>
+  <li><a href="#an-e-value-calculation" id="toc-an-e-value-calculation" class="nav-link" data-scroll-target="#an-e-value-calculation">An E-value calculation</a></li>
+  </ul></li>
+  <li><a href="#theory-and-assumptions" id="toc-theory-and-assumptions" class="nav-link" data-scroll-target="#theory-and-assumptions">Theory and assumptions</a>
+  <ul class="collapse">
+  <li><a href="#balance-as-standardized-mean-difference" id="toc-balance-as-standardized-mean-difference" class="nav-link" data-scroll-target="#balance-as-standardized-mean-difference">Balance as standardized mean difference</a></li>
+  <li><a href="#a-diagnostic-sequence-for-polarized-xgboost-scores" id="toc-a-diagnostic-sequence-for-polarized-xgboost-scores" class="nav-link" data-scroll-target="#a-diagnostic-sequence-for-polarized-xgboost-scores">A diagnostic sequence for polarized XGBoost scores</a></li>
+  <li><a href="#what-each-remedy-actually-does" id="toc-what-each-remedy-actually-does" class="nav-link" data-scroll-target="#what-each-remedy-actually-does">What each remedy actually does</a></li>
+  <li><a href="#sensitivity-checks-answer-different-questions" id="toc-sensitivity-checks-answer-different-questions" class="nav-link" data-scroll-target="#sensitivity-checks-answer-different-questions">Sensitivity checks answer different questions</a></li>
+  </ul></li>
+  <li><a href="#practice-and-pitfalls" id="toc-practice-and-pitfalls" class="nav-link" data-scroll-target="#practice-and-pitfalls">Practice and pitfalls</a></li>
+  <li><a href="#interview-questions" id="toc-interview-questions" class="nav-link" data-scroll-target="#interview-questions">Interview questions</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/07-causal/potential-outcomes.html">Causal inference</a></li><li class="breadcrumb-item"><a href="../../chapters/07-causal/propensity-diagnostics.html"><span class="chapter-title">Overlap, Polarized Scores, and Sensitivity Analysis</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Overlap, Polarized Scores, and Sensitivity Analysis</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-goals" class="level2">
+<h2 class="anchored" data-anchor-id="learning-goals">Learning goals</h2>
+<ul>
+<li>Distinguish model overfitting from genuine lack of support.</li>
+<li>Explain trimming, clipping, calibration, stabilized weights, and doubly robust estimation.</li>
+<li>Interpret Rosenbaum bounds, E-values, and placebo outcomes without treating them as causal proof.</li>
+</ul>
+</section>
+<section id="intuition" class="level2">
+<h2 class="anchored" data-anchor-id="intuition">Intuition</h2>
+<p>A propensity histogram concentrated near zero for controls and one for treated units means comparisons are scarce. Sometimes a model memorized labels; sometimes the business assigned treatment deterministically. These require different responses. Making probabilities less extreme cosmetically does not create missing counterfactual information.</p>
+<p>Even excellent balance addresses only recorded variables. Sensitivity analysis asks how strongly an omitted factor would need to affect assignment or outcomes to change a conclusion. It quantifies a vulnerability under a specified model; it does not certify the absence of that factor.</p>
+</section>
+<section id="worked-example" class="level2">
+<h2 class="anchored" data-anchor-id="worked-example">Worked example</h2>
+<section id="extreme-weights-and-effective-information" class="level3">
+<h3 class="anchored" data-anchor-id="extreme-weights-and-effective-information">Extreme weights and effective information</h3>
+<p>For a treated observation with score 0.01, ATE weight is 100. Four other observations with weights 1 contribute much less. A common descriptive effective sample size is</p>
+<p><span class="math display">\[ESS=\frac{(\sum_iw_i)^2}{\sum_iw_i^2}=\frac{104^2}{10000+4}\approx1.08.\]</span></p>
+<p>Five records may therefore contain little weighted information. Stabilizing a treated weight by multiplying it by <span class="math inline">\(P(T=1)=0.2\)</span> changes 100 to 20 but multiplies all treated weights by the same constant. Its within-arm ESS is unchanged; stabilization does not fix absent support.</p>
+</section>
+<section id="rosenbaums-assignment-odds-bound" class="level3">
+<h3 class="anchored" data-anchor-id="rosenbaums-assignment-odds-bound">Rosenbaum’s assignment-odds bound</h3>
+<p>Two matched people with the same observed covariates have treatment odds <span class="math inline">\(p_i/(1-p_i)\)</span> and <span class="math inline">\(p_j/(1-p_j)\)</span>. A sensitivity model permits</p>
+<p><span class="math display">\[\frac1\Gamma\leq\frac{p_i/(1-p_i)}{p_j/(1-p_j)}\leq\Gamma.\]</span></p>
+<p>At <span class="math inline">\(\Gamma=1\)</span>, their assignment odds agree. At <span class="math inline">\(\Gamma=2\)</span>, probabilities 0.5 and <span class="math inline">\(2/3\)</span> are possible: odds 1 versus 2. For probabilities 0.5 and <span class="math inline">\(5/6\)</span>, the odds ratio is 5.</p>
+<p>For illustrative matched outcomes, suppose the worst-case p-value is 0.01 at <span class="math inline">\(\Gamma=1.5\)</span>, 0.04 at 2, and 0.06 at 2.1. The conclusion crosses a 5% significance threshold around 2.1. This says how much hidden assignment bias is allowed in this particular sensitivity model before the statistical conclusion becomes inconclusive. It is not a 2.1-fold treatment effect and does not establish that such bias is implausible.</p>
+</section>
+<section id="an-e-value-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="an-e-value-calculation">An E-value calculation</h3>
+<p>For a risk ratio <span class="math inline">\(RR=0.08/0.04=2\)</span>,</p>
+<p><span class="math display">\[E\text{-value}=RR+\sqrt{RR(RR-1)}=2+\sqrt2\approx3.414.\]</span></p>
+<p>This is a risk-ratio sensitivity benchmark for an unmeasured confounder’s associations with treatment and outcome, conditional on measured covariates. It summarizes the minimum equal-strength association benchmark sufficient to explain away the point estimate under the bounding model. Unequal-strength combinations can also explain an estimate; it is too strong to claim that <em>both</em> associations must individually exceed 3.414 in every possible configuration.</p>
+<p>For a protective <span class="math inline">\(RR&lt;1\)</span>, use its reciprocal in the basic formula. Also calculate the E-value for the confidence-limit closest to the null; a large point-estimate E-value with a CI touching 1 is weak evidence of precision.</p>
+</section>
+</section>
+<section id="theory-and-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="theory-and-assumptions">Theory and assumptions</h2>
+<section id="balance-as-standardized-mean-difference" class="level3">
+<h3 class="anchored" data-anchor-id="balance-as-standardized-mean-difference">Balance as standardized mean difference</h3>
+<p>For covariate <span class="math inline">\(j\)</span>, compare matched treatment and control means on a common scale:</p>
+<p><span class="math display">\[\operatorname{SMD}_j=\frac{\bar X_{Tj}-\bar X_{Cj}}{\sqrt{(s_{Tj}^2+s_{Cj}^2)/2}}.\]</span></p>
+<p>For a binary covariate, the arm means are proportions and the corresponding variance estimates can use <span class="math inline">\(p_{gj}(1-p_{gj})\)</span>. Keep a chosen <em>pre-match</em> denominator fixed when comparing SMD before and after matching, so an apparent improvement is not produced by changing the scale. Also inspect categorical proportions, variances, and distribution plots: equal means alone do not establish distributional balance. A value such as <span class="math inline">\(|\mathrm{SMD}|&lt;0.1\)</span> is a diagnostic convention, not proof of ignorability.</p>
+</section>
+<section id="a-diagnostic-sequence-for-polarized-xgboost-scores" class="level3">
+<h3 class="anchored" data-anchor-id="a-diagnostic-sequence-for-polarized-xgboost-scores">A diagnostic sequence for polarized XGBoost scores</h3>
+<ol type="1">
+<li><strong>Audit timing and leakage.</strong> An exposure identifier or post-treatment action may almost encode the label.</li>
+<li><strong>Compare out-of-fold with training probabilities.</strong> Training-only separation suggests overfitting.</li>
+<li><strong>Inspect the assignment policy.</strong> Eligibility thresholds may produce genuine zero probabilities.</li>
+<li><strong>Check covariate support, not only one score plot.</strong> Aggregate histogram overlap can hide empty multivariate strata.</li>
+<li><strong>Evaluate balance and weight distributions.</strong> Report retained fractions, maximum weights, and ESS by arm.</li>
+</ol>
+<p>Shallower trees, stronger leaf penalties, larger minimum leaf information, subsampling, and early stopping can reduce overfitting. Logistic regression or a GAM can be useful baselines. Hyperparameters from a study are starting points rather than transferable guarantees.</p>
+</section>
+<section id="what-each-remedy-actually-does" class="level3">
+<h3 class="anchored" data-anchor-id="what-each-remedy-actually-does">What each remedy actually does</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Remedy</th>
+<th>Purpose</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Regularization</td>
+<td>Reduce fitted-score overfitting</td>
+<td>Cannot overturn a deterministic policy</td>
+</tr>
+<tr class="even">
+<td>Calibration</td>
+<td>Improve probability calibration on held-out data</td>
+<td>Cannot restore real overlap</td>
+</tr>
+<tr class="odd">
+<td>Trimming</td>
+<td>Restrict to supported covariate regions</td>
+<td>Changes the target population</td>
+</tr>
+<tr class="even">
+<td>Clipping/truncation</td>
+<td>Limit numerical weight extremes</td>
+<td>Alters the estimator and introduces bias tradeoffs</td>
+</tr>
+<tr class="odd">
+<td>Stabilized weighting</td>
+<td>Control some weight scaling behavior</td>
+<td>Does not remove within-arm relative extremes</td>
+</tr>
+<tr class="even">
+<td>Caliper matching</td>
+<td>Reject distant matches</td>
+<td>May lose many treated units</td>
+</tr>
+<tr class="odd">
+<td>DR/DML/TMLE</td>
+<td>Reduce particular nuisance-model sensitivity</td>
+<td>Still require the relevant identification and overlap assumptions</td>
+</tr>
+</tbody>
+</table>
+<p>The often-used <span class="math inline">\([0.05,0.95]\)</span> range is a sensitivity choice, not a universal rule. Report results and population composition under alternative sensible restrictions.</p>
+<p>For an AIPW ATE score, with <span class="math inline">\(\mu_t(X)=E[Y\mid T=t,X]\)</span>,</p>
+<p><span class="math display">\[\psi_i=\hat\mu_1(X_i)-\hat\mu_0(X_i)
++\frac{T_i[Y_i-\hat\mu_1(X_i)]}{\hat e_i}
+-\frac{(1-T_i)[Y_i-\hat\mu_0(X_i)]}{1-\hat e_i}.\]</span></p>
+<p>Under the causal assumptions, appropriate regularity, and overlap, its mean can be consistent if either the propensity or outcome regressions are correctly specified. This robustness is not permission to omit confounders. The partially linear residual-on-residual DML score has a different robustness structure.</p>
+</section>
+<section id="sensitivity-checks-answer-different-questions" class="level3">
+<h3 class="anchored" data-anchor-id="sensitivity-checks-answer-different-questions">Sensitivity checks answer different questions</h3>
+<p>Rosenbaum bounds assess departures in treatment-assignment odds within matched designs; implementations include paired and more general matched configurations. E-values use a risk-ratio bounding framework. Risk differences, odds ratios, and hazard ratios cannot all be inserted into the risk-ratio formula unchanged. Translation requires appropriate assumptions and transformations.</p>
+<p>A pre-treatment placebo outcome cannot be affected by the later intervention. An estimated “effect” raises concerns about confounding or design errors. A nonsignificant placebo does not prove validity: it may have low power or miss the relevant bias pathway.</p>
+</section>
+</section>
+<section id="practice-and-pitfalls" class="level2">
+<h2 class="anchored" data-anchor-id="practice-and-pitfalls">Practice and pitfalls</h2>
+<p>A useful report shows unadjusted and adjusted balance, support exclusions, the retained estimand, absolute effects and CIs, alternative design choices, and sensitivity to unmeasured confounding. Explain which omitted factors are plausible in context—shopping intent, payday timing, private targeting signals—and avoid assigning them numerical strengths without evidence.</p>
+<p>Do not turn <span class="math inline">\(\Gamma\)</span> thresholds into universal rules such as “above 3 is safe to launch.” Sensitivity varies with the outcome, matching design, test, and scientific context. Likewise, a high E-value does not repair selection bias, outcome measurement error, interference, or model misspecification automatically.</p>
+<p>Business translation should preserve uncertainty: multiplying ATT by recipient count estimates an aggregate incremental outcome only when the retained target matches that recipient population and the intervention scales without changing effects or costs.</p>
+</section>
+<section id="interview-questions" class="level2">
+<h2 class="anchored" data-anchor-id="interview-questions">Interview questions</h2>
+<p><strong>My XGBoost scores are at 0 and 1. What next?</strong> I audit leakage and actual assignment rules, compare out-of-fold predictions with a regularized baseline, inspect support and balance, and then consider restriction or redesign. I do not promise calibration or DML will recover missing comparisons.</p>
+<p><strong>What does <span class="math inline">\(\Gamma^*=2.1\)</span> mean?</strong> In the chosen sensitivity model, an unmeasured factor allowing roughly 2.1-fold differences in assignment odds can make the result statistically inconclusive under a worst-case allocation.</p>
+<p><strong>Why report the E-value for the CI as well?</strong> Robustness of a point estimate alone ignores sampling uncertainty. The confidence-limit calculation shows how little hidden confounding may be needed to move the compatible effect range to the null.</p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Treat extreme scores as a design diagnostic. State the target changes caused by restriction, and present hidden-confounding sensitivity as a bounded argument with assumptions, rather than a pass/fail certificate.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Adapted from the source lecture notes, “XGBoost Propensity Polarization,” “Sensitivity Analysis,” and the PSM walkthrough.</li>
+<li>Rosenbaum, <em>Observational Studies</em>.</li>
+<li>VanderWeele and Ding (2017), <a href="https://doi.org/10.7326/M16-2607">Sensitivity Analysis in Observational Research: Introducing the E-Value</a>.</li>
+<li>Crump, Hotz, Imbens, and Mitnik (2009), “Dealing with Limited Overlap in Estimation of Average Treatment Effects,” <em>Biometrika</em>.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+(() => {
+  for (const image of document.querySelectorAll('main.content figure img')) {
+    const region = image.parentElement;
+    region.classList.add('figure-pan');
+    region.tabIndex = 0;
+    region.setAttribute('role', 'region');
+    region.setAttribute('aria-label', `Scrollable figure: ${image.alt}`);
+    region.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      if (region.scrollWidth <= region.clientWidth) return;
+      event.preventDefault();
+      region.scrollLeft += event.key === 'ArrowRight' ? 80 : -80;
+    });
+    const hint = document.createElement('small');
+    hint.className = 'figure-scroll-hint';
+    hint.textContent = 'Swipe or use arrow keys to view the full figure.';
+    region.after(hint);
+  }
+  const source = document.querySelector('#TOC > ul');
+  const title = document.querySelector('main.content .quarto-title-block');
+  if (!source || !title) return;
+  const details = document.createElement('details');
+  details.className = 'mobile-page-toc';
+  const summary = document.createElement('summary');
+  summary.textContent = 'On this page';
+  const nav = document.createElement('nav');
+  nav.setAttribute('aria-label', 'Page outline');
+  const list = document.createElement('ul');
+  for (const original of source.querySelectorAll(':scope > li > a[href^="#"]')) {
+    const item = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = original.getAttribute('href');
+    link.textContent = original.textContent;
+    link.addEventListener('click', () => { details.open = false; });
+    item.append(link);
+    list.append(item);
+  }
+  if (!list.childElementCount) return;
+  nav.append(list);
+  details.append(summary, nav);
+  title.after(details);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../chapters/07-causal/propensity-score-matching.html" class="pagination-link" aria-label="Propensity Scores: Matching and Weighting">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Propensity Scores: Matching and Weighting</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../chapters/07-causal/difference-in-differences.html" class="pagination-link" aria-label="Difference-in-Differences and Event Studies">
+        <span class="nav-page-text"><span class="chapter-title">Difference-in-Differences and Event Studies</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Yvonne Yu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/">
+<p>English portfolio</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/">
+<p>中文网站</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

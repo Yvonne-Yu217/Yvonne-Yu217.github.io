@@ -1,0 +1,458 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      监督排序与评估
+       | 余奕
+    </title>
+    <meta name='description' content='基于运维标签、时间切分和类别权重训练 XGBoost，人工回验 Precision@100 约 85%，并输出 SHAP 个案解释。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'>
+    <meta property='og:title' content='监督排序与评估'>
+    <meta property='og:description' content='基于运维标签、时间切分和类别权重训练 XGBoost，人工回验 Precision@100 约 85%，并输出 SHAP 个案解释。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#industry' data-return-to-list>实习经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/mars/#work-supervised-ranking'>云资源排序</a
+    ><span aria-hidden='true'>/</span
+    ><span>监督排序与评估</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>云资源排序 / 工作概览</p>
+      <h1>
+        监督排序与评估
+      </h1>
+      <p>
+        基于运维标签、时间切分和类别权重训练 XGBoost，人工回验 Precision@100 约 85%，并输出 SHAP 个案解释。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'
+              
+              ><span>01</span>特征与候选流水线</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'
+              
+                aria-current='page'
+              
+              ><span>02</span>监督排序与评估</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'
+              
+              ><span>03</span>生产部署与监控</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/calibration-governance/'
+              
+              ><span>04</span>概率校准与发布治理</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/'
+              
+              ><span>05</span>反馈与成本核验</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/mars/#work-supervised-ranking'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='supervised-ranking--1'
+  data-scene
+  data-chapter='监督排序与评估'
+  aria-labelledby='title-supervised-ranking-1'
+>
+  <div class='scene-meta'>
+    <span>云资源排序 · 监督排序与评估</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>训练与验证</p>
+    <h2 id='title-supervised-ranking-1'>用运维已确认的标签训练 XGBoost</h2>
+    <p>围绕固定审核预算，为候选排序。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='用运维已确认的标签训练 XGBoost'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>环节</th>
+            
+              <th scope='col'>实现</th>
+            
+              <th scope='col'>目的</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>标签</th>
+                
+                  <td>确认闲置／合理使用</td>
+                
+                  <td>未审核不等于负类</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>时间切分</th>
+                
+                  <td>较早训练；后续测试</td>
+                
+                  <td>防止时间泄漏</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>XGBoost</th>
+                
+                  <td>类别权重</td>
+                
+                  <td>学习稀少正例</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>审核输出</th>
+                
+                  <td>候选排序 + SHAP</td>
+                
+                  <td>资源级原因说明</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+  </figure>
+
+
+  <p class='takeaway'>SHAP 解释单个资源的得分，不代表因果关系。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='supervised-ranking--2'
+  data-scene
+  data-chapter='监督排序与评估'
+  aria-labelledby='title-supervised-ranking-2'
+>
+  <div class='scene-meta'>
+    <span>云资源排序 · 监督排序与评估</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>人工回验</p>
+    <h2 id='title-supervised-ranking-2'>前 100 项人工回验命中率约 85%</h2>
+    <p>运维检查候选是否满足释放或降配条件。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure bars-figure' aria-label='前 100 项人工回验命中率约 85%'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>100
+          %</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>前 100 项命中率</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 85.0%'
+            ></span>
+          </div>
+          <strong>约 85%</strong>
+        </div>
+      
+    </div>
+    <figcaption>人工回验前 100 个候选，其中约 85 项被确认符合处理条件。</figcaption>
+  </figure>
+
+
+  <p class='takeaway'>这是特定队列的 Precision@100，不能外推为全部云资源的准确率。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+          <div class='chapter-appendix has-demo' data-chapter-id='supervised-ranking'>
+            <section class='demo' data-demo='ranking' aria-label='动手理解方法'>
+  <p class='eyebrow'>动手理解方法</p>
+  <h3>
+    先把审核名额给谁？
+  </h3>
+  <p class='demo-note'>示意数据 · 不代表实际业务或研究结果</p>
+  <div class='demo-controls'>
+    <label for='review-budget'>审核名额 K</label
+    ><input id='review-budget' type='range' min='5' max='50' step='5' value='15'
+    ><output for='review-budget' data-budget>15</output
+    ><button class='button secondary' type='button' data-reset>重置</button>
+  </div>
+  <div class='demo-metrics' role='status' aria-live='polite'>
+    <div>
+      <strong data-precision>—</strong
+      ><span>示意前 K 项准确率</span>
+    </div>
+    <div>
+      <strong data-reviewed>15 / 50</strong><span>已审核候选数</span>
+    </div>
+  </div>
+  <div class='demo-grid' aria-hidden='true'></div>
+  <div class='demo-legend'>
+    <span>确认闲置</span><span>非闲置</span>
+  </div>
+  <p class='demo-note'>
+    每个方块代表一个按固定得分排序的合成候选。增大 K
+      会占用更多审核名额；较不确定的候选进入队列后，准确率可能下降。这不是项目中前 100
+      项人工回验结果的重现。
+  </p>
+  <noscript>
+    <p>
+      启用脚本后可调整示意演示；项目的真实评估结果仍可在上方阅读。
+    </p>
+  </noscript>
+</section>
+
+          </div>
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/mars/#work-supervised-ranking'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'>下一项贡献: 生产部署与监控 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/mars/#work-supervised-ranking'>云资源排序</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/?present=1#production-monitoring--1'
+      aria-label='下一项贡献: 生产部署与监控'
+      title='生产部署与监控'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>生产部署与监控</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

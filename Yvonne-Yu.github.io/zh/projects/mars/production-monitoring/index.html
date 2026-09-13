@@ -1,0 +1,489 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      生产部署与监控
+       | 余奕
+    </title>
+    <meta name='description' content='在 Azure ML 部署周训练和日评分，监控数据、漂移、审核命中率与告警；资源类型变更先做旁路验证。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'>
+    <meta property='og:title' content='生产部署与监控'>
+    <meta property='og:description' content='在 Azure ML 部署周训练和日评分，监控数据、漂移、审核命中率与告警；资源类型变更先做旁路验证。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#industry' data-return-to-list>实习经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/mars/#work-production-monitoring'>云资源排序</a
+    ><span aria-hidden='true'>/</span
+    ><span>生产部署与监控</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>云资源排序 / 工作概览</p>
+      <h1>
+        生产部署与监控
+      </h1>
+      <p>
+        在 Azure ML 部署周训练和日评分，监控数据、漂移、审核命中率与告警；资源类型变更先做旁路验证。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'
+              
+              ><span>01</span>特征与候选流水线</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'
+              
+              ><span>02</span>监督排序与评估</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'
+              
+                aria-current='page'
+              
+              ><span>03</span>生产部署与监控</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/calibration-governance/'
+              
+              ><span>04</span>概率校准与发布治理</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/'
+              
+              ><span>05</span>反馈与成本核验</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/mars/#work-production-monitoring'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='production-monitoring--1'
+  data-scene
+  data-chapter='生产部署与监控'
+  aria-labelledby='title-production-monitoring-1'
+>
+  <div class='scene-meta'>
+    <span>云资源排序 · 生产部署与监控</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>生产部署</p>
+    <h2 id='title-production-monitoring-1'>Azure ML 周训练与日批量评分</h2>
+    <p>通过版本管理，保持训练与评分口径一致。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Azure ML 周训练与日批量评分'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='snapshot'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>版本化输入</strong>
+          <p>数据快照与特征代码。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='train'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>每周训练</strong>
+          <p>使用运维已确认的标签。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='release'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>模型发布包</strong>
+          <p>模型、校准器、Top-K 策略。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='score'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>每日评分</strong>
+          <p>读取当前资源特征。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='queue'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>审核队列</strong>
+          <p>输出候选供运维审核。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='snapshot'
+            data-edge-to='train'
+            data-edge-label=''
+          >
+            版本化输入 → 每周训练
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='train'
+            data-edge-to='release'
+            data-edge-label=''
+          >
+            每周训练 → 模型发布包
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='release'
+            data-edge-to='score'
+            data-edge-label=''
+          >
+            模型发布包 → 每日评分
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='score'
+            data-edge-to='queue'
+            data-edge-label=''
+          >
+            每日评分 → 审核队列
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>新 SKU 与定义变更先通过回测和旁路验证，再进入正式发布。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='production-monitoring--2'
+  data-scene
+  data-chapter='生产部署与监控'
+  aria-labelledby='title-production-monitoring-2'
+>
+  <div class='scene-meta'>
+    <span>云资源排序 · 生产部署与监控</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>生产监控</p>
+    <h2 id='title-production-monitoring-2'>Power BI 区分漂移信号与审核表现</h2>
+    <p>分别监控数据健康、模型行为与运维工作量。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Power BI 区分漂移信号与审核表现'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>层次</th>
+            
+              <th scope='col'>监控信号</th>
+            
+              <th scope='col'>处理方式</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>数据</th>
+                
+                  <td>覆盖率、缺失率、延迟</td>
+                
+                  <td>排查输入质量</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>漂移</th>
+                
+                  <td>PSI、分数分布</td>
+                
+                  <td>排查资源群体变化</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>模型表现</th>
+                
+                  <td>分资源类型 Precision@K</td>
+                
+                  <td>核验已审核结果</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>工作流程</th>
+                
+                  <td>告警量、审核／申诉状态</td>
+                
+                  <td>跟踪运维工作量</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+  </figure>
+
+
+  <p class='takeaway'>PSI 用于触发排查；审核命中率需等待审核结果确认。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/mars/#work-production-monitoring'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/mars/calibration-governance/'>下一项贡献: 概率校准与发布治理 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/mars/#work-production-monitoring'>云资源排序</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/mars/calibration-governance/?present=1#calibration-governance--1'
+      aria-label='下一项贡献: 概率校准与发布治理'
+      title='概率校准与发布治理'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>概率校准与发布治理</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

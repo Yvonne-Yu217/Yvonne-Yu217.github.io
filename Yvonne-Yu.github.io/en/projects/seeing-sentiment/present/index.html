@@ -1,0 +1,1163 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Seeing Sentiment: News Images, Retail Participation, and Chinese A-Share Index Returns
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='We study whether news-image sentiment adds predictive information beyond text, with evidence concentrated in retail-intensive markets and high-volatility conditions.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/seeing-sentiment/present/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/seeing-sentiment/present/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/present/'>
+    <meta property='og:title' content='Seeing Sentiment: News Images, Retail Participation, and Chinese A-Share Index Returns'>
+    <meta property='og:description' content='We study whether news-image sentiment adds predictive information beyond text, with evidence concentrated in retail-intensive markets and high-volatility conditions.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/seeing-sentiment/present/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='deck' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/present/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/present/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page paper-deck'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#research'>Research</a
+    ><span aria-hidden='true'>/</span>
+    <a href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/'>Seeing Sentiment</a>
+  </nav>
+  <header class='contribution-header paper-header'>
+    <div><h1>Seeing Sentiment: News Images, Retail Participation, and Chinese A-Share Index Returns</h1>
+<p class='paper-authors'>
+  Xiaobin Liu, Kaixin Wang, Yi Yu, Tao Zeng
+  
+    <span class='paper-author-order'>(authors listed alphabetically by surname)</span>
+  
+  
+    <span class='paper-author-note'>Yi Yu is my legal name.</span>
+  
+</p>
+<p class='project-byline'>
+  Co-author · Working paper
+  <span>Nov 2024 — Present</span>
+</p>
+</div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          <a href='#seeing-sentiment--1'
+            ><span>1</span>Research question</a>
+        
+          <a href='#seeing-sentiment--2'
+            ><span>2</span>Measurement</a>
+        
+          <a href='#seeing-sentiment--3'
+            ><span>3</span>Measurement validation</a>
+        
+          <a href='#seeing-sentiment--4'
+            ><span>4</span>Empirical design</a>
+        
+          <a href='#seeing-sentiment--5'
+            ><span>5</span>Main result</a>
+        
+          <a href='#seeing-sentiment--6'
+            ><span>6</span>Out-of-sample check</a>
+        
+          <a href='#seeing-sentiment--7'
+            ><span>7</span>Stress tests</a>
+        
+          <a href='#seeing-sentiment--8'
+            ><span>8</span>Conclusion</a>
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/'>← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--1'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-seeing-sentiment-1'
+>
+  <div class='scene-meta'>
+    <span>Seeing Sentiment · Paper presentation</span>
+    <span>1 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Research question</p>
+    <h2 id='title-seeing-sentiment-1'>Do news images add predictive information beyond text?</h2>
+    <p>We compare two sentiment channels from the same news corpus, then ask where and when their return associations are strongest.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Do news images add predictive information beyond text?'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 4'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='news'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Sina Finance corpus</strong>
+          <p>2014–2026: 245K articles, 572K photos.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='images'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Image pessimism</strong>
+          <p>ViT-B/16 → daily PhotoPes.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='text'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Text pessimism</strong>
+          <p>Chinese RoBERTa → daily TextPes.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='test'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Incremental prediction</strong>
+          <p>Joint regressions and out-of-sample tests.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='returns'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Market panel</strong>
+          <p>Five A-share indices; 2,982 trading days.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='conditions'
+          style='grid-column: 4; grid-row: 1'
+        >
+          <strong>When and where?</strong>
+          <p>Volatility states and retail participation.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='news'
+            data-edge-to='images'
+            data-edge-label=''
+          >
+            Sina Finance corpus → Image pessimism
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='news'
+            data-edge-to='text'
+            data-edge-label=''
+          >
+            Sina Finance corpus → Text pessimism
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='images'
+            data-edge-to='test'
+            data-edge-label=''
+          >
+            Image pessimism → Incremental prediction
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='text'
+            data-edge-to='test'
+            data-edge-label=''
+          >
+            Text pessimism → Incremental prediction
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='returns'
+            data-edge-to='test'
+            data-edge-label=''
+          >
+            Market panel → Incremental prediction
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='test'
+            data-edge-to='conditions'
+            data-edge-label=''
+          >
+            Incremental prediction → When and where?
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>The central comparison is visual information beyond text, followed by differences across market states and indices.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--2'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-seeing-sentiment-2'
+>
+  <div class='scene-meta'>
+    <span>Seeing Sentiment · Paper presentation</span>
+    <span>2 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Measurement</p>
+    <h2 id='title-seeing-sentiment-2'>Parallel models, different daily aggregation rules</h2>
+    <p>A fine-tuned image classifier and a published Chinese text classifier measure pessimism; each modality has its own daily denominator.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Parallel models, different daily aggregation rules'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='photos'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>News photographs</strong>
+          <p>572K images, grouped by trading day.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='vit'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>ViT-B/16</strong>
+          <p>Fine-tuned on human-labeled PCNN Twitter images.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='photopes'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>PhotoPes</strong>
+          <p>Daily share with negative probability >0.5.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='articles'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>News articles</strong>
+          <p>245K articles, grouped by trading day.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='roberta'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Chinese RoBERTa</strong>
+          <p>Published Erlangshen-110M sentiment model.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='textpes'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>TextPes</strong>
+          <p>Daily mean of article pessimism scores.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='photos'
+            data-edge-to='vit'
+            data-edge-label=''
+          >
+            News photographs → ViT-B/16
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='vit'
+            data-edge-to='photopes'
+            data-edge-label=''
+          >
+            ViT-B/16 → PhotoPes
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='articles'
+            data-edge-to='roberta'
+            data-edge-label=''
+          >
+            News articles → Chinese RoBERTa
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='roberta'
+            data-edge-to='textpes'
+            data-edge-label=''
+          >
+            Chinese RoBERTa → TextPes
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>PhotoPes is a share of classified images; TextPes is an average score. Both are sentiment proxies.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--3'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-seeing-sentiment-3'
+>
+  <div class='scene-meta'>
+    <span>Seeing Sentiment · Paper presentation</span>
+    <span>3 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Measurement validation</p>
+    <h2 id='title-seeing-sentiment-3'>Check transfer from Twitter images to financial news</h2>
+    <p>Separate source-domain classification from agreement with language-model labels on unseen financial-news images.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Check transfer from Twitter images to financial news'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Evaluation sample</th>
+            
+              <th scope='col'>Result</th>
+            
+              <th scope='col'>Reference</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>PCNN: 177 held-out images</th>
+                
+                  <td>Accuracy 88.14%</td>
+                
+                  <td>Human labels</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Financial news: 1,229 images</th>
+                
+                  <td>AUC 0.54</td>
+                
+                  <td>LLM-ensemble labels</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Strong consensus: 309 images</th>
+                
+                  <td>AUC 0.71</td>
+                
+                  <td>Selected LLM-agreement cases</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>AUC: 0.5 is chance ranking; higher means better separation of the reference classes. Accuracy and AUC are different metrics. Manuscript §4.2.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>The full news sample shows weak agreement; the stronger-consensus subset excludes about 75% of images.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--4'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-seeing-sentiment-4'
+>
+  <div class='scene-meta'>
+    <span>Seeing Sentiment · Paper presentation</span>
+    <span>4 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Empirical design</p>
+    <h2 id='title-seeing-sentiment-4'>Separate image information from text and market conditions</h2>
+    <p>Joint regressions test incremental prediction; text orthogonalization checks whether the image signal merely reproduces the text signal.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Separate image information from text and market conditions'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='panel'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Daily sentiment panel</strong>
+          <p>Standardized PhotoPes, TextPes, and lags.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='joint'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Joint predictive regression</strong>
+          <p>Daily log returns; return controls; volatility subsamples.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='nw'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Newey–West inference</strong>
+          <p>Account for serial correlation and heteroskedasticity.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='orthogonal'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Regress images on text</strong>
+          <p>PhotoPes on TextPes and its lags.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='residual'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Test residual information</strong>
+          <p>84% variance remains; lag-3 |t| = 2.42.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='panel'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            Daily sentiment panel → Joint predictive regression
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='joint'
+            data-edge-to='nw'
+            data-edge-label=''
+          >
+            Joint predictive regression → Newey–West inference
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='panel'
+            data-edge-to='orthogonal'
+            data-edge-label=''
+          >
+            Daily sentiment panel → Regress images on text
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='orthogonal'
+            data-edge-to='residual'
+            data-edge-label=''
+          >
+            Regress images on text → Test residual information
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Residual variance is specification-dependent; the residual-return test concerns high-volatility ChiNext observations.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--5'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-seeing-sentiment-5'
+>
+  <div class='scene-meta'>
+    <span>Seeing Sentiment · Paper presentation</span>
+    <span>5 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Main result</p>
+    <h2 id='title-seeing-sentiment-5'>Image-return associations concentrate in high-volatility ChiNext</h2>
+    <p>Compare coefficient ranks with turnover, inverse free-float capitalization, and retail-account share across five indices.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure bars-figure' aria-label='Image-return associations concentrate in high-volatility ChiNext'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>0.004
+          |β|</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>ChiNext</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 82.5%'
+            ></span>
+          </div>
+          <strong>0.0033</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>CSI 500</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 55.0%'
+            ></span>
+          </div>
+          <strong>0.0022</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>Shenzhen Composite</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 52.5%'
+            ></span>
+          </div>
+          <strong>0.0021</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>CSI 300</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 40.0%'
+            ></span>
+          </div>
+          <strong>0.0016</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>Shanghai Composite</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 35.0%'
+            ></span>
+          </div>
+          <strong>0.0014</strong>
+        </div>
+      
+    </div>
+    <figcaption>High volatility: top quartile of 20-day SHCOMP volatility (>19.6% annualized). Absolute lag-3 coefficients on standardized PhotoPes, in decimal daily log-return units; all negative. Table 4A.</figcaption>
+  </figure>
+
+
+  <p class='takeaway'>Each retail-proxy rank correlation is 0.80 at N=5, supporting a descriptive retail-participation pattern.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--6'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-seeing-sentiment-6'
+>
+  <div class='scene-meta'>
+    <span>Seeing Sentiment · Paper presentation</span>
+    <span>6 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Out-of-sample check</p>
+    <h2 id='title-seeing-sentiment-6'>Forecast improvement is small and concentrated</h2>
+    <p>Given the sentiment series, expand a 1,512-day OLS training window using PhotoPes lags 3–5; scaling and the historical-mean benchmark use earlier observations.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Forecast improvement is small and concentrated'
+    >
+      <table
+        class='brief-table pin-first-column'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Index</th>
+            
+              <th scope='col'>OOS R²</th>
+            
+              <th scope='col'>Clark–West t</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>CSI 300</th>
+                
+                  <td>−0.020%</td>
+                
+                  <td>1.184</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Shanghai Composite</th>
+                
+                  <td>0.009%</td>
+                
+                  <td>1.320</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Shenzhen Composite</th>
+                
+                  <td>0.024%</td>
+                
+                  <td>1.491</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>ChiNext</th>
+                
+                  <td>0.293%</td>
+                
+                  <td>2.172</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>CSI 500</th>
+                
+                  <td>−0.002%</td>
+                
+                  <td>1.467</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>2020–2026; 1,467 forecasts per index. ChiNext nominal one-sided p=0.015 fails five-index Bonferroni at 5%. Table 10.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>The 0.293% measures lower squared forecast error relative to the historical mean; it is not a trading return.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--7'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-seeing-sentiment-7'
+>
+  <div class='scene-meta'>
+    <span>Seeing Sentiment · Paper presentation</span>
+    <span>7 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Stress tests</p>
+    <h2 id='title-seeing-sentiment-7'>Control checks support the association; stability is limited</h2>
+    <p>Challenge alternative explanations, split the forecast period, vary the estimator, and separately evaluate the illustrative trading rule.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Control checks support the association; stability is limited'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Check</th>
+            
+              <th scope='col'>Evidence</th>
+            
+              <th scope='col'>Reading</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>ChiNext control checks</th>
+                
+                  <td>Liquidity/news/return controls; count placebo p=0.57</td>
+                
+                  <td>Relation persists; image count alone fails</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Middle OOS window</th>
+                
+                  <td>ChiNext R²: −1.472%</td>
+                
+                  <td>Temporal reversal</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>CV-locked Ridge</th>
+                
+                  <td>ChiNext R²: 0.015%</td>
+                
+                  <td>Magnitude depends on specification</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Separate in-sample trading rule</th>
+                
+                  <td>Sharpe-gap 95% CI: [−0.75, +0.97]</td>
+                
+                  <td>No significant Sharpe gain</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Middle window: March 2022–April 2024 (Table 11). Trading-rule interval: stationary block bootstrap, block length 5 (§3.5).</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Regression predictability does not establish stable forecasts or a statistically significant trading advantage.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--8'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-seeing-sentiment-8'
+>
+  <div class='scene-meta'>
+    <span>Seeing Sentiment · Paper presentation</span>
+    <span>8 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Conclusion</p>
+    <h2 id='title-seeing-sentiment-8'>Multimodal predictability has state and market boundaries</h2>
+    <p>The main pattern is concentration in high-volatility, retail-intensive markets; pooled inference is suggestive rather than uniformly strong.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Multimodal predictability has state and market boundaries'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Question</th>
+            
+              <th scope='col'>Evidence</th>
+            
+              <th scope='col'>Conclusion</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Beyond text?</th>
+                
+                  <td>84% residual variance; high-volatility ChiNext |t|=2.42</td>
+                
+                  <td>Incremental signal under the specified adjustment</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Across markets and states?</th>
+                
+                  <td>Pooled p=0.066 (full); p=0.063 (high volatility)</td>
+                
+                  <td>Family-wise evidence reaches 10%, not 5%</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Useful out of sample?</th>
+                
+                  <td>ChiNext R²=0.293%; time reversals and correction limits</td>
+                
+                  <td>Small, qualified forecast improvement</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Pooled inference clusters by date (§3.6.3). Retail alignment uses five indices; the separate trading rule has no significant Sharpe advantage.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>The contribution is to locate where multimodal sentiment predicts returns and how far that evidence generalizes.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/'>← Back to project</a>
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/'>Seeing Sentiment</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/present/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/present/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

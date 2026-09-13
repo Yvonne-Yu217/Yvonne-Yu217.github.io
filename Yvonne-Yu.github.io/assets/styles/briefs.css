@@ -1,0 +1,509 @@
+/* Project summaries and short, source-grounded presentation decks. */
+.site-header .wordmark {
+  font-size: 16px;
+  font-weight: 550;
+}
+.entry-title {
+  text-wrap: pretty;
+}
+.publication-status {
+  color: var(--green);
+}
+.compact-project-header h1 {
+  font-size: 30px;
+  line-height: 1.3;
+}
+.project-byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  margin-top: 13px;
+  font-size: 14px;
+  color: var(--ink);
+}
+.project-byline > span {
+  color: var(--muted);
+}
+.paper-authors {
+  font-size: 13px;
+  margin-top: 6px;
+}
+.project-question {
+  font-size: 16px;
+  line-height: 1.65;
+  margin-top: 15px;
+}
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 20px 0 28px;
+}
+.project-actions .button span {
+  font-weight: 400;
+  font-size: 12px;
+}
+.project-work {
+  margin-top: 30px;
+}
+.project-work > h2 {
+  font-size: 23px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+.work-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.work-list > li {
+  display: grid;
+  grid-template-columns: 25px minmax(0, 1fr);
+  gap: 14px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.work-number {
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  padding-top: 5px;
+}
+.work-list h3 {
+  font-size: 18px;
+  line-height: 1.4;
+}
+.work-list h3 a {
+  color: var(--green);
+}
+.work-list h3 a:hover {
+  text-decoration: underline;
+}
+.work-list p {
+  font-size: 15px;
+  margin-top: 7px;
+  line-height: 1.65;
+}
+.work-present {
+  display: inline-block;
+  color: var(--green);
+  font-size: 13px;
+  margin-top: 9px;
+}
+.work-present:hover {
+  text-decoration: underline;
+}
+.brief-figure {
+  margin: 23px 0 0;
+}
+.brief-figure figcaption {
+  margin-top: 13px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.framework-graph {
+  display: grid;
+  grid-template-columns: repeat(var(--graph-columns), minmax(0, 1fr));
+  gap: 44px 36px;
+  position: relative;
+}
+.framework-node {
+  min-height: 108px;
+  padding: 17px 16px;
+  border: 1px solid #bacdd7;
+  border-radius: 4px;
+  background: #f5f8fa;
+  position: relative;
+  z-index: 1;
+}
+.framework-node strong {
+  display: block;
+  color: #23536d;
+  font-size: 15px;
+  line-height: 1.35;
+}
+.framework-node p {
+  font-size: 13px;
+  line-height: 1.55;
+  margin-top: 8px;
+}
+.framework-edges {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  overflow: visible;
+}
+.graph-connections {
+  grid-column: 1 / -1;
+  list-style: none;
+  font-size: 12px;
+}
+.graph-enhanced .graph-connections {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.brief-table-scroll {
+  overflow-x: auto;
+}
+.brief-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.brief-table thead {
+  background: #edf3f6;
+}
+.brief-table th,
+.brief-table td {
+  padding: 12px 13px;
+  border-bottom: 1px solid #dce4e9;
+  vertical-align: top;
+}
+.brief-table th {
+  font-weight: 650;
+  color: #284d62;
+}
+.brief-table tbody th {
+  width: 23%;
+}
+.brief-table tbody tr:nth-child(even) {
+  background: #f8fafb;
+}
+.brief-bars {
+  display: grid;
+  gap: 22px;
+  padding: 10px 0;
+}
+.brief-bar-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 1.2fr) 3fr auto;
+  gap: 16px;
+  align-items: center;
+}
+.bar-label {
+  font-size: 15px;
+  line-height: 1.45;
+}
+.bar-track {
+  background: #edf1f4;
+  height: 28px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.bar-fill {
+  display: block;
+  height: 100%;
+  background: #6996ae;
+}
+.brief-bar-row strong {
+  font-size: 18px;
+  color: #23536d;
+  font-variant-numeric: tabular-nums;
+  min-width: 70px;
+}
+.bar-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30%;
+  margin-right: 90px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.brief-page .contribution-header h1 {
+  font-size: 30px;
+}
+.brief-scene .brief-figure {
+  margin: 26px 0;
+}
+.brief-scene .takeaway {
+  margin-top: 0;
+}
+.brief-page .story-sidebar nav a {
+  font-size: 12px;
+}
+.brief-page .story-sidebar nav a span {
+  flex-shrink: 0;
+}
+.is-presenting .brief-page {
+  max-width: 1180px;
+}
+.is-presenting .brief-scene {
+  justify-content: center;
+  padding: 28px 0;
+}
+.is-presenting .brief-scene .scene-heading h2 {
+  font-size: clamp(27px, 2.9vw, 41px);
+  line-height: 1.25;
+}
+.is-presenting .brief-scene .scene-heading > p:last-child {
+  font-size: 17px;
+  margin-top: 13px;
+}
+.is-presenting .brief-scene .scene-meta {
+  margin-bottom: 18px;
+}
+.is-presenting .brief-scene .framework-node {
+  min-height: 118px;
+  padding: 20px;
+}
+.is-presenting .brief-scene .framework-node strong {
+  font-size: 20px;
+}
+.is-presenting .brief-scene .framework-node p {
+  font-size: 16px;
+}
+.is-presenting .brief-scene .brief-table {
+  font-size: 17px;
+}
+.is-presenting .brief-scene .brief-table th,
+.is-presenting .brief-scene .brief-table td {
+  padding: 15px 17px;
+}
+.is-presenting .brief-scene .brief-figure figcaption {
+  font-size: 13px;
+}
+.is-presenting .brief-scene .takeaway {
+  font-size: 17px;
+}
+.is-presenting .brief-scene .bar-label {
+  font-size: 20px;
+}
+.is-presenting .brief-scene .bar-track {
+  height: 42px;
+}
+.is-presenting .brief-scene .brief-bar-row strong {
+  font-size: 28px;
+  min-width: 100px;
+}
+@media (max-width: 1000px) {
+  .compact-project .framework-graph {
+    gap: 30px 20px;
+  }
+  .compact-project .framework-node {
+    padding: 12px;
+  }
+  .compact-project .framework-node strong {
+    font-size: 13px;
+  }
+  .compact-project .framework-node p {
+    font-size: 12px;
+  }
+}
+@media (max-width: 700px) {
+  .compact-project-header h1,
+  .brief-page .contribution-header h1 {
+    font-size: 26px;
+  }
+
+  .framework-graph {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+  }
+  .framework-node,
+  .compact-project .framework-node {
+    min-height: 0;
+    padding: 15px;
+  }
+  .framework-node strong,
+  .compact-project .framework-node strong {
+    font-size: 16px;
+  }
+  .framework-node p,
+  .compact-project .framework-node p {
+    font-size: 14px;
+  }
+  .brief-table {
+    min-width: 500px;
+    font-size: 13px;
+  }
+  .brief-table th,
+  .brief-table td {
+    padding: 11px;
+  }
+  .brief-table.pin-first-column {
+    /* Each result column fits beside the pinned label even at a 320px viewport. */
+    min-width: calc(126px + var(--table-data-columns) * 148px);
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  .brief-table.pin-first-column th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    width: 126px;
+    min-width: 126px;
+    max-width: 126px;
+    overflow-wrap: anywhere;
+    background: #fff;
+    box-shadow: 1px 0 0 #dce4e9;
+  }
+  .brief-table.pin-first-column thead th:first-child {
+    z-index: 2;
+    background: #edf3f6;
+  }
+  .brief-table.pin-first-column tbody tr:nth-child(even) th:first-child {
+    background: #f8fafb;
+  }
+  .brief-bar-row {
+    grid-template-columns: 1fr auto;
+    gap: 8px 14px;
+  }
+  .bar-label {
+    grid-column: 1 / -1;
+  }
+  .bar-track {
+    height: 25px;
+  }
+  .bar-axis {
+    margin-left: 0;
+  }
+
+  .is-presenting .brief-page {
+    width: calc(100% - 36px);
+  }
+  .is-presenting .brief-scene {
+    padding: 22px 0;
+    min-height: calc(100dvh - 200px);
+    margin-bottom: 99px;
+  }
+  .is-presenting .brief-scene .framework-node {
+    min-height: 0;
+    padding: 15px;
+  }
+  .is-presenting .brief-scene .framework-node strong {
+    font-size: 17px;
+  }
+  .is-presenting .brief-scene .framework-node p {
+    font-size: 15px;
+  }
+  .is-presenting .brief-scene .brief-table {
+    font-size: 15px;
+  }
+  .is-presenting .brief-scene .brief-table th,
+  .is-presenting .brief-scene .brief-table td {
+    padding: 11px;
+  }
+}
+@media print {
+  .framework-graph {
+    display: grid;
+  }
+  .brief-table {
+    min-width: 0;
+  }
+  .brief-table.pin-first-column {
+    min-width: 0;
+    table-layout: auto;
+    border-collapse: collapse;
+  }
+  .brief-table.pin-first-column th:first-child {
+    position: static;
+    width: 23%;
+    min-width: 0;
+    max-width: none;
+    box-shadow: none;
+  }
+  .brief-figure {
+    break-inside: avoid;
+  }
+  .brief-scene .brief-table {
+    font-size: 11pt !important;
+  }
+  .brief-scene .framework-node p {
+    font-size: 10pt !important;
+  }
+  .bar-fill,
+  .framework-node,
+  .brief-table thead {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+.diagram-hint {
+  display: none;
+}
+@media (max-width: 700px) {
+  .framework-figure {
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  .framework-graph {
+    display: grid;
+    min-width: 660px;
+    gap: 36px 24px;
+  }
+  .framework-node,
+  .compact-project .framework-node {
+    padding: 15px;
+    min-height: 100px;
+  }
+  .diagram-hint {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+}
+
+/* Shared plot columns give every bar and its axis the same zero and maximum. */
+.brief-bar-row,
+.bar-axis {
+  grid-template-columns: minmax(140px, 1.2fr) minmax(0, 3fr) 150px;
+  column-gap: 16px;
+}
+.bar-axis {
+  display: grid;
+  margin: 0;
+}
+.bar-axis-track {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (min-width: 900px) and (max-height: 850px) {
+  .is-presenting .brief-scene {
+    padding: 20px 0;
+  }
+  .is-presenting .brief-scene .scene-meta {
+    margin-bottom: 12px;
+  }
+  .is-presenting .brief-scene .brief-figure {
+    margin: 18px 0;
+  }
+  .is-presenting .brief-scene .brief-table {
+    font-size: 16px;
+  }
+  .is-presenting .brief-scene .brief-table th,
+  .is-presenting .brief-scene .brief-table td {
+    padding: 10px 14px;
+  }
+  .is-presenting .brief-scene .takeaway {
+    font-size: 16px;
+  }
+}
+@media (max-width: 700px) {
+  .brief-bar-row,
+  .bar-axis {
+    grid-template-columns: minmax(0, 1fr) 95px;
+  }
+  .bar-axis-track {
+    grid-column: 1;
+  }
+  .is-presenting .brief-scene .brief-bar-row strong {
+    font-size: 22px;
+    min-width: 0;
+  }
+}

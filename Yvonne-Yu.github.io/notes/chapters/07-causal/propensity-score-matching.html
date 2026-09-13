@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="From the balancing-score theorem to a complete observational study workflow.">
+
+<title>Propensity Scores: Matching and Weighting – Data Science Interview Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../chapters/07-causal/propensity-diagnostics.html" rel="next">
+<link href="../../chapters/07-causal/potential-outcomes.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f8efec0032af3a9199f76a3197562f89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/07-causal/potential-outcomes.html">Causal inference</a></li><li class="breadcrumb-item"><a href="../../chapters/07-causal/propensity-score-matching.html"><span class="chapter-title">Propensity Scores: Matching and Weighting</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Data Science Interview Notes</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Science Interview Notes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Probability and descriptive statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/01-foundations/probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Probability, Random Variables, and Distribution Shape</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/01-foundations/descriptive-statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Descriptive Statistics, Association, and Visual Checks</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Statistical inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/scientific-reasoning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Scientific Reasoning and Hypothesis Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/sampling-experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sampling, Standard Error, and Experimental Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/classical-tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Classical Tests: z, t, Ranks, and Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/permutation-tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Permutation Tests and Exchangeability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/replication-effect-sizes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Replication, Effect Size, and Research Flexibility</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/02-inference/power-confidence-resampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Power, Confidence Intervals, Bootstrap, and Jackknife</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bayesian inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/03-bayesian/bayesian-inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bayesian Updating, Bayes Factors, and Predictive Value</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Regression and classification</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/04-regression-classification/linear-regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Linear Regression: Projection, Interpretation, and Assessment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/04-regression-classification/regularization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Regularization and Cross-Validation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/04-regression-classification/logistic-classification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Logistic Regression and Classification Metrics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/04-regression-classification/support-vector-machines.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Support Vector Machines: Margins and Hinge Loss</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Tree ensembles</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/05-ensemble-trees/decision-trees.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Decision Trees: From a Rule to CART</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/05-ensemble-trees/random-forest.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Random Forest: Averaging, Correlation, and OOB Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/05-ensemble-trees/gradient-boosting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gradient Boosting: Learning an Update Function</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/05-ensemble-trees/xgboost.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">XGBoost: Deriving Leaf Weights and Split Gain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/05-ensemble-trees/lightgbm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">LightGBM: Histograms, Sampling, and Leaf Growth</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unsupervised learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/pca-svd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">PCA and SVD: A Smaller Representation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/kmeans.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">K-Means: Optimization, Initialization, and Choosing K</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/clustering-variants.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Clustering Variants: Medoids, Mini-Batches, and Directions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/gaussian-mixtures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Gaussian Mixtures and Expectation–Maximization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/density-clustering.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DBSCAN, OPTICS, and Density Connectivity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/06-unsupervised/isolation-forest.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Isolation Forest: From Short Paths to Useful Alerts</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Causal inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/potential-outcomes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Potential Outcomes and Causal Identification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/propensity-score-matching.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Propensity Scores: Matching and Weighting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/propensity-diagnostics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Overlap, Polarized Scores, and Sensitivity Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/difference-in-differences.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Difference-in-Differences and Event Studies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/synthetic-control.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Synthetic Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/07-causal/instrumental-variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Instrumental Variables, 2SLS, and LATE</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Treatment effects and experiments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/08-treatment-effects/double-machine-learning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Double Machine Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/08-treatment-effects/uplift-learners.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Uplift Modeling and Heterogeneous Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/08-treatment-effects/uplift-evaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Evaluating Uplift: Gains, Qini, and Policy Value</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/08-treatment-effects/cuped.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">CUPED and Experiment Variance Reduction</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Time series</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/09-time-series/arima.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ARIMA and Seasonal ARIMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/09-time-series/ets.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exponential Smoothing and ETS</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
+ <span class="menu-text">Reference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/10-reference/interview-reference.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Interview Reference and Method Selection</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
+  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition">Intuition</a></li>
+  <li><a href="#worked-example" id="toc-worked-example" class="nav-link" data-scroll-target="#worked-example">Worked example</a>
+  <ul class="collapse">
+  <li><a href="#build-a-design-before-comparing-outcomes" id="toc-build-a-design-before-comparing-outcomes" class="nav-link" data-scroll-target="#build-a-design-before-comparing-outcomes">Build a design before comparing outcomes</a></li>
+  <li><a href="#balance-is-a-separate-calculation" id="toc-balance-is-a-separate-calculation" class="nav-link" data-scroll-target="#balance-is-a-separate-calculation">Balance is a separate calculation</a></li>
+  <li><a href="#weighting-a-rare-treatment-assignment" id="toc-weighting-a-rare-treatment-assignment" class="nav-link" data-scroll-target="#weighting-a-rare-treatment-assignment">Weighting a rare treatment assignment</a></li>
+  </ul></li>
+  <li><a href="#theory-and-assumptions" id="toc-theory-and-assumptions" class="nav-link" data-scroll-target="#theory-and-assumptions">Theory and assumptions</a>
+  <ul class="collapse">
+  <li><a href="#the-rosenbaumrubin-balancing-argument" id="toc-the-rosenbaumrubin-balancing-argument" class="nav-link" data-scroll-target="#the-rosenbaumrubin-balancing-argument">The Rosenbaum–Rubin balancing argument</a></li>
+  <li><a href="#matching-estimators" id="toc-matching-estimators" class="nav-link" data-scroll-target="#matching-estimators">Matching estimators</a></li>
+  <li><a href="#iptw-and-its-proof" id="toc-iptw-and-its-proof" class="nav-link" data-scroll-target="#iptw-and-its-proof">IPTW and its proof</a></li>
+  <li><a href="#standard-errors" id="toc-standard-errors" class="nav-link" data-scroll-target="#standard-errors">Standard errors</a></li>
+  </ul></li>
+  <li><a href="#practice-and-pitfalls" id="toc-practice-and-pitfalls" class="nav-link" data-scroll-target="#practice-and-pitfalls">Practice and pitfalls</a></li>
+  <li><a href="#interview-questions" id="toc-interview-questions" class="nav-link" data-scroll-target="#interview-questions">Interview questions</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/07-causal/potential-outcomes.html">Causal inference</a></li><li class="breadcrumb-item"><a href="../../chapters/07-causal/propensity-score-matching.html"><span class="chapter-title">Propensity Scores: Matching and Weighting</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Propensity Scores: Matching and Weighting</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-goals" class="level2">
+<h2 class="anchored" data-anchor-id="learning-goals">Learning goals</h2>
+<ul>
+<li>Derive why the true propensity score is a balancing score.</li>
+<li>Work through matching, common support, balance diagnostics, and effect estimation.</li>
+<li>Separate matching estimands, inverse-probability weights, and their uncertainty calculations.</li>
+</ul>
+</section>
+<section id="intuition" class="level2">
+<h2 class="anchored" data-anchor-id="intuition">Intuition</h2>
+<p>A live-shopping viewer may already have greater purchase intent than a nonviewer. Matching attempts to compare recipients with nonrecipients who had similar <strong>pre-treatment probabilities of treatment</strong>. The score is <span class="math inline">\(e(X)=P(T=1\mid X)\)</span>, not a prediction of purchase and not a measure of treatment benefit.</p>
+<p>Reducing a high-dimensional <span class="math inline">\(X\)</span> to a scalar score is useful only under the causal assumptions and an adequate estimated design. Two people with similar estimated scores need not have identical characteristics. Balance must be checked in the original covariates.</p>
+</section>
+<section id="worked-example" class="level2">
+<h2 class="anchored" data-anchor-id="worked-example">Worked example</h2>
+<section id="build-a-design-before-comparing-outcomes" class="level3">
+<h3 class="anchored" data-anchor-id="build-a-design-before-comparing-outcomes">Build a design before comparing outcomes</h3>
+<p>Consider a pedagogical analysis of livestream exposure and subsequent ordering. Freeze age, city, historical GMV, and previous engagement before exposure. Do not include watch time measured after exposure as a baseline confounder.</p>
+<p>Suppose three treated aggregate units and three equal-sized control aggregate units remain on common support:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pair</th>
+<th style="text-align: right;">Treated score</th>
+<th style="text-align: right;">Control score</th>
+<th style="text-align: right;">Treated outcome rate</th>
+<th style="text-align: right;">Control outcome rate</th>
+<th style="text-align: right;">Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+</tbody>
+</table>
+<p>The outcome is an ordering rate within each aggregate unit; a user-level binary outcome would instead be 0 or 1. The matched average difference estimates an effect for these treated aggregate units, not an individual-user effect:</p>
+<p><span class="math display">\[\widehat{\operatorname{ATT}}=(0.01+0.01+0)/3=0.006667,\]</span></p>
+<p>or <strong>0.667 percentage points</strong>, not 6.67 percentage points and not a 0.667% relative increase. Relative to the matched-control average <span class="math inline">\(0.08333\)</span>, the illustrative relative lift is 8%.</p>
+</section>
+<section id="balance-is-a-separate-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="balance-is-a-separate-calculation">Balance is a separate calculation</h3>
+<p>If matched mean age is 32 versus 31 and the two sample variances are 100 and 100, absolute standardized mean difference is <span class="math inline">\(1/10=0.10\)</span>. If rematching yields 31.5 versus 31, it becomes 0.05. Also inspect variance ratios, empirical distributions, categorical proportions, tails, and meaningful interactions. A small score difference does not substitute for this inspection.</p>
+</section>
+<section id="weighting-a-rare-treatment-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="weighting-a-rare-treatment-assignment">Weighting a rare treatment assignment</h3>
+<p>A treated user with <span class="math inline">\(e(X)=0.1\)</span> receives ATE weight 10; one with <span class="math inline">\(e(X)=0.8\)</span> receives weight 1.25. The first represents people of that covariate type who seldom receive treatment. A control with <span class="math inline">\(e(X)=0.9\)</span> also receives weight 10 because untreated users of that type are rare. This is the source of both weighting’s correction and its instability.</p>
+</section>
+</section>
+<section id="theory-and-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="theory-and-assumptions">Theory and assumptions</h2>
+<section id="the-rosenbaumrubin-balancing-argument" class="level3">
+<h3 class="anchored" data-anchor-id="the-rosenbaumrubin-balancing-argument">The Rosenbaum–Rubin balancing argument</h3>
+<p>At a score value <span class="math inline">\(e(X)=p\)</span>, the probability of treatment is <span class="math inline">\(p\)</span> for every covariate combination in that stratum. For any covariate set <span class="math inline">\(A\)</span>,</p>
+<p><span class="math display">\[\begin{aligned}
+P(X\in A,T=1\mid e(X)=p)
+&amp;=E[\mathbf 1\{X\in A\}e(X)\mid e(X)=p]\\
+&amp;=pP(X\in A\mid e(X)=p).
+\end{aligned}\]</span></p>
+<p>Thus <span class="math inline">\(T\perp X\mid e(X)\)</span>. Combining this balance with conditional exchangeability given <span class="math inline">\(X\)</span> yields</p>
+<p><span class="math display">\[\{Y(0),Y(1)\}\perp T\mid e(X).\]</span></p>
+<p>The result concerns the <strong>true</strong> score. Approximation error, finite-sample matching, and limited common support remain practical issues.</p>
+</section>
+<section id="matching-estimators" class="level3">
+<h3 class="anchored" data-anchor-id="matching-estimators">Matching estimators</h3>
+<p>With one control match <span class="math inline">\(m(i)\)</span> for each of <span class="math inline">\(n_T\)</span> treated units,</p>
+<p><span class="math display">\[\widehat{\tau}_{ATT}=\frac{1}{n_T}\sum_{i:T_i=1}[Y_i-Y_{m(i)}].\]</span></p>
+<p>If treated units are discarded, this targets the retained treated population under the design assumptions, not automatically all original recipients. With <span class="math inline">\(K\)</span> controls, replace <span class="math inline">\(Y_{m(i)}\)</span> by their appropriately weighted average.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Design</th>
+<th>Benefit</th>
+<th>Cost or decision</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1:1 nearest neighbor</td>
+<td>Simple pair interpretation</td>
+<td>May discard many controls or accept poor matches</td>
+</tr>
+<tr class="even">
+<td>K-nearest neighbors</td>
+<td>More control information</td>
+<td>More distant matches can increase bias</td>
+</tr>
+<tr class="odd">
+<td>Caliper</td>
+<td>Rejects implausibly distant pairs</td>
+<td>Can discard treated units and alter the target</td>
+</tr>
+<tr class="even">
+<td>Kernel matching</td>
+<td>Smoothly uses many controls</td>
+<td>Bandwidth controls bias and variance</td>
+</tr>
+<tr class="odd">
+<td>Replacement</td>
+<td>Reuses excellent controls</td>
+<td>Reuse creates dependence and lowers effective information</td>
+</tr>
+<tr class="even">
+<td>No replacement</td>
+<td>Distinct controls</td>
+<td>Results may depend on matching order</td>
+</tr>
+</tbody>
+</table>
+<p>A common starting caliper is <strong>0.2 standard deviations of the logit score</strong>, applied on the logit scale. It is not a raw probability difference of the same numerical size.</p>
+</section>
+<section id="iptw-and-its-proof" class="level3">
+<h3 class="anchored" data-anchor-id="iptw-and-its-proof">IPTW and its proof</h3>
+<p>The Horvitz–Thompson ATE estimator is</p>
+<p><span class="math display">\[\hat\tau_{HT}=\frac1n\sum_i\left[\frac{T_iY_i}{\hat e_i}-\frac{(1-T_i)Y_i}{1-\hat e_i}\right].\]</span></p>
+<p>With the true score and identification assumptions,</p>
+<p><span class="math display">\[\begin{aligned}
+E\left[\frac{TY}{e(X)}\right]
+&amp;=E_X\left[\frac{E[TY(1)\mid X]}{e(X)}\right]\\
+&amp;=E_X\left[\frac{e(X)E[Y(1)\mid X]}{e(X)}\right]
+=E[Y(1)].
+\end{aligned}\]</span></p>
+<p>The control term similarly equals <span class="math inline">\(E[Y(0)]\)</span>. Estimated scores introduce estimation error; this population calculation is not a claim of exact finite-sample unbiasedness.</p>
+<p>The Hájek alternative divides each weighted outcome sum by its arm’s weight sum before subtraction. For ATT weighting, treated weights are 1 and control weights are <span class="math inline">\(e(X)/(1-e(X))\)</span>. State the target and normalization rather than calling every weighted difference “ATE.”</p>
+</section>
+<section id="standard-errors" class="level3">
+<h3 class="anchored" data-anchor-id="standard-errors">Standard errors</h3>
+<p>Control reuse and matching uncertainty invalidate an independent two-sample standard error applied without regard to the design. A fixed number of nearest-neighbor matches gives a nonsmooth estimator for which the ordinary nonparametric bootstrap is generally invalid. Use an estimator-appropriate analytic matching variance or a justified alternative; do not promise that rerunning matching inside a naive bootstrap solves the issue. <a href="https://economics.mit.edu/sites/default/files/publications/ON%20THE%20FAILURE%20OF%20THE%20BOOTSTRAP%20FOR.pdf">Abadie and Imbens (2008)</a></p>
+<p>Weighting and smooth estimators have different inference options. Preserve clustering at the assignment or sampling unit and include nuisance estimation appropriately.</p>
+</section>
+</section>
+<section id="practice-and-pitfalls" class="level2">
+<h2 class="anchored" data-anchor-id="practice-and-pitfalls">Practice and pitfalls</h2>
+<ol type="1">
+<li>Define treatment, outcome timing, eligibility, and ATT versus ATE.</li>
+<li>Select baseline confounders and outcome predictors using substantive knowledge.</li>
+<li>Fit a regularized logistic baseline; compare flexible alternatives through overlap and balance, not AUC alone.</li>
+<li>Inspect common support and decide whether a restricted population answers the question.</li>
+<li>Match or weight using a documented rule.</li>
+<li>Examine balance in all covariates before examining the outcome contrast.</li>
+<li>Estimate effect size with appropriate uncertainty, then conduct hidden-confounding and design sensitivity checks.</li>
+</ol>
+<p>Balance failure sends the analysis back to the design step. Do not iterate based on whether the treatment effect becomes significant. A guideline such as <span class="math inline">\(|SMD|&lt;0.1\)</span> is useful, but does not prove exchangeability or guarantee balance of every relevant distributional feature.</p>
+<p>Post-treatment mediators and colliders can bias adjustment in either direction. Pure treatment predictors may worsen weight variability without improving confounding control; removing a true confounder solely to improve overlap is not justified.</p>
+</section>
+<section id="interview-questions" class="level2">
+<h2 class="anchored" data-anchor-id="interview-questions">Interview questions</h2>
+<p><strong>Why not optimize propensity AUC?</strong> We need a useful balancing design. Near-perfect treatment prediction may expose nonoverlap, and a strong classifier can still leave covariate imbalance.</p>
+<p><strong>Does 1:1 PSM estimate ATE?</strong> Matching controls to treated units usually targets ATT for retained treated units. A different target requires a different design or weighting scheme.</p>
+<p><strong>Why inverse probability?</strong> It upweights observations underrepresented by the assignment mechanism, so weighted arm outcomes recover the target population expectation under the assumptions.</p>
+<p><strong>How would you present a project?</strong> Explain selection bias, freeze pre-treatment features, show overlap and balance, state the retained estimand, report absolute lift and CI, discuss unmeasured confounding, and separate observational evidence from randomized confirmation.</p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>The true propensity score balances observed covariates. A credible implementation additionally needs common support, direct balance checks, an explicit estimand, and inference matched to its matching or weighting estimator.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Adapted from the source lecture notes, “PSM”: theorem, seven-step walkthrough, matching methods, IPTW proof, feature selection, SMD, and project narrative.</li>
+<li>Rosenbaum and Rubin (1983), <a href="https://doi.org/10.1093/biomet/70.1.41">The central role of the propensity score</a>.</li>
+<li>Abadie and Imbens (2006), “Large Sample Properties of Matching Estimators for Average Treatment Effects,” <em>Econometrica</em>.</li>
+<li>Abadie and Imbens (2008), “On the Failure of the Bootstrap for Matching Estimators,” linked above.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+(() => {
+  for (const image of document.querySelectorAll('main.content figure img')) {
+    const region = image.parentElement;
+    region.classList.add('figure-pan');
+    region.tabIndex = 0;
+    region.setAttribute('role', 'region');
+    region.setAttribute('aria-label', `Scrollable figure: ${image.alt}`);
+    region.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      if (region.scrollWidth <= region.clientWidth) return;
+      event.preventDefault();
+      region.scrollLeft += event.key === 'ArrowRight' ? 80 : -80;
+    });
+    const hint = document.createElement('small');
+    hint.className = 'figure-scroll-hint';
+    hint.textContent = 'Swipe or use arrow keys to view the full figure.';
+    region.after(hint);
+  }
+  const source = document.querySelector('#TOC > ul');
+  const title = document.querySelector('main.content .quarto-title-block');
+  if (!source || !title) return;
+  const details = document.createElement('details');
+  details.className = 'mobile-page-toc';
+  const summary = document.createElement('summary');
+  summary.textContent = 'On this page';
+  const nav = document.createElement('nav');
+  nav.setAttribute('aria-label', 'Page outline');
+  const list = document.createElement('ul');
+  for (const original of source.querySelectorAll(':scope > li > a[href^="#"]')) {
+    const item = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = original.getAttribute('href');
+    link.textContent = original.textContent;
+    link.addEventListener('click', () => { details.open = false; });
+    item.append(link);
+    list.append(item);
+  }
+  if (!list.childElementCount) return;
+  nav.append(list);
+  details.append(summary, nav);
+  title.after(details);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../chapters/07-causal/potential-outcomes.html" class="pagination-link" aria-label="Potential Outcomes and Causal Identification">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Potential Outcomes and Causal Identification</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../chapters/07-causal/propensity-diagnostics.html" class="pagination-link" aria-label="Overlap, Polarized Scores, and Sensitivity Analysis">
+        <span class="nav-page-text"><span class="chapter-title">Overlap, Polarized Scores, and Sensitivity Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Yvonne Yu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/">
+<p>English portfolio</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/">
+<p>中文网站</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

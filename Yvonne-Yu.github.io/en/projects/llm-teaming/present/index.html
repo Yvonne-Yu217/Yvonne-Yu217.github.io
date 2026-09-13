@@ -1,0 +1,1176 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Three Heads Are Better Than One, If They Share Notes: When and How LLM Teaming Helps Short-horizon Reasoning Tasks
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='We test when small-model collaboration improves reasoning, comparing answer aggregation with shared evidence and verification before one model answers.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/present/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/present/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/present/'>
+    <meta property='og:title' content='Three Heads Are Better Than One, If They Share Notes: When and How LLM Teaming Helps Short-horizon Reasoning Tasks'>
+    <meta property='og:description' content='We test when small-model collaboration improves reasoning, comparing answer aggregation with shared evidence and verification before one model answers.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/present/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='deck' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/llm-teaming/present/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/present/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page paper-deck'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#research'>Research</a
+    ><span aria-hidden='true'>/</span>
+    <a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/'>Small-LLM Teaming</a>
+  </nav>
+  <header class='contribution-header paper-header'>
+    <div><h1>Three Heads Are Better Than One, If They Share Notes: When and How LLM Teaming Helps Short-horizon Reasoning Tasks</h1>
+<p class='paper-authors'>
+  Caijun Wang, Yishu Yang, Yvonne Yu
+  
+  
+</p>
+<p class='project-byline'>
+  Research collaborator
+  <span>Feb 2026 — May 2026</span>
+</p>
+</div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          <a href='#llm-teaming--1'
+            ><span>1</span>Research question</a>
+        
+          <a href='#llm-teaming--2'
+            ><span>2</span>Study design</a>
+        
+          <a href='#llm-teaming--3'
+            ><span>3</span>Short-context evidence</a>
+        
+          <a href='#llm-teaming--4'
+            ><span>4</span>Move to long passages</a>
+        
+          <a href='#llm-teaming--5'
+            ><span>5</span>Evidence architecture</a>
+        
+          <a href='#llm-teaming--6'
+            ><span>6</span>Main comparison</a>
+        
+          <a href='#llm-teaming--7'
+            ><span>7</span>Validation and interpretation</a>
+        
+          <a href='#llm-teaming--8'
+            ><span>8</span>Conclusion</a>
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/llm-teaming/'>← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='llm-teaming--1'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-llm-teaming-1'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Paper presentation</span>
+    <span>1 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Research question</p>
+    <h2 id='title-llm-teaming-1'>When and where does model collaboration help?</h2>
+    <p>Different tasks offer different places to collaborate: final answers on short contexts, or retrieved evidence from longer passages.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='When and where does model collaboration help?'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='short-context'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Short contexts</strong>
+          <p>ReClor, LogiQA, CommonsenseQA.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='answer-teaming'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Combine final answers</strong>
+          <p>Voting, debate, or a judge.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='short-comparison'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Solo vs. answer team</strong>
+          <p>Score the same questions.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='long-premise'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>Longer passages</strong>
+          <p>ConTRoL: question plus premise.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='evidence-teaming'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Share and check evidence</strong>
+          <p>Pool sentences; optionally verify.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='one-answerer'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>One final answerer</strong>
+          <p>Compare direct and evidence inputs.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='short-context'
+            data-edge-to='answer-teaming'
+            data-edge-label=''
+          >
+            Short contexts → Combine final answers
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='answer-teaming'
+            data-edge-to='short-comparison'
+            data-edge-label=''
+          >
+            Combine final answers → Solo vs. answer team
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='long-premise'
+            data-edge-to='evidence-teaming'
+            data-edge-label=''
+          >
+            Longer passages → Share and check evidence
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='evidence-teaming'
+            data-edge-to='one-answerer'
+            data-edge-label=''
+          >
+            Share and check evidence → One final answerer
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Task structure determines whether there is useful intermediate evidence for a team to select.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='llm-teaming--2'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-llm-teaming-2'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Paper presentation</span>
+    <span>2 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Study design</p>
+    <h2 id='title-llm-teaming-2'>Four benchmarks contrast two reasoning settings</h2>
+    <p>The evaluation contrasts short-context reasoning with long-passage natural-language inference; each comparison uses the same validation questions.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Four benchmarks contrast two reasoning settings'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Benchmark</th>
+            
+              <th scope='col'>Validation questions</th>
+            
+              <th scope='col'>Task structure</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>ReClor</th>
+                
+                  <td>500</td>
+                
+                  <td>Short-context logic</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>LogiQA 2.0</th>
+                
+                  <td>651</td>
+                
+                  <td>Short-context formal logic</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>CommonsenseQA</th>
+                
+                  <td>1,221</td>
+                
+                  <td>No-passage control</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>ConTRoL</th>
+                
+                  <td>805</td>
+                
+                  <td>Long-passage NLI; mean 591 tokens</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Official validation splits; prompts matched within each task. Model–strategy coverage varies across experiments. Table 1, p. 3.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>ConTRoL provides an evidence-selection stage that the shorter tasks largely lack.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='llm-teaming--3'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-llm-teaming-3'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Paper presentation</span>
+    <span>3 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Short-context evidence</p>
+    <h2 id='title-llm-teaming-3'>Answer agreement does not improve these tasks</h2>
+    <p>Voting, debate, and judging underperform Qwen2.5-7B direct answering on all three short-context benchmarks.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Answer agreement does not improve these tasks'
+    >
+      <table
+        class='brief-table pin-first-column'
+        style='--table-data-columns: 3'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Method</th>
+            
+              <th scope='col'>ReClor</th>
+            
+              <th scope='col'>LogiQA</th>
+            
+              <th scope='col'>CSQA</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Qwen2.5-7B solo</th>
+                
+                  <td>70.6</td>
+                
+                  <td>50.8</td>
+                
+                  <td>83.5</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Majority vote</th>
+                
+                  <td>58.6</td>
+                
+                  <td>39.9</td>
+                
+                  <td>78.5</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Confidence vote</th>
+                
+                  <td>65.4</td>
+                
+                  <td>49.2</td>
+                
+                  <td>80.3</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Two-round debate</th>
+                
+                  <td>65.6</td>
+                
+                  <td>46.2</td>
+                
+                  <td>79.7</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Qwen judge</th>
+                
+                  <td>60.6</td>
+                
+                  <td>42.1</td>
+                
+                  <td>81.7</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Accuracy (%). Reported paired McNemar p < 0.05 versus solo; multiplicity correction is unspecified. Table 3, p. 4.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Correlated errors and unreliable confidence are diagnostic explanations, not separately identified causes.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='llm-teaming--4'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-llm-teaming-4'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Paper presentation</span>
+    <span>4 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Move to long passages</p>
+    <h2 id='title-llm-teaming-4'>Pooling alone stays close to single-model retrieval</h2>
+    <p>The study next moves to ConTRoL: three models pool premise sentences, and one model answers from the union.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Pooling alone stays close to single-model retrieval'
+    >
+      <table
+        class='brief-table pin-first-column'
+        style='--table-data-columns: 3'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Answerer</th>
+            
+              <th scope='col'>Direct · DQA</th>
+            
+              <th scope='col'>Single retrieval · RQA</th>
+            
+              <th scope='col'>Pooled evidence · RnA1</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Qwen2.5-14B</th>
+                
+                  <td>65.8</td>
+                
+                  <td>67.9</td>
+                
+                  <td>68.0</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Qwen3-14B</th>
+                
+                  <td>69.0</td>
+                
+                  <td>70.5</td>
+                
+                  <td>69.9</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>ConTRoL accuracy (%); each row holds the answerer fixed. RnA1 pools three retrievers without verification. Table 4, p. 5.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Against RQA, pooling changes accuracy by +0.1 and −0.6 points here, motivating a closer look at evidence selection.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='llm-teaming--5'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-llm-teaming-5'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Paper presentation</span>
+    <span>5 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Evidence architecture</p>
+    <h2 id='title-llm-teaming-5'>Verify shared evidence before one model answers</h2>
+    <p>The verification experiment switches to a Qwen3-8B answerer; retrieval and checking are shared before one of two answering paths runs.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Verify shared evidence before one model answers'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 4'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='input'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Original input</strong>
+          <p>Question and supplied passage.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='parallel-retrieval'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Parallel retrieval</strong>
+          <p>Three heterogeneous models copy sentences.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='union'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Evidence union</strong>
+          <p>Pool the three candidate sets.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='verification'
+          style='grid-column: 4; grid-row: 1'
+        >
+          <strong>Verify candidates</strong>
+          <p>F1: ≥2/3 approvals; F2: answerer judges.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='with-evidence'
+          style='grid-column: 4; grid-row: 2'
+        >
+          <strong>Evidence retained</strong>
+          <p>Answer with original input + evidence.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='fallback'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>No evidence retained</strong>
+          <p>Same answerer; original input only.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='input'
+            data-edge-to='parallel-retrieval'
+            data-edge-label=''
+          >
+            Original input → Parallel retrieval
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='parallel-retrieval'
+            data-edge-to='union'
+            data-edge-label=''
+          >
+            Parallel retrieval → Evidence union
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='union'
+            data-edge-to='verification'
+            data-edge-label=''
+          >
+            Evidence union → Verify candidates
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='verification'
+            data-edge-to='with-evidence'
+            data-edge-label='Evidence retained'
+          >
+            Verify candidates → Evidence retained: Evidence retained
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='verification'
+            data-edge-to='fallback'
+            data-edge-label='None retained'
+          >
+            Verify candidates → No evidence retained: None retained
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Retained-evidence answering and direct fallback are exclusive routes; both use the original input and the same answerer.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='llm-teaming--6'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-llm-teaming-6'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Paper presentation</span>
+    <span>6 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Main comparison</p>
+    <h2 id='title-llm-teaming-6'>The complete F1 pipeline gains 6.2 percentage points</h2>
+    <p>With Qwen3-8B fixed as answerer, F1 reaches 71.7% accuracy versus 65.5% for single-model retrieval.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure bars-figure' aria-label='The complete F1 pipeline gains 6.2 percentage points'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>100
+          %</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>Direct answering · DQA</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 61.4%'
+            ></span>
+          </div>
+          <strong>61.4%</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>Single-model retrieval · RQA</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 65.5%'
+            ></span>
+          </div>
+          <strong>65.5%</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>Single-judge pipeline · F2</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 71.1%'
+            ></span>
+          </div>
+          <strong>71.1%</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>Cross-check pipeline · F1</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 71.7%'
+            ></span>
+          </div>
+          <strong>71.7%</strong>
+        </div>
+      
+    </div>
+    <figcaption>ConTRoL, 805 questions. Team: Qwen3-8B + Ministral + nano. Descriptive point estimates; Tables 5–6, p. 5.</figcaption>
+  </figure>
+
+
+  <p class='takeaway'>The gain compares complete F1, including fallback, with RQA; it does not isolate the verifier’s effect.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='llm-teaming--7'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-llm-teaming-7'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Paper presentation</span>
+    <span>7 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Validation and interpretation</p>
+    <h2 id='title-llm-teaming-7'>Faithful evidence may still be irrelevant</h2>
+    <p>F1 accepts fewer candidates and falls back more often; the character-level audit separately checks whether retrieved evidence is supported by the premise.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Faithful evidence may still be irrelevant'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Measure</th>
+            
+              <th scope='col'>F1 cross-check</th>
+            
+              <th scope='col'>F2 single judge</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Candidate evidence accepted</th>
+                
+                  <td>18%</td>
+                
+                  <td>54%</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Questions using fallback</th>
+                
+                  <td>49.6%</td>
+                
+                  <td>18.8%</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Flagged evidence characters</th>
+                
+                  <td>0.0170%</td>
+                
+                  <td>0.0153%</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>805 ConTRoL cases, Qwen3-8B team. LettuceDetect denominator: raw retrieved-evidence characters; before filtering, 0.0167%. Tables 6–7, pp. 5–6.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Evidence acceptance, fallback, and textual support measure different properties; this audit does not evaluate final-answer hallucination.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='llm-teaming--8'
+  data-scene
+  data-chapter='Paper presentation'
+  aria-labelledby='title-llm-teaming-8'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Paper presentation</span>
+    <span>8 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Conclusion</p>
+    <h2 id='title-llm-teaming-8'>Match the collaboration mechanism to the task</h2>
+    <p>The experiments distinguish sharing answers, pooling evidence, and verifying evidence; their results come from different task and model configurations.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Match the collaboration mechanism to the task'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Stage</th>
+            
+              <th scope='col'>Observed result</th>
+            
+              <th scope='col'>Comparison scope</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Answer aggregation</th>
+                
+                  <td>Lower accuracy than solo</td>
+                
+                  <td>Three short-context benchmarks</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Evidence pooling</th>
+                
+                  <td>Near single-model retrieval</td>
+                
+                  <td>Two 14B answerers on ConTRoL</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Verification + fallback</th>
+                
+                  <td>F1: +6.2 pp versus RQA</td>
+                
+                  <td>ConTRoL; Qwen3-8B answerer</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Deployment efficiency</th>
+                
+                  <td>Not measured</td>
+                
+                  <td>No latency or token-cost frontier</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Separate experiments, not cumulative ablations. F1/F2 were evaluated on ConTRoL only; measured efficiency remains future work.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>The evidence favors testing collaboration at the evidence stage; generalization and deployment efficiency remain open.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+      
+        <div class='chapter-appendix has-demo' data-chapter-id='llm-teaming'>
+          <section class='demo' data-demo='retrieval'>
+  <p class='eyebrow'>Explore the idea</p>
+  <h3>
+    Follow the evidence, one step at a time.
+  </h3>
+  <p class='demo-note'>Illustrative data · not actual business or research results</p>
+  <p>
+    “The library closes at six on weekdays. On Saturday, it closes at four. It is closed on
+      Sunday.”<br>
+      <strong>Question: Can you enter at five on Saturday?</strong>
+  </p>
+  <label class='demo-path'>
+    <span>Scripted path</span>
+    <select data-retrieval-path disabled>
+      <option value='retained'>
+        Evidence retained
+      </option>
+      <option value='empty'>
+        No evidence retained
+      </option>
+    </select>
+  </label>
+  <div
+    class='demo-step-buttons'
+    role='group'
+    aria-label='Evidence pipeline'
+  >
+    <button data-retrieval='0' type='button' aria-pressed='true'>
+      1. Retrieve</button
+    ><button data-retrieval='1' type='button' aria-pressed='false'>
+      2. Cross-check</button
+    ><button data-retrieval='2' type='button' aria-pressed='false'>
+      3. Answer
+    </button>
+  </div>
+  <div class='demo-output' data-retrieval-output role='status' aria-live='polite'>
+    <p>
+      Retrieve the Saturday sentence from the premise. The weekday sentence is a plausible
+        distraction.
+    </p>
+  </div>
+  <p class='demo-note'>
+    Scripted teaching example. No live models or benchmark predictions are generated.
+  </p>
+</section>
+
+          <p class='demo-print-summary'>
+            This scripted example compares retained-evidence answering with empty-set fallback.
+              Both paths use the same answerer and preserve the original passage.
+          </p>
+        </div>
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/'>← Back to project</a>
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/llm-teaming/'>Small-LLM Teaming</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/llm-teaming/present/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/present/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

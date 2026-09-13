@@ -1,0 +1,551 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Pipeline Design
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='I pooled evidence from three heterogeneous retrievers for one answerer, comparing majority cross-checks with single-judge verification and direct-answer fallback when evidence was empty.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'>
+    <meta property='og:title' content='Pipeline Design'>
+    <meta property='og:description' content='I pooled evidence from three heterogeneous retrievers for one answerer, comparing majority cross-checks with single-judge verification and direct-answer fallback when evidence was empty.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#research' data-return-to-list>Research</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-pipeline-design'>Small-LLM Teaming</a
+    ><span aria-hidden='true'>/</span
+    ><span>Pipeline Design</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>Small-LLM Teaming / Project work</p>
+      <h1>
+        Pipeline Design
+      </h1>
+      <p>
+        I pooled evidence from three heterogeneous retrievers for one answerer, comparing majority cross-checks with single-judge verification and direct-answer fallback when evidence was empty.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'
+              
+              ><span>01</span>Benchmark Design</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'
+              
+              ><span>02</span>Failure Diagnosis</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'
+              
+                aria-current='page'
+              
+              ><span>03</span>Pipeline Design</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/validation-audit/'
+              
+              ><span>04</span>Validation & Audit</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-pipeline-design'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='pipeline-design--1'
+  data-scene
+  data-chapter='Pipeline Design'
+  aria-labelledby='title-pipeline-design-1'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Pipeline Design</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Evidence architecture</p>
+    <h2 id='title-pipeline-design-1'>Pool evidence, verify it, then choose one answer path</h2>
+    <p>From short-context answer aggregation to ConTRoL evidence selection: the main verification comparison uses longer passages and fixes Qwen3-8B as answerer.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Pool evidence, verify it, then choose one answer path'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 4'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='input'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Original input</strong>
+          <p>Question and supplied passage.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='retrievers'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Three heterogeneous retrievers</strong>
+          <p>Independently copy relevant sentences.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='union'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Evidence union</strong>
+          <p>Pool retrieved candidate sets.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='verification'
+          style='grid-column: 4; grid-row: 1'
+        >
+          <strong>Verify candidates</strong>
+          <p>F1: majority; F2: answerer.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='evidence-answer'
+          style='grid-column: 4; grid-row: 2'
+        >
+          <strong>Evidence retained</strong>
+          <p>One answerer uses original input and retained evidence.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='direct-answer'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>No evidence retained</strong>
+          <p>Same answerer; original input only.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='input'
+            data-edge-to='retrievers'
+            data-edge-label=''
+          >
+            Original input → Three heterogeneous retrievers
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='retrievers'
+            data-edge-to='union'
+            data-edge-label=''
+          >
+            Three heterogeneous retrievers → Evidence union
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='union'
+            data-edge-to='verification'
+            data-edge-label=''
+          >
+            Evidence union → Verify candidates
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='verification'
+            data-edge-to='evidence-answer'
+            data-edge-label='Evidence retained'
+          >
+            Verify candidates → Evidence retained: Evidence retained
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='verification'
+            data-edge-to='direct-answer'
+            data-edge-label='None retained'
+          >
+            Verify candidates → No evidence retained: None retained
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Only one branch runs; both use the same answerer.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='pipeline-design--2'
+  data-scene
+  data-chapter='Pipeline Design'
+  aria-labelledby='title-pipeline-design-2'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Pipeline Design</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Verification methods</p>
+    <h2 id='title-pipeline-design-2'>Compare who verifies the same candidate evidence</h2>
+    <p>F1 and F2 hold retrieval, prompts, and the answerer constant.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Compare who verifies the same candidate evidence'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Method</th>
+            
+              <th scope='col'>Evidence gate</th>
+            
+              <th scope='col'>Answering input</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>RnA1</th>
+                
+                  <td>No verification</td>
+                
+                  <td>Union + original input</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>F1 cross-check</th>
+                
+                  <td>At least 2 of 3 accept</td>
+                
+                  <td>Retained evidence + input</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>F2 single judge</th>
+                
+                  <td>Answerer verifies alone</td>
+                
+                  <td>Retained evidence + input</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Empty evidence triggers direct fallback. The +6.2-point result is F1 versus single-model RQA, not RnA1.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Pooling and verification are separate methods with separate result comparisons.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+          <div class='chapter-appendix has-demo' data-chapter-id='pipeline-design'>
+            <section class='demo' data-demo='retrieval'>
+  <p class='eyebrow'>Explore the idea</p>
+  <h3>
+    Follow the evidence, one step at a time.
+  </h3>
+  <p class='demo-note'>Illustrative data · not actual business or research results</p>
+  <p>
+    “The library closes at six on weekdays. On Saturday, it closes at four. It is closed on
+      Sunday.”<br>
+      <strong>Question: Can you enter at five on Saturday?</strong>
+  </p>
+  <label class='demo-path'>
+    <span>Scripted path</span>
+    <select data-retrieval-path disabled>
+      <option value='retained'>
+        Evidence retained
+      </option>
+      <option value='empty'>
+        No evidence retained
+      </option>
+    </select>
+  </label>
+  <div
+    class='demo-step-buttons'
+    role='group'
+    aria-label='Evidence pipeline'
+  >
+    <button data-retrieval='0' type='button' aria-pressed='true'>
+      1. Retrieve</button
+    ><button data-retrieval='1' type='button' aria-pressed='false'>
+      2. Cross-check</button
+    ><button data-retrieval='2' type='button' aria-pressed='false'>
+      3. Answer
+    </button>
+  </div>
+  <div class='demo-output' data-retrieval-output role='status' aria-live='polite'>
+    <p>
+      Retrieve the Saturday sentence from the premise. The weekday sentence is a plausible
+        distraction.
+    </p>
+  </div>
+  <p class='demo-note'>
+    Scripted teaching example. No live models or benchmark predictions are generated.
+  </p>
+</section>
+
+              <p class='demo-print-summary'>
+                Scripted example: retrieve “Saturday closing time is four”, cross-check that
+                  evidence against the premise, and answer that entry at five is too late. This
+                  illustrates the pipeline, not benchmark performance. With no retained evidence,
+                  the same answerer uses the original input, which still contains the closing time.
+              </p>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-pipeline-design'>← Back to project</a><a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/validation-audit/'>Next contribution: Validation & Audit →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-pipeline-design'>Small-LLM Teaming</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/en/projects/llm-teaming/validation-audit/?present=1#validation-audit--1'
+      aria-label='Next contribution: Validation &amp; Audit'
+      title='Validation &amp; Audit'
+      hidden
+    >
+      <span>Next contribution →</span
+      >
+      <strong>Validation & Audit</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

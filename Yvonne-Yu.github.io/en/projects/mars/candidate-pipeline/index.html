@@ -1,0 +1,491 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Feature &amp; Candidate Pipeline
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='Built incremental resource-by-day ETL and 7/30/90-day features; combined three detection paths into a daily candidate pool.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'>
+    <meta property='og:title' content='Feature &amp; Candidate Pipeline'>
+    <meta property='og:description' content='Built incremental resource-by-day ETL and 7/30/90-day features; combined three detection paths into a daily candidate pool.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#industry' data-return-to-list>Industry</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/mars/#work-candidate-pipeline'>Cloud resource ranking</a
+    ><span aria-hidden='true'>/</span
+    ><span>Feature & Candidate Pipeline</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>Cloud resource ranking / Project work</p>
+      <h1>
+        Feature & Candidate Pipeline
+      </h1>
+      <p>
+        Built incremental resource-by-day ETL and 7/30/90-day features; combined three detection paths into a daily candidate pool.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'
+              
+                aria-current='page'
+              
+              ><span>01</span>Feature & Candidate Pipeline</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'
+              
+              ><span>02</span>Supervised Ranking & Evaluation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'
+              
+              ><span>03</span>Production & Monitoring</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/calibration-governance/'
+              
+              ><span>04</span>Calibration & Governance</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/feedback-closure/'
+              
+              ><span>05</span>Feedback & Cost Closure</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/mars/#work-candidate-pipeline'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='candidate-pipeline--1'
+  data-scene
+  data-chapter='Feature &amp; Candidate Pipeline'
+  aria-labelledby='title-candidate-pipeline-1'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Feature & Candidate Pipeline</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Pipeline</p>
+    <h2 id='title-candidate-pipeline-1'>From Azure sources to daily candidates</h2>
+    <p>Joined telemetry, metadata, and billing at resource-by-day grain.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='From Azure sources to daily candidates'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='sources'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Azure sources</strong>
+          <p>Monitor, Resource Graph, Cost Management.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='etl'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Incremental ETL</strong>
+          <p>Dated joins; late-billing reconciliation.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='features'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>7/30/90-day features</strong>
+          <p>Past utilization, trends, missingness.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='detection'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Three detection paths</strong>
+          <p>Isolation Forest, Z-score, low-use rules.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='output'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Review dataset</strong>
+          <p>Candidate union with billing context.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='sources'
+            data-edge-to='etl'
+            data-edge-label=''
+          >
+            Azure sources → Incremental ETL
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='etl'
+            data-edge-to='features'
+            data-edge-label=''
+          >
+            Incremental ETL → 7/30/90-day features
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='features'
+            data-edge-to='detection'
+            data-edge-label=''
+          >
+            7/30/90-day features → Three detection paths
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='detection'
+            data-edge-to='output'
+            data-edge-label=''
+          >
+            Three detection paths → Review dataset
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='etl'
+            data-edge-to='output'
+            data-edge-label=''
+          >
+            Incremental ETL → Review dataset
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Cost accompanies review priority; usage features determine candidate detection.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='candidate-pipeline--2'
+  data-scene
+  data-chapter='Feature &amp; Candidate Pipeline'
+  aria-labelledby='title-candidate-pipeline-2'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Feature & Candidate Pipeline</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Detection methods</p>
+    <h2 id='title-candidate-pipeline-2'>Complementary detectors cover different idle patterns</h2>
+    <p>Combined candidate flags before supervised ranking.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Complementary detectors cover different idle patterns'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Path</th>
+            
+              <th scope='col'>Pattern</th>
+            
+              <th scope='col'>Output</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Isolation Forest</th>
+                
+                  <td>Unusual multivariate usage</td>
+                
+                  <td>Anomaly candidate</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Robust Z-score</th>
+                
+                  <td>Single-metric extremes</td>
+                
+                  <td>Interpretable flag</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Low-utilization rules</th>
+                
+                  <td>Persistent quiet usage</td>
+                
+                  <td>Rule-based candidate</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Union supports candidate coverage; it does not confirm releasability.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Preserve missingness; absent telemetry is not zero utilization.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/mars/#work-candidate-pipeline'>← Back to project</a><a href='/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'>Next contribution: Supervised Ranking & Evaluation →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/mars/#work-candidate-pipeline'>Cloud resource ranking</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/?present=1#supervised-ranking--1'
+      aria-label='Next contribution: Supervised Ranking &amp; Evaluation'
+      title='Supervised Ranking &amp; Evaluation'
+      hidden
+    >
+      <span>Next contribution →</span
+      >
+      <strong>Supervised Ranking & Evaluation</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

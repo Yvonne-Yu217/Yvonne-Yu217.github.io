@@ -1,0 +1,409 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      研究设计与数据构建
+       | 余奕
+    </title>
+    <meta name='description' content='为检验图像在文本之外的预测信息，构建24.5万篇文章、57.2万张图片的 MongoDB 语料库，并与五个指数对齐，覆盖2,982个交易日。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/research-design/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/seeing-sentiment/research-design/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/research-design/'>
+    <meta property='og:title' content='研究设计与数据构建'>
+    <meta property='og:description' content='为检验图像在文本之外的预测信息，构建24.5万篇文章、57.2万张图片的 MongoDB 语料库，并与五个指数对齐，覆盖2,982个交易日。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/research-design/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/research-design/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/research-design/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#research' data-return-to-list>科研经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-research-design'>新闻图像情绪研究</a
+    ><span aria-hidden='true'>/</span
+    ><span>研究设计与数据构建</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>新闻图像情绪研究 / 工作概览</p>
+      <h1>
+        研究设计与数据构建
+      </h1>
+      <p>
+        为检验图像在文本之外的预测信息，构建24.5万篇文章、57.2万张图片的 MongoDB 语料库，并与五个指数对齐，覆盖2,982个交易日。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/research-design/'
+              
+                aria-current='page'
+              
+              ><span>01</span>研究设计与数据构建</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/'
+              
+              ><span>02</span>图文情绪测量</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/'
+              
+              ><span>03</span>计量分析</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/'
+              
+              ><span>04</span>稳健性检验与解释</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/out-of-sample-validation/'
+              
+              ><span>05</span>样本外验证</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-research-design'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='research-design--1'
+  data-scene
+  data-chapter='研究设计与数据构建'
+  aria-labelledby='title-research-design-1'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 研究设计与数据构建</span>
+    <span>1 / 1</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>数据构建</p>
+    <h2 id='title-research-design-1'>将新闻与市场数据组织成统一日频面板</h2>
+    <p>将关联的新闻记录与市场观测对齐，支持图文比较和跨指数分析。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='将新闻与市场数据组织成统一日频面板'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 4'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='source'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>新浪财经</strong>
+          <p>新闻文章及其配图。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='corpus'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>MongoDB 语料库</strong>
+          <p>24.5万篇文章；57.2万张图片。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='calendar'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>按交易日对齐</strong>
+          <p>2014—2026年；2,982个交易日。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='indices'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>五个A股指数</strong>
+          <p>收益与市场状态变量。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='panel'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>匹配后的日频面板</strong>
+          <p>连接新闻指标与市场观测。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='comparisons'
+          style='grid-column: 4; grid-row: 2'
+        >
+          <strong>研究比较</strong>
+          <p>图文模态、波动率与散户参与。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='source'
+            data-edge-to='corpus'
+            data-edge-label=''
+          >
+            新浪财经 → MongoDB 语料库
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='corpus'
+            data-edge-to='calendar'
+            data-edge-label=''
+          >
+            MongoDB 语料库 → 按交易日对齐
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='calendar'
+            data-edge-to='panel'
+            data-edge-label=''
+          >
+            按交易日对齐 → 匹配后的日频面板
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='indices'
+            data-edge-to='panel'
+            data-edge-label=''
+          >
+            五个A股指数 → 匹配后的日频面板
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='panel'
+            data-edge-to='comparisons'
+            data-edge-label=''
+          >
+            匹配后的日频面板 → 研究比较
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>文档规模支持情绪测量，市场分析的观测单位是交易日。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-research-design'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/'>下一项贡献: 图文情绪测量 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-research-design'>新闻图像情绪研究</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/research-design/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/research-design/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/?present=1#sentiment-measurement--1'
+      aria-label='下一项贡献: 图文情绪测量'
+      title='图文情绪测量'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>图文情绪测量</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

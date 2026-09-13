@@ -1,0 +1,1163 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Seeing Sentiment: News Images, Retail Participation, and Chinese A-Share Index Returns
+       | 余奕
+    </title>
+    <meta name='description' content='研究新闻图像情绪是否包含文本之外的预测信息，结果主要集中于散户参与较高、波动较大的市场。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/present/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/seeing-sentiment/present/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/present/'>
+    <meta property='og:title' content='Seeing Sentiment: News Images, Retail Participation, and Chinese A-Share Index Returns'>
+    <meta property='og:description' content='研究新闻图像情绪是否包含文本之外的预测信息，结果主要集中于散户参与较高、波动较大的市场。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/present/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='deck' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/present/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/present/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page paper-deck'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#research'>科研经历</a
+    ><span aria-hidden='true'>/</span>
+    <a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/'>新闻图像情绪研究</a>
+  </nav>
+  <header class='contribution-header paper-header'>
+    <div><h1>Seeing Sentiment: News Images, Retail Participation, and Chinese A-Share Index Returns</h1>
+<p class='paper-authors'>
+  Xiaobin Liu, Kaixin Wang, Yi Yu, Tao Zeng
+  
+    <span class='paper-author-order'>(作者按姓氏字母顺序排列)</span>
+  
+  
+    <span class='paper-author-note'>Yi Yu 是我的法定姓名。</span>
+  
+</p>
+<p class='project-byline'>
+  共同作者 · 工作论文
+  <span>2024年11月 — 至今</span>
+</p>
+</div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          <a href='#seeing-sentiment--1'
+            ><span>1</span>研究问题</a>
+        
+          <a href='#seeing-sentiment--2'
+            ><span>2</span>情绪测量</a>
+        
+          <a href='#seeing-sentiment--3'
+            ><span>3</span>测量验证</a>
+        
+          <a href='#seeing-sentiment--4'
+            ><span>4</span>实证设计</a>
+        
+          <a href='#seeing-sentiment--5'
+            ><span>5</span>主要结果</a>
+        
+          <a href='#seeing-sentiment--6'
+            ><span>6</span>样本外检验</a>
+        
+          <a href='#seeing-sentiment--7'
+            ><span>7</span>稳健性与稳定性</a>
+        
+          <a href='#seeing-sentiment--8'
+            ><span>8</span>研究结论</a>
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/'>← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--1'
+  data-scene
+  data-chapter='论文展示'
+  aria-labelledby='title-seeing-sentiment-1'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 论文展示</span>
+    <span>1 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>研究问题</p>
+    <h2 id='title-seeing-sentiment-1'>新闻图片能否提供文本之外的预测信息？</h2>
+    <p>从同一新闻语料构建图像与文本情绪指标，再检验它们与收益的关联集中于哪些市场和波动状态。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='新闻图片能否提供文本之外的预测信息？'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 4'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='news'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>新浪财经语料</strong>
+          <p>2014—2026年：24.5万篇文章、57.2万张图片。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='images'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>图像悲观情绪</strong>
+          <p>ViT-B/16 → 日频 PhotoPes。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='text'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>文本悲观情绪</strong>
+          <p>中文 RoBERTa → 日频 TextPes。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='test'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>增量预测信息</strong>
+          <p>联合回归与样本外检验。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='returns'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>市场面板</strong>
+          <p>五个A股指数；2,982个交易日。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='conditions'
+          style='grid-column: 4; grid-row: 1'
+        >
+          <strong>何时、何处更强？</strong>
+          <p>波动状态与散户参与程度。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='news'
+            data-edge-to='images'
+            data-edge-label=''
+          >
+            新浪财经语料 → 图像悲观情绪
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='news'
+            data-edge-to='text'
+            data-edge-label=''
+          >
+            新浪财经语料 → 文本悲观情绪
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='images'
+            data-edge-to='test'
+            data-edge-label=''
+          >
+            图像悲观情绪 → 增量预测信息
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='text'
+            data-edge-to='test'
+            data-edge-label=''
+          >
+            文本悲观情绪 → 增量预测信息
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='returns'
+            data-edge-to='test'
+            data-edge-label=''
+          >
+            市场面板 → 增量预测信息
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='test'
+            data-edge-to='conditions'
+            data-edge-label=''
+          >
+            增量预测信息 → 何时、何处更强？
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>核心比较是图像相对文本的增量信息，以及这种关系在波动状态和指数之间的差异。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--2'
+  data-scene
+  data-chapter='论文展示'
+  aria-labelledby='title-seeing-sentiment-2'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 论文展示</span>
+    <span>2 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>情绪测量</p>
+    <h2 id='title-seeing-sentiment-2'>并行测量图文情绪，分别定义日频指标</h2>
+    <p>微调图像分类器，并应用公开中文文本分类器测量悲观情绪；两种日频指标分别以图片数和文章数为分母。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='并行测量图文情绪，分别定义日频指标'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='photos'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>新闻图片</strong>
+          <p>57.2万张图片，按交易日归组。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='vit'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>ViT-B/16</strong>
+          <p>在人工标注的 PCNN Twitter 图像集上微调。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='photopes'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>PhotoPes</strong>
+          <p>每日悲观概率>0.5的图片占比。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='articles'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>新闻文章</strong>
+          <p>24.5万篇文章，按交易日归组。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='roberta'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>中文 RoBERTa</strong>
+          <p>公开的 Erlangshen-110M 情绪模型。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='textpes'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>TextPes</strong>
+          <p>文章悲观评分的日均值。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='photos'
+            data-edge-to='vit'
+            data-edge-label=''
+          >
+            新闻图片 → ViT-B/16
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='vit'
+            data-edge-to='photopes'
+            data-edge-label=''
+          >
+            ViT-B/16 → PhotoPes
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='articles'
+            data-edge-to='roberta'
+            data-edge-label=''
+          >
+            新闻文章 → 中文 RoBERTa
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='roberta'
+            data-edge-to='textpes'
+            data-edge-label=''
+          >
+            中文 RoBERTa → TextPes
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>PhotoPes 是被判为悲观的图片占比，TextPes 是文章评分均值；两者均为情绪代理指标。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--3'
+  data-scene
+  data-chapter='论文展示'
+  aria-labelledby='title-seeing-sentiment-3'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 论文展示</span>
+    <span>3 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>测量验证</p>
+    <h2 id='title-seeing-sentiment-3'>检验从 Twitter 图片到财经新闻的迁移</h2>
+    <p>分别考察源领域分类表现，以及未见财经新闻图片上与语言模型标签的一致性。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='检验从 Twitter 图片到财经新闻的迁移'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>评估样本</th>
+            
+              <th scope='col'>结果</th>
+            
+              <th scope='col'>参照标签</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>PCNN：177张留出图像</th>
+                
+                  <td>准确率88.14%</td>
+                
+                  <td>人工标签</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>财经新闻：1,229张图像</th>
+                
+                  <td>AUC 0.54</td>
+                
+                  <td>语言模型集成标签</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>高共识子集：309张图像</th>
+                
+                  <td>AUC 0.71</td>
+                
+                  <td>经共识筛选的模型标签</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>AUC 以0.5为随机排序参照，越高表示越能区分参照标签中的两类图像；它与准确率不同。见稿件§4.2。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>完整新闻样本的一致性较弱；高共识子集排除了约75%的图像。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--4'
+  data-scene
+  data-chapter='论文展示'
+  aria-labelledby='title-seeing-sentiment-4'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 论文展示</span>
+    <span>4 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>实证设计</p>
+    <h2 id='title-seeing-sentiment-4'>区分图像信息、文本情绪与市场条件</h2>
+    <p>联合回归检验增量预测信息，文本正交化进一步检查图像信号是否只是重复文本信号。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='区分图像信息、文本情绪与市场条件'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='panel'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>日频情绪面板</strong>
+          <p>标准化 PhotoPes、TextPes 及其滞后项。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='joint'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>联合预测回归</strong>
+          <p>日对数收益、收益控制项与波动状态子样本。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='nw'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Newey–West 推断</strong>
+          <p>处理序列相关与异方差。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='orthogonal'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>以文本解释图像信号</strong>
+          <p>用 TextPes 及滞后项解释 PhotoPes。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='residual'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>检验残余信息</strong>
+          <p>剩余方差84%；滞后三期 |t|=2.42。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='panel'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            日频情绪面板 → 联合预测回归
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='joint'
+            data-edge-to='nw'
+            data-edge-label=''
+          >
+            联合预测回归 → Newey–West 推断
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='panel'
+            data-edge-to='orthogonal'
+            data-edge-label=''
+          >
+            日频情绪面板 → 以文本解释图像信号
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='orthogonal'
+            data-edge-to='residual'
+            data-edge-label=''
+          >
+            以文本解释图像信号 → 检验残余信息
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>残差方差取决于具体回归设定；残差信号检验针对高波动期创业板样本。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--5'
+  data-scene
+  data-chapter='论文展示'
+  aria-labelledby='title-seeing-sentiment-5'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 论文展示</span>
+    <span>5 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>主要结果</p>
+    <h2 id='title-seeing-sentiment-5'>图像与收益的关联集中于高波动期创业板</h2>
+    <p>在五个指数间，对照系数排序与换手率、流通市值倒数和散户账户占比。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure bars-figure' aria-label='图像与收益的关联集中于高波动期创业板'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>0.004
+          |β|</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>创业板综指</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 82.5%'
+            ></span>
+          </div>
+          <strong>0.0033</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>中证500</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 55.0%'
+            ></span>
+          </div>
+          <strong>0.0022</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>深证综指</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 52.5%'
+            ></span>
+          </div>
+          <strong>0.0021</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>沪深300</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 40.0%'
+            ></span>
+          </div>
+          <strong>0.0016</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>上证综指</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 35.0%'
+            ></span>
+          </div>
+          <strong>0.0014</strong>
+        </div>
+      
+    </div>
+    <figcaption>高波动：上证综指20日滚动波动率最高四分位，年化>19.6%。图示标准化 PhotoPes 三阶滞后系数的绝对值，因变量为小数单位的日对数收益；系数均为负。见表4A。</figcaption>
+  </figure>
+
+
+  <p class='takeaway'>各散户代理指标的秩相关均为0.80，五个指数呈现与散户参与程度相符的描述性排序。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--6'
+  data-scene
+  data-chapter='论文展示'
+  aria-labelledby='title-seeing-sentiment-6'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 论文展示</span>
+    <span>6 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>样本外检验</p>
+    <h2 id='title-seeing-sentiment-6'>预测改善幅度较小，且集中于特定指数</h2>
+    <p>以既定情绪序列为输入，从1,512日训练窗逐日扩展 OLS，使用 PhotoPes 滞后三至五期；标准化与历史均值基线仅用此前观测。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='预测改善幅度较小，且集中于特定指数'
+    >
+      <table
+        class='brief-table pin-first-column'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>指数</th>
+            
+              <th scope='col'>样本外 R²</th>
+            
+              <th scope='col'>Clark–West t值</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>沪深300</th>
+                
+                  <td>−0.020%</td>
+                
+                  <td>1.184</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>上证综指</th>
+                
+                  <td>0.009%</td>
+                
+                  <td>1.320</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>深证综指</th>
+                
+                  <td>0.024%</td>
+                
+                  <td>1.491</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>创业板综指</th>
+                
+                  <td>0.293%</td>
+                
+                  <td>2.172</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>中证500</th>
+                
+                  <td>−0.002%</td>
+                
+                  <td>1.467</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>2020—2026年，每指数1,467次预测；创业板单侧 p=0.015，未通过五指数5%水平 Bonferroni 校正。见表10。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>0.293%衡量相对历史均值预测的平方误差改善，不是交易收益率。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--7'
+  data-scene
+  data-chapter='论文展示'
+  aria-labelledby='title-seeing-sentiment-7'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 论文展示</span>
+    <span>7 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>稳健性与稳定性</p>
+    <h2 id='title-seeing-sentiment-7'>控制检验支持关联，预测稳定性仍有限</h2>
+    <p>检验替代解释、划分预测时段并更换估计方法；交易规则作为独立的说明性检验。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='控制检验支持关联，预测稳定性仍有限'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>检验</th>
+            
+              <th scope='col'>证据</th>
+            
+              <th scope='col'>解读</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>创业板控制检验</th>
+                
+                  <td>流动性、新闻量与收益控制；数量安慰剂 p=0.57</td>
+                
+                  <td>关联仍在；图片数量不能替代情绪</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>中间样本外时段</th>
+                
+                  <td>创业板 R²：−1.472%</td>
+                
+                  <td>出现时段反转</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>预先锁定参数的 Ridge</th>
+                
+                  <td>创业板 R²：0.015%</td>
+                
+                  <td>改善幅度依赖模型设定</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>独立样本内交易规则</th>
+                
+                  <td>夏普差95%区间：[−0.75，+0.97]</td>
+                
+                  <td>夏普改善不显著</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>中间时段：2022年3月至2024年4月（表11）；交易规则区间采用平稳区块自助法，块长为5（§3.5）。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>回归中的预测关系，尚不足以证明稳定的预测能力或显著的交易优势。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+        
+
+<section
+  class='story-scene brief-scene'
+  id='seeing-sentiment--8'
+  data-scene
+  data-chapter='论文展示'
+  aria-labelledby='title-seeing-sentiment-8'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 论文展示</span>
+    <span>8 / 8</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>研究结论</p>
+    <h2 id='title-seeing-sentiment-8'>多模态情绪预测存在状态与市场边界</h2>
+    <p>主要发现是预测关系集中于高波动、散户参与较高的市场；合并推断提供提示性证据，整体强度仍有限。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='多模态情绪预测存在状态与市场边界'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>问题</th>
+            
+              <th scope='col'>证据</th>
+            
+              <th scope='col'>结论</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>是否超出文本信息？</th>
+                
+                  <td>残余方差84%；高波动创业板 |t|=2.42</td>
+                
+                  <td>在指定调整下存在增量信号</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>能否推广到不同市场与状态？</th>
+                
+                  <td>合并 p=0.066（全期）；p=0.063（高波动）</td>
+                
+                  <td>整体推断仅达到10%水平，未达5%</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>样本外是否有用？</th>
+                
+                  <td>创业板 R²=0.293%；存在时段反转及多重校正限制</td>
+                
+                  <td>幅度较小、结论受限的预测改善</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>合并推断按日期聚类（§3.6.3）；散户对应关系仅涉及五个指数，独立交易规则未显示显著夏普优势。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>论文的贡献在于定位多模态情绪何时、何处包含收益预测信息，并界定这一证据的推广范围。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+      
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/'>← 返回项目</a>
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/'>新闻图像情绪研究</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/present/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/present/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

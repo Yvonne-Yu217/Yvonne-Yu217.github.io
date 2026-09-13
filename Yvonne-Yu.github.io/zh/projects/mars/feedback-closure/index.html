@@ -1,0 +1,439 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      反馈与成本核验
+       | 余奕
+    </title>
+    <meta name='description' content='将 ServiceNow 审核结果回流训练，核验已执行的资源变更，并整合排查证据；单次排查由 52 分钟降至 31 分钟。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/feedback-closure/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/'>
+    <meta property='og:title' content='反馈与成本核验'>
+    <meta property='og:description' content='将 ServiceNow 审核结果回流训练，核验已执行的资源变更，并整合排查证据；单次排查由 52 分钟降至 31 分钟。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/mars/feedback-closure/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#industry' data-return-to-list>实习经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/mars/#work-feedback-closure'>云资源排序</a
+    ><span aria-hidden='true'>/</span
+    ><span>反馈与成本核验</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>云资源排序 / 工作概览</p>
+      <h1>
+        反馈与成本核验
+      </h1>
+      <p>
+        将 ServiceNow 审核结果回流训练，核验已执行的资源变更，并整合排查证据；单次排查由 52 分钟降至 31 分钟。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'
+              
+              ><span>01</span>特征与候选流水线</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'
+              
+              ><span>02</span>监督排序与评估</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'
+              
+              ><span>03</span>生产部署与监控</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/calibration-governance/'
+              
+              ><span>04</span>概率校准与发布治理</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/'
+              
+                aria-current='page'
+              
+              ><span>05</span>反馈与成本核验</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/mars/#work-feedback-closure'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='feedback-closure--1'
+  data-scene
+  data-chapter='反馈与成本核验'
+  aria-labelledby='title-feedback-closure-1'
+>
+  <div class='scene-meta'>
+    <span>云资源排序 · 反馈与成本核验</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>结果反馈</p>
+    <h2 id='title-feedback-closure-1'>审核结果回流标签，执行动作单独核验</h2>
+    <p>按业务含义结构化 ServiceNow 处理结果。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='审核结果回流标签，执行动作单独核验'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='outcomes'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>ServiceNow 处理结果</strong>
+          <p>审核、申诉和执行状态。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='labels'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>已确认标签</strong>
+          <p>闲置、合理使用、申诉通过。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='retrain'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>模型重训</strong>
+          <p>更新成熟标签训练数据。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='actions'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>已执行变更</strong>
+          <p>已释放或降配的资源。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='verify'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>账单核验</strong>
+          <p>稳定前后窗口；排除价格变化。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='outcomes'
+            data-edge-to='labels'
+            data-edge-label=''
+          >
+            ServiceNow 处理结果 → 已确认标签
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='labels'
+            data-edge-to='retrain'
+            data-edge-label=''
+          >
+            已确认标签 → 模型重训
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='outcomes'
+            data-edge-to='actions'
+            data-edge-label=''
+          >
+            ServiceNow 处理结果 → 已执行变更
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='actions'
+            data-edge-to='verify'
+            data-edge-label=''
+          >
+            已执行变更 → 账单核验
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>未响应仍属未确定状态，不直接作为训练标签。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='feedback-closure--2'
+  data-scene
+  data-chapter='反馈与成本核验'
+  aria-labelledby='title-feedback-closure-2'
+>
+  <div class='scene-meta'>
+    <span>云资源排序 · 反馈与成本核验</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>流程结果</p>
+    <h2 id='title-feedback-closure-2'>单次排查由 52 分钟降至 31 分钟</h2>
+    <p>预填利用率证据与建议动作，减少重复排查。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure bars-figure' aria-label='单次排查由 52 分钟降至 31 分钟'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>60
+          分钟</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>改进前</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 86.66666666666667%'
+            ></span>
+          </div>
+          <strong>52 分钟</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>改进后</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 51.666666666666664%'
+            ></span>
+          </div>
+          <strong>31 分钟</strong>
+        </div>
+      
+    </div>
+    <figcaption>报告的单次排查时长：52→31 分钟，约减少 40%。</figcaption>
+  </figure>
+
+
+  <p class='takeaway'>比较对象是排查流程耗时，不是模型运行时间。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/mars/#work-feedback-closure'>← 返回项目</a>
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/mars/#work-feedback-closure'>云资源排序</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/mars/feedback-closure/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

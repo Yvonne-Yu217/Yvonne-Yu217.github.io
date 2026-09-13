@@ -1,0 +1,278 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      玛氏 · 闲置云资源识别与排序
+       | 余奕
+    </title>
+    <meta name='description' content='构建两阶段云资源排序流程，接入 Azure ML 评分与运维反馈。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/'>
+    <meta property='og:title' content='玛氏 · 闲置云资源识别与排序'>
+    <meta property='og:description' content='构建两阶段云资源排序流程，接入 Azure ML 评分与运维反馈。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='project' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/mars/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/mars/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container academic-layout'>
+  <aside class='author-sidebar' aria-label='个人信息与联系方式'>
+  <div class='author-identity'>
+    <div class='author-avatar'>
+      <img
+        src='/Yvonne-Yu.github.io/assets/images/yvonne-yu.jpg'
+        alt='余奕'
+        width='2316'
+        height='3088'
+        decoding='async'
+      >
+    </div>
+    <div class='author-details'>
+      <a class='author-name' href='/Yvonne-Yu.github.io/zh/'>余奕</a>
+      <p class='author-degree'>数据科学硕士在读</p>
+      <p class='author-affiliation'>纽约大学</p>
+    </div>
+  </div>
+  <div class='profile-contact' id='contact'>
+    <span class='profile-email'>
+      <svg viewBox='0 0 24 24' aria-hidden='true'>
+        <rect x='3' y='5' width='18' height='14' rx='1'/><path d='m3 6 9 7 9-7'/>
+      </svg>
+      <span>yy5919 at nyu dot edu</span>
+    </span>
+    <a href='https://www.linkedin.com/in/yvonne-yu-76364531b/' rel='noopener noreferrer'>
+      <svg viewBox='0 0 24 24' aria-hidden='true'>
+        <rect x='3' y='3' width='18' height='18' rx='2'/><path d='M7 10v7M7 7v.1M11 17v-7m0 3a3 3 0 0 1 6 0v4'/>
+      </svg>
+      <span>LinkedIn</span>
+    </a>
+    <a href='https://github.com/Yvonne-Yu217' rel='noopener noreferrer'>
+      <svg viewBox='0 0 24 24' aria-hidden='true'>
+        <path d='m8 5-5 7 5 7m8-14 5 7-5 7m-3-16-2 18'/>
+      </svg>
+      <span>GitHub</span>
+    </a>
+  </div>
+  <div class='profile-resumes'>
+    <a href='/Yvonne-Yu.github.io/assets/documents/yvonne-yu-research.pdf'>科研简历
+      <span>PDF</span></a
+    >
+    
+    
+    <a href='/Yvonne-Yu.github.io/assets/documents/yvonne-yu-industry-zh.pdf'>行业简历
+      <span>PDF</span></a
+    >
+    <small>科研简历：英文 · 行业简历：中文</small>
+  </div>
+</aside>
+
+  <article class='academic-main project-overview compact-project'>
+    <nav class='breadcrumbs' aria-label='主导航'>
+      <a href='/Yvonne-Yu.github.io/zh/#industry' data-return-to-list>实习经历</a>
+      <span aria-hidden='true'>/</span><span>云资源排序</span>
+    </nav>
+    <header class='compact-project-header'>
+      <h1>
+        玛氏 · 闲置云资源识别与排序
+      </h1>
+      <p class='project-byline'>
+        数据科学实习生
+        <span>2025 年 5–8 月</span>
+      </p>
+      
+      <p class='project-question'>构建两阶段云资源排序流程，接入 Azure ML 评分与运维反馈。</p>
+      
+    </header>
+    <section class='project-work' aria-labelledby='project-work-title'>
+      <h2 id='project-work-title'>工作概览</h2>
+      <ol class='work-list'>
+        
+          
+          <li id='work-candidate-pipeline' data-unit='candidate-pipeline'>
+            <span class='work-number' aria-hidden='true'>01</span>
+            <div>
+              <h3>
+                <a href='/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/'>特征与候选流水线</a>
+              </h3>
+              <p>按资源与日期建设增量 ETL 和 7／30／90 日特征，以三路检测并集生成每日候选池。</p>
+              <a class='work-present' href='/Yvonne-Yu.github.io/zh/projects/mars/candidate-pipeline/?present=1'>
+                演示 · 2
+                页
+                <span aria-hidden='true'>→</span>
+              </a>
+            </div>
+          </li>
+        
+          
+          <li id='work-supervised-ranking' data-unit='supervised-ranking'>
+            <span class='work-number' aria-hidden='true'>02</span>
+            <div>
+              <h3>
+                <a href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'>监督排序与评估</a>
+              </h3>
+              <p>基于运维标签、时间切分和类别权重训练 XGBoost，人工回验 Precision@100 约 85%，并输出 SHAP 个案解释。</p>
+              <a class='work-present' href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/?present=1'>
+                演示 · 2
+                页
+                <span aria-hidden='true'>→</span>
+              </a>
+            </div>
+          </li>
+        
+          
+          <li id='work-production-monitoring' data-unit='production-monitoring'>
+            <span class='work-number' aria-hidden='true'>03</span>
+            <div>
+              <h3>
+                <a href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'>生产部署与监控</a>
+              </h3>
+              <p>在 Azure ML 部署周训练和日评分，监控数据、漂移、审核命中率与告警；资源类型变更先做旁路验证。</p>
+              <a class='work-present' href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/?present=1'>
+                演示 · 2
+                页
+                <span aria-hidden='true'>→</span>
+              </a>
+            </div>
+          </li>
+        
+          
+          <li id='work-calibration-governance' data-unit='calibration-governance'>
+            <span class='work-number' aria-hidden='true'>04</span>
+            <div>
+              <h3>
+                <a href='/Yvonne-Yu.github.io/zh/projects/mars/calibration-governance/'>概率校准与发布治理</a>
+              </h3>
+              <p>用保序回归校准闲置概率，按运维容量确定 Top-K；候选打标后保留 14 日申诉期，再进入工单处理。</p>
+              <a class='work-present' href='/Yvonne-Yu.github.io/zh/projects/mars/calibration-governance/?present=1'>
+                演示 · 1
+                页
+                <span aria-hidden='true'>→</span>
+              </a>
+            </div>
+          </li>
+        
+          
+          <li id='work-feedback-closure' data-unit='feedback-closure'>
+            <span class='work-number' aria-hidden='true'>05</span>
+            <div>
+              <h3>
+                <a href='/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/'>反馈与成本核验</a>
+              </h3>
+              <p>将 ServiceNow 审核结果回流训练，核验已执行的资源变更，并整合排查证据；单次排查由 52 分钟降至 31 分钟。</p>
+              <a class='work-present' href='/Yvonne-Yu.github.io/zh/projects/mars/feedback-closure/?present=1'>
+                演示 · 2
+                页
+                <span aria-hidden='true'>→</span>
+              </a>
+            </div>
+          </li>
+        
+      </ol>
+    </section>
+    
+      <p class='public-note'>业务敏感数值已省略，示例均有标注。</p>
+    
+  </article>
+</div>
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

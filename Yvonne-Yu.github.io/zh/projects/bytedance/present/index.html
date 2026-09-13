@@ -1,0 +1,1359 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      字节跳动 · 搜索分析与实验评估
+       | 余奕
+    </title>
+    <meta name='description' content='分析搜索需求与复搜行为，建设共用数据集与实验自动核验流程。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/present/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/present/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/present/'>
+    <meta property='og:title' content='字节跳动 · 搜索分析与实验评估'>
+    <meta property='og:description' content='分析搜索需求与复搜行为，建设共用数据集与实验自动核验流程。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/present/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='deck' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/bytedance/present/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/bytedance/present/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#industry' data-return-to-list>实习经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/bytedance/'>电商搜索</a
+    ><span aria-hidden='true'>/</span
+    ><span>演示项目</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>电商搜索 / 工作概览</p>
+      <h1>
+        搜索分析与实验评估
+      </h1>
+      <p>
+        分析搜索需求与复搜行为，建设共用数据集与实验自动核验流程。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <strong>商品与词库研究</strong>
+            <a href='#query-research--1'>对照需求、候选与搜索漏斗</a><a href='#query-research--2'>从具体缺口提出候选动作</a>
+          
+            <strong>A/B 实验评估</strong>
+            <a href='#ab-experiment--1'>在排序中加入复访价值预测</a><a href='#ab-experiment--2'>历史实验中两项指标相对提升</a>
+          
+            <strong>主动复搜因果分析</strong>
+            <a href='#repeat-search--1'>明确用户粒度与时间窗口</a><a href='#repeat-search--2'>先调整历史差异，再估计效应</a><a href='#repeat-search--3'>将信号转为待验证的策略</a>
+          
+            <strong>双粒度出词数据基建</strong>
+            <a href='#query-foundation--1'>共用口径与检查，服务两层分析</a>
+          
+            <strong>AI 实验核验自动化</strong>
+            <a href='#experiment-automation--1'>分开取数、核验与判断</a><a href='#experiment-automation--2'>案例测试发现放量历史缺失</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/bytedance/'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='query-research--1'
+  data-scene
+  data-chapter='商品与词库研究'
+  aria-labelledby='title-query-research-1'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · 商品与词库研究</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>方法</p>
+    <h2 id='title-query-research-1'>对照需求、候选与搜索漏斗</h2>
+    <p>购物路径示意：用户点击推荐搜索词，再从结果中选择商品；分析沿这条路径定位需求覆盖或转化缺口。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='对照需求、候选与搜索漏斗'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='demand'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>用户手搜词</strong>
+          <p>已发生的搜索需求。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='candidates'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>词到词／商品到词候选</strong>
+          <p>由搜索词或商品生成的候选词。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='coverage'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>词库覆盖比较</strong>
+          <p>按推荐位置与搜索词类型比较。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='funnel'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>曝光 → 点击 → 交易</strong>
+          <p>定位入口与结果页的缺口。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='lifecycle'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>商品生命周期</strong>
+          <p>检查新品是否被用户发现。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='priorities'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>优先优化方向</strong>
+          <p>扩充词库，筛选待推广新品。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='demand'
+            data-edge-to='coverage'
+            data-edge-label=''
+          >
+            用户手搜词 → 词库覆盖比较
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='candidates'
+            data-edge-to='coverage'
+            data-edge-label=''
+          >
+            词到词／商品到词候选 → 词库覆盖比较
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='coverage'
+            data-edge-to='funnel'
+            data-edge-label=''
+          >
+            词库覆盖比较 → 曝光 → 点击 → 交易
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='funnel'
+            data-edge-to='lifecycle'
+            data-edge-label=''
+          >
+            曝光 → 点击 → 交易 → 商品生命周期
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='lifecycle'
+            data-edge-to='priorities'
+            data-edge-label=''
+          >
+            商品生命周期 → 优先优化方向
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>推荐词覆盖不足与搜索结果表现偏弱，需要不同的优化动作。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='query-research--2'
+  data-scene
+  data-chapter='商品与词库研究'
+  aria-labelledby='title-query-research-2'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · 商品与词库研究</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>发现</p>
+    <h2 id='title-query-research-2'>从具体缺口提出候选动作</h2>
+    <p>分析区分了词库供给、结果覆盖与新品早期发现问题。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='从具体缺口提出候选动作'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>发现</th>
+            
+              <th scope='col'>解释</th>
+            
+              <th scope='col'>候选动作</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>店铺、品牌词覆盖不足</th>
+                
+                  <td>已有需求未充分进入词库</td>
+                
+                  <td>补充缺失词类</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>结果覆盖不均</th>
+                
+                  <td>部分意图缺少相应结果</td>
+                
+                  <td>补齐结果页供给</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>新品早期启动偏慢</th>
+                
+                  <td>优先关注家电与数码新品</td>
+                
+                  <td>圈选冷启动商品</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>此处为策略建议，并非已完成上线的效果。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>这些发现用于确定待验证的改动，不代表已经取得策略增量。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='ab-experiment--1'
+  data-scene
+  data-chapter='A/B 实验评估'
+  aria-labelledby='title-ab-experiment-1'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · A/B 实验评估</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>团队历史实验</p>
+    <h2 id='title-ab-experiment-1'>在排序中加入复访价值预测</h2>
+    <p>团队历史实验：在排序中考虑用户后续同类目复访。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='在排序中加入复访价值预测'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='click'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>点击概率</strong>
+          <p>用户点击卡片的概率。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='revisit'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>点击后的复访概率</strong>
+          <p>首次点击卡片后 14 日内，从新入口主动访问并点击同类目商品。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='joint'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>估计联合复访概率</strong>
+          <p>点击概率 × 点击后的复访概率。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='ranking'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>实验组排序</strong>
+          <p>加入经过缩放的复访价值项。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='readout'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>A/B 结果评估</strong>
+          <p>检查分组、完整日、实验前平衡与护栏。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='click'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            点击概率 → 估计联合复访概率
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='revisit'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            点击后的复访概率 → 估计联合复访概率
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='joint'
+            data-edge-to='ranking'
+            data-edge-label=''
+          >
+            估计联合复访概率 → 实验组排序
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='ranking'
+            data-edge-to='readout'
+            data-edge-label=''
+          >
+            实验组排序 → A/B 结果评估
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>预测分定义策略，随机实验评估策略增量。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='ab-experiment--2'
+  data-scene
+  data-chapter='A/B 实验评估'
+  aria-labelledby='title-ab-experiment-2'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · A/B 实验评估</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>证据</p>
+    <h2 id='title-ab-experiment-2'>历史实验中两项指标相对提升</h2>
+    <p>实验发生于实习之前；我的贡献是复盘与核对证据。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='历史实验中两项指标相对提升'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>指标</th>
+            
+              <th scope='col'>结果</th>
+            
+              <th scope='col'>口径</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>人均活跃天数</th>
+                
+                  <td>+0.2026%；p < 0.001</td>
+                
+                  <td>商城新入口；近 30 日指标</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>人均支付订单数</th>
+                
+                  <td>+0.1859%；p = 0.0063</td>
+                
+                  <td>货架场</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>实验窗口</th>
+                
+                  <td>12 个完整天</td>
+                
+                  <td>2025-12-26 至 2026-01-07</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>相对对照组的提升；平台舍入显示的 p = 0 规范写为 p < 0.001。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>各项相对提升均应限定指标、人群与观察窗口解释。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--1'
+  data-scene
+  data-chapter='主动复搜因果分析'
+  aria-labelledby='title-repeat-search-1'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · 主动复搜因果分析</span>
+    <span>1 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>方法</p>
+    <h2 id='title-repeat-search-1'>明确用户粒度与时间窗口</h2>
+    <p>用 DML-SparseLinear 调整已记录的历史差异，研究触点与后续复搜。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='明确用户粒度与时间窗口'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>要素</th>
+            
+              <th scope='col'>定义</th>
+            
+              <th scope='col'>边界</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>样本</th>
+                
+                  <td>T 日有搜索的用户</td>
+                
+                  <td>用户级记录</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>结果</th>
+                
+                  <td>T+2 至 T+7 首次主动复搜</td>
+                
+                  <td>剔除无信息换词</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>控制变量</th>
+                
+                  <td>T 日之前 30 日</td>
+                
+                  <td>仅使用历史行为</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>触点</th>
+                
+                  <td>首次复搜前的搜索、内容、商城行为</td>
+                
+                  <td>窗口止于结果发生</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>观察性设计；仍可能存在未观测意图。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>触点累计至首次复搜，导致窗口长短不同，可能使估计产生偏差。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--2'
+  data-scene
+  data-chapter='主动复搜因果分析'
+  aria-labelledby='title-repeat-search-2'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · 主动复搜因果分析</span>
+    <span>2 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>模型</p>
+    <h2 id='title-repeat-search-2'>先调整历史差异，再估计效应</h2>
+    <p>DML 先剥离历史行为可解释的部分，再分析触点与结果的剩余关系。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='先调整历史差异，再估计效应'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='observations'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>用户级观测</strong>
+          <p>历史 X、触点 A、复搜结果 Y。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='nuisance'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>辅助模型估计</strong>
+          <p>依据历史预测触点 m(X) 与结果 g(X)。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='residuals'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>变量残差化</strong>
+          <p>A − m(X)；Y − g(X)。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='estimate'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>稀疏线性效应模型</strong>
+          <p>以 Lasso 稀疏估计剩余关系。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='observations'
+            data-edge-to='nuisance'
+            data-edge-label=''
+          >
+            用户级观测 → 辅助模型估计
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='nuisance'
+            data-edge-to='residuals'
+            data-edge-label=''
+          >
+            辅助模型估计 → 变量残差化
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='residuals'
+            data-edge-to='estimate'
+            data-edge-label=''
+          >
+            变量残差化 → 稀疏线性效应模型
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>调整历史变量无法消除未观测混杂，也不能修复结果依赖的触点窗口。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--3'
+  data-scene
+  data-chapter='主动复搜因果分析'
+  aria-labelledby='title-repeat-search-3'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · 主动复搜因果分析</span>
+    <span>3 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>解释</p>
+    <h2 id='title-repeat-search-3'>将信号转为待验证的策略</h2>
+    <p>区分观察性信号与反转实验证据。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='将信号转为待验证的策略'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>信号</th>
+            
+              <th scope='col'>依据</th>
+            
+              <th scope='col'>待验证方向</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>同兴趣出词</th>
+                
+                  <td>正向观察性关联</td>
+                
+                  <td>兴趣召回</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>相关结果内容</th>
+                
+                  <td>搜索承接与后续复搜的关联</td>
+                
+                  <td>完善结果承接</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>反复曝光弱相关内容</th>
+                
+                  <td>反转分析中的过曝信号</td>
+                
+                  <td>频控与退场实验</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>曝光控制仍需后续随机实验验证。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>这些结论用于提出策略假设，不能仅凭该 DML 设计认定因果效应。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='query-foundation--1'
+  data-scene
+  data-chapter='双粒度出词数据基建'
+  aria-labelledby='title-query-foundation-1'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · 双粒度出词数据基建</span>
+    <span>1 / 1</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>架构</p>
+    <h2 id='title-query-foundation-1'>共用口径与检查，服务两层分析</h2>
+    <p>用 SQL/Spark 统一入口映射、漏斗指标与质量检查，再提供看板数据。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='共用口径与检查，服务两层分析'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='sources'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>来源记录</strong>
+          <p>曝光、点击与归因订单。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='definitions'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>统一定义</strong>
+          <p>入口映射与曝光—点击—交易指标。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='checks'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>质量检查</strong>
+          <p>分区、重复、对账与趋势异常。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='module'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>入口汇总数据集</strong>
+          <p>入口趋势与实验监控。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='query'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>搜索词明细数据集</strong>
+          <p>搜索词诊断与异常下钻。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='sources'
+            data-edge-to='definitions'
+            data-edge-label=''
+          >
+            来源记录 → 统一定义
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='definitions'
+            data-edge-to='checks'
+            data-edge-label=''
+          >
+            统一定义 → 质量检查
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='checks'
+            data-edge-to='module'
+            data-edge-label=''
+          >
+            质量检查 → 入口汇总数据集
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='checks'
+            data-edge-to='query'
+            data-edge-label=''
+          >
+            质量检查 → 搜索词明细数据集
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>同一套定义，同时支持汇总监控与明细诊断。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='experiment-automation--1'
+  data-scene
+  data-chapter='AI 实验核验自动化'
+  aria-labelledby='title-experiment-automation-1'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · AI 实验核验自动化</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>架构</p>
+    <h2 id='title-experiment-automation-1'>分开取数、核验与判断</h2>
+    <p>将重复实验核验整理为 AI Skill，接入交叉检查与人工复核。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='分开取数、核验与判断'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='request'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>实验与版本</strong>
+          <p>明确实验组与对照组。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='retrieve'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>读取证据</strong>
+          <p>参数、流量历史、日期与指标。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='rules'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>执行核验</strong>
+          <p>生效、完整日、实验前平衡、收益与护栏。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='explain'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>解释结果</strong>
+          <p>使用已读取数值，标明缺失证据。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='review'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>复核异常</strong>
+          <p>智能体交叉核验与人工抽检。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='output'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>报告与看板</strong>
+          <p>汇总经过核验的跨实验结论。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='request'
+            data-edge-to='retrieve'
+            data-edge-label=''
+          >
+            实验与版本 → 读取证据
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='retrieve'
+            data-edge-to='rules'
+            data-edge-label=''
+          >
+            读取证据 → 执行核验
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='rules'
+            data-edge-to='explain'
+            data-edge-label=''
+          >
+            执行核验 → 解释结果
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='explain'
+            data-edge-to='review'
+            data-edge-label=''
+          >
+            解释结果 → 复核异常
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='review'
+            data-edge-to='output'
+            data-edge-label=''
+          >
+            复核异常 → 报告与看板
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>工具取数，规则核验，审核者保留最终判断。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='experiment-automation--2'
+  data-scene
+  data-chapter='AI 实验核验自动化'
+  aria-labelledby='title-experiment-automation-2'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · AI 实验核验自动化</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>验证</p>
+    <h2 id='title-experiment-automation-2'>案例测试发现放量历史缺失</h2>
+    <p>一次测试缺少放量轨迹，经讨论后修订核验工具。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='案例测试发现放量历史缺失'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>测试重点</th>
+            
+              <th scope='col'>已有案例</th>
+            
+              <th scope='col'>检查或处理</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>实验选择</th>
+                
+                  <td>不同目标实验</td>
+                
+                  <td>确认报告对应实验</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>版本选择</th>
+                
+                  <td>指定实验组或模型版本</td>
+                
+                  <td>按指定版本重新核验</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>放量历史</th>
+                
+                  <td>一例缺少放量轨迹</td>
+                
+                  <td>经讨论后修订核验工具</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>案例反映测试覆盖范围，不代表已测得准确率。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>接受自动化结论之前，先检查输入是否缺失或矛盾。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/bytedance/'>← 返回项目</a>
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/bytedance/'>电商搜索</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/present/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/bytedance/present/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

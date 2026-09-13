@@ -1,0 +1,362 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Benchmark Design
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='I evaluated seven models and ten strategies across four reasoning benchmarks, using shared prompts and official validation splits within each task.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'>
+    <meta property='og:title' content='Benchmark Design'>
+    <meta property='og:description' content='I evaluated seven models and ten strategies across four reasoning benchmarks, using shared prompts and official validation splits within each task.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#research' data-return-to-list>Research</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-benchmark-design'>Small-LLM Teaming</a
+    ><span aria-hidden='true'>/</span
+    ><span>Benchmark Design</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>Small-LLM Teaming / Project work</p>
+      <h1>
+        Benchmark Design
+      </h1>
+      <p>
+        I evaluated seven models and ten strategies across four reasoning benchmarks, using shared prompts and official validation splits within each task.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'
+              
+                aria-current='page'
+              
+              ><span>01</span>Benchmark Design</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'
+              
+              ><span>02</span>Failure Diagnosis</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'
+              
+              ><span>03</span>Pipeline Design</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/validation-audit/'
+              
+              ><span>04</span>Validation & Audit</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-benchmark-design'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='benchmark-design--1'
+  data-scene
+  data-chapter='Benchmark Design'
+  aria-labelledby='title-benchmark-design-1'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Benchmark Design</span>
+    <span>1 / 1</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Evaluation setup</p>
+    <h2 id='title-benchmark-design-1'>Four benchmarks expose different opportunities for collaboration</h2>
+    <p>I compared seven models and ten strategies across short-context questions and long-passage inference.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Four benchmarks expose different opportunities for collaboration'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Benchmark</th>
+            
+              <th scope='col'>Validation cases</th>
+            
+              <th scope='col'>Task structure</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>ReClor</th>
+                
+                  <td>500</td>
+                
+                  <td>Short-context logic</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>LogiQA 2.0</th>
+                
+                  <td>651</td>
+                
+                  <td>Short-context formal logic</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>CommonsenseQA</th>
+                
+                  <td>1,221</td>
+                
+                  <td>No-passage control</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>ConTRoL</th>
+                
+                  <td>805</td>
+                
+                  <td>Long-passage inference</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Official validation splits; shared prompts within each task. Model–strategy coverage varies.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Task structure determines whether an explicit evidence-selection stage is available.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-benchmark-design'>← Back to project</a><a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'>Next contribution: Failure Diagnosis →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-benchmark-design'>Small-LLM Teaming</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/?present=1#failure-diagnosis--1'
+      aria-label='Next contribution: Failure Diagnosis'
+      title='Failure Diagnosis'
+      hidden
+    >
+      <span>Next contribution →</span
+      >
+      <strong>Failure Diagnosis</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

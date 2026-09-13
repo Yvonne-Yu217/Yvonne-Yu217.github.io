@@ -1,0 +1,546 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      证据协作流程设计
+       | 余奕
+    </title>
+    <meta name='description' content='汇集三个异构模型检索的证据，由一个模型回答；比较多数交叉核验与单模型核验，并在无证据通过时回退到直接回答。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'>
+    <meta property='og:title' content='证据协作流程设计'>
+    <meta property='og:description' content='汇集三个异构模型检索的证据，由一个模型回答；比较多数交叉核验与单模型核验，并在无证据通过时回退到直接回答。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#research' data-return-to-list>科研经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-pipeline-design'>小语言模型协作研究</a
+    ><span aria-hidden='true'>/</span
+    ><span>证据协作流程设计</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>小语言模型协作研究 / 工作概览</p>
+      <h1>
+        证据协作流程设计
+      </h1>
+      <p>
+        汇集三个异构模型检索的证据，由一个模型回答；比较多数交叉核验与单模型核验，并在无证据通过时回退到直接回答。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'
+              
+              ><span>01</span>基准评估设计</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'
+              
+              ><span>02</span>协作失效分析</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'
+              
+                aria-current='page'
+              
+              ><span>03</span>证据协作流程设计</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/validation-audit/'
+              
+              ><span>04</span>效果验证与证据审计</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-pipeline-design'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='pipeline-design--1'
+  data-scene
+  data-chapter='证据协作流程设计'
+  aria-labelledby='title-pipeline-design-1'
+>
+  <div class='scene-meta'>
+    <span>小语言模型协作研究 · 证据协作流程设计</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>证据协作架构</p>
+    <h2 id='title-pipeline-design-1'>汇集并核验证据，再选择一条回答路径</h2>
+    <p>从短上下文答案聚合，转向 ConTRoL 长篇章的证据选择；主要核验比较固定 Qwen3-8B 为回答模型。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='汇集并核验证据，再选择一条回答路径'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 4'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='input'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>原始输入</strong>
+          <p>问题与给定篇章。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='retrievers'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>三个异构检索模型</strong>
+          <p>分别摘取相关原文语句。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='union'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>候选证据并集</strong>
+          <p>汇集各模型的候选证据。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='verification'
+          style='grid-column: 4; grid-row: 1'
+        >
+          <strong>核验候选证据</strong>
+          <p>F1：多数接受；F2：回答模型核验。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='evidence-answer'
+          style='grid-column: 4; grid-row: 2'
+        >
+          <strong>有证据通过核验</strong>
+          <p>由一个回答模型结合原始输入与保留证据作答。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='direct-answer'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>无证据通过核验</strong>
+          <p>同一个回答模型；仅用原始输入。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='input'
+            data-edge-to='retrievers'
+            data-edge-label=''
+          >
+            原始输入 → 三个异构检索模型
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='retrievers'
+            data-edge-to='union'
+            data-edge-label=''
+          >
+            三个异构检索模型 → 候选证据并集
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='union'
+            data-edge-to='verification'
+            data-edge-label=''
+          >
+            候选证据并集 → 核验候选证据
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='verification'
+            data-edge-to='evidence-answer'
+            data-edge-label='有证据通过'
+          >
+            核验候选证据 → 有证据通过核验: 有证据通过
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='verification'
+            data-edge-to='direct-answer'
+            data-edge-label='无证据通过'
+          >
+            核验候选证据 → 无证据通过核验: 无证据通过
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>每道题只走一条分支，两条路径使用同一个回答模型。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='pipeline-design--2'
+  data-scene
+  data-chapter='证据协作流程设计'
+  aria-labelledby='title-pipeline-design-2'
+>
+  <div class='scene-meta'>
+    <span>小语言模型协作研究 · 证据协作流程设计</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>证据核验方法</p>
+    <h2 id='title-pipeline-design-2'>比较由谁核验同一批候选证据</h2>
+    <p>F1 与 F2 保持检索、提示词和回答模型一致。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='比较由谁核验同一批候选证据'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>方法</th>
+            
+              <th scope='col'>证据筛选</th>
+            
+              <th scope='col'>回答输入</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>RnA1</th>
+                
+                  <td>不进行核验</td>
+                
+                  <td>证据并集＋原始输入</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>F1 交叉核验</th>
+                
+                  <td>至少两个模型接受</td>
+                
+                  <td>保留证据＋原始输入</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>F2 单模型核验</th>
+                
+                  <td>回答模型独自核验</td>
+                
+                  <td>保留证据＋原始输入</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>无证据通过时回退到直接回答。提升6.2个百分点对应 F1 与单模型 RQA 的比较，并非 RnA1。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>单纯汇集与加入核验是不同方法，结果需分别比较。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+          <div class='chapter-appendix has-demo' data-chapter-id='pipeline-design'>
+            <section class='demo' data-demo='retrieval'>
+  <p class='eyebrow'>动手理解方法</p>
+  <h3>
+    沿着证据，一步一步理解。
+  </h3>
+  <p class='demo-note'>示意数据 · 不代表实际业务或研究结果</p>
+  <p>
+    “图书馆在工作日六点关门，周六四点关门，周日闭馆。”<br>
+      <strong>问题：周六五点能进入图书馆吗？</strong>
+  </p>
+  <label class='demo-path'>
+    <span>预设路径</span>
+    <select data-retrieval-path disabled>
+      <option value='retained'>
+        有证据通过核验
+      </option>
+      <option value='empty'>
+        无证据通过核验
+      </option>
+    </select>
+  </label>
+  <div
+    class='demo-step-buttons'
+    role='group'
+    aria-label='证据处理流程'
+  >
+    <button data-retrieval='0' type='button' aria-pressed='true'>
+      1. 检索</button
+    ><button data-retrieval='1' type='button' aria-pressed='false'>
+      2. 交叉验证</button
+    ><button data-retrieval='2' type='button' aria-pressed='false'>
+      3. 回答
+    </button>
+  </div>
+  <div class='demo-output' data-retrieval-output role='status' aria-live='polite'>
+    <p>
+      从前提中检索周六的句子。工作日的句子看似相关，但不适用于这个问题。
+    </p>
+  </div>
+  <p class='demo-note'>
+    预设的教学示例，不运行在线模型，也不生成基准测试结果。
+  </p>
+</section>
+
+              <p class='demo-print-summary'>
+                预设示例：检索“周六四点关门”，对照原文核实依据，再回答五点已超过开放时间。没有证据通过时，同一回答模型使用仍包含关门时间的原始输入。该示例解释流程，不代表基准测试效果。
+              </p>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-pipeline-design'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/validation-audit/'>下一项贡献: 效果验证与证据审计 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-pipeline-design'>小语言模型协作研究</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/validation-audit/?present=1#validation-audit--1'
+      aria-label='下一项贡献: 效果验证与证据审计'
+      title='效果验证与证据审计'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>效果验证与证据审计</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

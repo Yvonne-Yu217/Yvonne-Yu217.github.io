@@ -1,0 +1,481 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      A/B Experimentation
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='Reviewed a historical team experiment: new-entry active days/user +0.2026% and shelf-channel paid orders/user +0.1859%, with metric-specific significance.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/ab-experiment/'>
+    <meta property='og:title' content='A/B Experimentation'>
+    <meta property='og:description' content='Reviewed a historical team experiment: new-entry active days/user +0.2026% and shelf-channel paid orders/user +0.1859%, with metric-specific significance.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/bytedance/ab-experiment/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#industry' data-return-to-list>Industry</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-ab-experiment'>E-commerce search</a
+    ><span aria-hidden='true'>/</span
+    ><span>A/B Experimentation</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>E-commerce search / Project work</p>
+      <h1>
+        A/B Experimentation
+      </h1>
+      <p>
+        Reviewed a historical team experiment: new-entry active days/user +0.2026% and shelf-channel paid orders/user +0.1859%, with metric-specific significance.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/query-research/'
+              
+              ><span>01</span>Product & Query Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'
+              
+                aria-current='page'
+              
+              ><span>02</span>A/B Experimentation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'
+              
+              ><span>03</span>Repeat-Search Causal Analysis</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/'
+              
+              ><span>04</span>Dual-Granularity Query Foundation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/'
+              
+              ><span>05</span>AI Experiment Automation</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-ab-experiment'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='ab-experiment--1'
+  data-scene
+  data-chapter='A/B Experimentation'
+  aria-labelledby='title-ab-experiment-1'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · A/B Experimentation</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Historical team experiment</p>
+    <h2 id='title-ab-experiment-1'>Add predicted revisit value to ranking</h2>
+    <p>Historical team test: give ranking credit for later same-category revisits.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Add predicted revisit value to ranking'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='click'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Click probability</strong>
+          <p>Probability of clicking the card.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='revisit'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>Conditional revisit probability</strong>
+          <p>New-entry visit and same-category click within 14 days of the first card click.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='joint'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Estimated joint revisit probability</strong>
+          <p>Click probability × conditional revisit probability.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='ranking'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Treatment ranking</strong>
+          <p>Add a scaled revisit term.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='readout'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>A/B readout</strong>
+          <p>Check assignment, complete days, Pre-AA, and guardrails.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='click'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            Click probability → Estimated joint revisit probability
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='revisit'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            Conditional revisit probability → Estimated joint revisit probability
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='joint'
+            data-edge-to='ranking'
+            data-edge-label=''
+          >
+            Estimated joint revisit probability → Treatment ranking
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='ranking'
+            data-edge-to='readout'
+            data-edge-label=''
+          >
+            Treatment ranking → A/B readout
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Prediction defines the strategy; the randomized readout tests its incremental effect.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='ab-experiment--2'
+  data-scene
+  data-chapter='A/B Experimentation'
+  aria-labelledby='title-ab-experiment-2'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · A/B Experimentation</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Evidence</p>
+    <h2 id='title-ab-experiment-2'>Two positive lifts in the historical readout</h2>
+    <p>The experiment predates my internship; my contribution was reviewing its evidence.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Two positive lifts in the historical readout'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Metric</th>
+            
+              <th scope='col'>Readout</th>
+            
+              <th scope='col'>Scope</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Active days/user</th>
+                
+                  <td>+0.2026%; p < 0.001</td>
+                
+                  <td>Mall new entry; 30-day metric</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Paid orders/user</th>
+                
+                  <td>+0.1859%; p = 0.0063</td>
+                
+                  <td>Shelf channel</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Experiment window</th>
+                
+                  <td>12 complete days</td>
+                
+                  <td>26 Dec 2025–7 Jan 2026</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Relative lifts versus control; platform-rounded p = 0 is shown as p < 0.001.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Interpret each relative lift within its metric, population, and observation window.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-ab-experiment'>← Back to project</a><a href='/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'>Next contribution: Repeat-Search Causal Analysis →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-ab-experiment'>E-commerce search</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/bytedance/ab-experiment/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/?present=1#repeat-search--1'
+      aria-label='Next contribution: Repeat-Search Causal Analysis'
+      title='Repeat-Search Causal Analysis'
+      hidden
+    >
+      <span>Next contribution →</span
+      >
+      <strong>Repeat-Search Causal Analysis</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

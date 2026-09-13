@@ -1,0 +1,1359 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      ByteDance · Search analytics and experiment evaluation
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='Analyzed search demand and repeat behavior; built shared datasets and automated experiment checks.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/present/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/present/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/present/'>
+    <meta property='og:title' content='ByteDance · Search analytics and experiment evaluation'>
+    <meta property='og:description' content='Analyzed search demand and repeat behavior; built shared datasets and automated experiment checks.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/present/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='deck' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/bytedance/present/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/bytedance/present/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#industry' data-return-to-list>Industry</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/bytedance/'>E-commerce search</a
+    ><span aria-hidden='true'>/</span
+    ><span>Present project</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>E-commerce search / Project work</p>
+      <h1>
+        Search analytics and experiment evaluation
+      </h1>
+      <p>
+        Analyzed search demand and repeat behavior; built shared datasets and automated experiment checks.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <strong>Product & Query Research</strong>
+            <a href='#query-research--1'>Compare demand, candidates, and the funnel</a><a href='#query-research--2'>Turn diagnosed gaps into candidate actions</a>
+          
+            <strong>A/B Experimentation</strong>
+            <a href='#ab-experiment--1'>Add predicted revisit value to ranking</a><a href='#ab-experiment--2'>Two positive lifts in the historical readout</a>
+          
+            <strong>Repeat-Search Causal Analysis</strong>
+            <a href='#repeat-search--1'>Define the user and time windows</a><a href='#repeat-search--2'>Adjust for history before estimating effects</a><a href='#repeat-search--3'>Translate signals into testable strategies</a>
+          
+            <strong>Dual-Granularity Query Foundation</strong>
+            <a href='#query-foundation--1'>Two analysis levels with shared checks</a>
+          
+            <strong>AI Experiment Automation</strong>
+            <a href='#experiment-automation--1'>Separate retrieval, checks, and judgment</a><a href='#experiment-automation--2'>Case testing exposed a missing rollout history</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/bytedance/'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='query-research--1'
+  data-scene
+  data-chapter='Product &amp; Query Research'
+  aria-labelledby='title-query-research-1'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · Product & Query Research</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Method</p>
+    <h2 id='title-query-research-1'>Compare demand, candidates, and the funnel</h2>
+    <p>Illustrative path: a shopper opens a suggested query and chooses a product from its results; the analysis locates coverage or conversion gaps.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Compare demand, candidates, and the funnel'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='demand'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>User-entered queries</strong>
+          <p>Observed search demand.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='candidates'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>q2q / i2q candidates</strong>
+          <p>Query-to-query and item-to-query suggestions.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='coverage'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Coverage comparison</strong>
+          <p>Segment by placement and query type.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='funnel'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Exposure → click → purchase</strong>
+          <p>Locate entry and result-page gaps.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='lifecycle'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Product lifecycle</strong>
+          <p>Inspect early-stage discovery.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='priorities'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Prioritized opportunities</strong>
+          <p>Lexicon expansion and cold-start candidates.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='demand'
+            data-edge-to='coverage'
+            data-edge-label=''
+          >
+            User-entered queries → Coverage comparison
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='candidates'
+            data-edge-to='coverage'
+            data-edge-label=''
+          >
+            q2q / i2q candidates → Coverage comparison
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='coverage'
+            data-edge-to='funnel'
+            data-edge-label=''
+          >
+            Coverage comparison → Exposure → click → purchase
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='funnel'
+            data-edge-to='lifecycle'
+            data-edge-label=''
+          >
+            Exposure → click → purchase → Product lifecycle
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='lifecycle'
+            data-edge-to='priorities'
+            data-edge-label=''
+          >
+            Product lifecycle → Prioritized opportunities
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Coverage gaps and weak result pages require different fixes.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='query-research--2'
+  data-scene
+  data-chapter='Product &amp; Query Research'
+  aria-labelledby='title-query-research-2'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · Product & Query Research</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Findings</p>
+    <h2 id='title-query-research-2'>Turn diagnosed gaps into candidate actions</h2>
+    <p>The analysis distinguished query supply, result coverage, and early product discovery.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Turn diagnosed gaps into candidate actions'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Finding</th>
+            
+              <th scope='col'>Interpretation</th>
+            
+              <th scope='col'>Candidate action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Store/brand query gaps</th>
+                
+                  <td>Demand exceeds lexicon coverage</td>
+                
+                  <td>Expand missing query types</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Uneven result coverage</th>
+                
+                  <td>Some intents lack relevant results</td>
+                
+                  <td>Improve result-page supply</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Slow early discovery</th>
+                
+                  <td>Appliances and electronics merit prioritization</td>
+                
+                  <td>Select cold-start products</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Strategy recommendations, not completed rollout results.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>These findings prioritize changes for testing; they do not establish incremental lift.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='ab-experiment--1'
+  data-scene
+  data-chapter='A/B Experimentation'
+  aria-labelledby='title-ab-experiment-1'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · A/B Experimentation</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Historical team experiment</p>
+    <h2 id='title-ab-experiment-1'>Add predicted revisit value to ranking</h2>
+    <p>Historical team test: give ranking credit for later same-category revisits.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Add predicted revisit value to ranking'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='click'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Click probability</strong>
+          <p>Probability of clicking the card.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='revisit'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>Conditional revisit probability</strong>
+          <p>New-entry visit and same-category click within 14 days of the first card click.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='joint'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Estimated joint revisit probability</strong>
+          <p>Click probability × conditional revisit probability.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='ranking'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Treatment ranking</strong>
+          <p>Add a scaled revisit term.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='readout'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>A/B readout</strong>
+          <p>Check assignment, complete days, Pre-AA, and guardrails.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='click'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            Click probability → Estimated joint revisit probability
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='revisit'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            Conditional revisit probability → Estimated joint revisit probability
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='joint'
+            data-edge-to='ranking'
+            data-edge-label=''
+          >
+            Estimated joint revisit probability → Treatment ranking
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='ranking'
+            data-edge-to='readout'
+            data-edge-label=''
+          >
+            Treatment ranking → A/B readout
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Prediction defines the strategy; the randomized readout tests its incremental effect.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='ab-experiment--2'
+  data-scene
+  data-chapter='A/B Experimentation'
+  aria-labelledby='title-ab-experiment-2'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · A/B Experimentation</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Evidence</p>
+    <h2 id='title-ab-experiment-2'>Two positive lifts in the historical readout</h2>
+    <p>The experiment predates my internship; my contribution was reviewing its evidence.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Two positive lifts in the historical readout'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Metric</th>
+            
+              <th scope='col'>Readout</th>
+            
+              <th scope='col'>Scope</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Active days/user</th>
+                
+                  <td>+0.2026%; p < 0.001</td>
+                
+                  <td>Mall new entry; 30-day metric</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Paid orders/user</th>
+                
+                  <td>+0.1859%; p = 0.0063</td>
+                
+                  <td>Shelf channel</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Experiment window</th>
+                
+                  <td>12 complete days</td>
+                
+                  <td>26 Dec 2025–7 Jan 2026</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Relative lifts versus control; platform-rounded p = 0 is shown as p < 0.001.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Interpret each relative lift within its metric, population, and observation window.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--1'
+  data-scene
+  data-chapter='Repeat-Search Causal Analysis'
+  aria-labelledby='title-repeat-search-1'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · Repeat-Search Causal Analysis</span>
+    <span>1 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Method</p>
+    <h2 id='title-repeat-search-1'>Define the user and time windows</h2>
+    <p>DML-SparseLinear adjusts for recorded history when studying touchpoints and later repeat search.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Define the user and time windows'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Element</th>
+            
+              <th scope='col'>Definition</th>
+            
+              <th scope='col'>Boundary</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Sample</th>
+                
+                  <td>Users searching on T</td>
+                
+                  <td>User-level records</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Outcome</th>
+                
+                  <td>First active repeat search, T+2–T+7</td>
+                
+                  <td>Exclude trivial query changes</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Controls</th>
+                
+                  <td>30 days before T</td>
+                
+                  <td>Historical behavior only</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Touchpoints</th>
+                
+                  <td>Search, content, mall before first repeat</td>
+                
+                  <td>Window ends at outcome</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Observational design; unmeasured intent may remain.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Accumulating exposure until the outcome creates unequal windows and can bias estimates.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--2'
+  data-scene
+  data-chapter='Repeat-Search Causal Analysis'
+  aria-labelledby='title-repeat-search-2'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · Repeat-Search Causal Analysis</span>
+    <span>2 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Model</p>
+    <h2 id='title-repeat-search-2'>Adjust for history before estimating effects</h2>
+    <p>DML separates historical predictability from the remaining exposure–outcome relationship.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Adjust for history before estimating effects'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='observations'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>User-level observations</strong>
+          <p>History X, touchpoint exposure A, repeat-search outcome Y.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='nuisance'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Nuisance estimation</strong>
+          <p>Predict exposure m(X) and outcome g(X) from history.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='residuals'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Residualized variables</strong>
+          <p>A − m(X); Y − g(X).</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='estimate'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>SparseLinear effect model</strong>
+          <p>Lasso-based estimation of the remaining relationship.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='observations'
+            data-edge-to='nuisance'
+            data-edge-label=''
+          >
+            User-level observations → Nuisance estimation
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='nuisance'
+            data-edge-to='residuals'
+            data-edge-label=''
+          >
+            Nuisance estimation → Residualized variables
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='residuals'
+            data-edge-to='estimate'
+            data-edge-label=''
+          >
+            Residualized variables → SparseLinear effect model
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Adjustment cannot resolve unmeasured confounding or outcome-dependent exposure windows.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--3'
+  data-scene
+  data-chapter='Repeat-Search Causal Analysis'
+  aria-labelledby='title-repeat-search-3'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · Repeat-Search Causal Analysis</span>
+    <span>3 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Interpretation</p>
+    <h2 id='title-repeat-search-3'>Translate signals into testable strategies</h2>
+    <p>Observational signals and reversal-experiment evidence play different roles.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Translate signals into testable strategies'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Signal</th>
+            
+              <th scope='col'>Evidence</th>
+            
+              <th scope='col'>Next test</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Same-interest queries</th>
+                
+                  <td>Positive observational association</td>
+                
+                  <td>Interest-based recall</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Relevant result content</th>
+                
+                  <td>Potential search-to-return link</td>
+                
+                  <td>Improve result coverage</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Repeated weak matches</th>
+                
+                  <td>Overexposure in reversal analysis</td>
+                
+                  <td>Frequency and exit experiments</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Exposure-control decisions require randomized follow-up.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>These are strategy hypotheses; the DML design alone does not establish causal effects.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='query-foundation--1'
+  data-scene
+  data-chapter='Dual-Granularity Query Foundation'
+  aria-labelledby='title-query-foundation-1'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · Dual-Granularity Query Foundation</span>
+    <span>1 / 1</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Architecture</p>
+    <h2 id='title-query-foundation-1'>Two analysis levels with shared checks</h2>
+    <p>SQL/Spark combines placement mapping, funnel metrics, and data checks before serving dashboards.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Two analysis levels with shared checks'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='sources'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Source records</strong>
+          <p>Exposure, clicks, and attributed orders.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='definitions'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Shared definitions</strong>
+          <p>Placement mapping and exposure–click–purchase metrics.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='checks'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Quality checks</strong>
+          <p>Partitions, duplicates, reconciliation, and trend anomalies.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='module'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Module dataset</strong>
+          <p>Placement trends and experiment monitoring.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='query'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Query dataset</strong>
+          <p>Word-level diagnosis and anomaly drill-down.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='sources'
+            data-edge-to='definitions'
+            data-edge-label=''
+          >
+            Source records → Shared definitions
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='definitions'
+            data-edge-to='checks'
+            data-edge-label=''
+          >
+            Shared definitions → Quality checks
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='checks'
+            data-edge-to='module'
+            data-edge-label=''
+          >
+            Quality checks → Module dataset
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='checks'
+            data-edge-to='query'
+            data-edge-label=''
+          >
+            Quality checks → Query dataset
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>One definition set supports aggregate monitoring and detailed diagnosis.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='experiment-automation--1'
+  data-scene
+  data-chapter='AI Experiment Automation'
+  aria-labelledby='title-experiment-automation-1'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · AI Experiment Automation</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Architecture</p>
+    <h2 id='title-experiment-automation-1'>Separate retrieval, checks, and judgment</h2>
+    <p>I converted recurring experiment checks into a structured AI Skill with cross-checks and human review.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Separate retrieval, checks, and judgment'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='request'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Experiment + version</strong>
+          <p>Choose treatment and control.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='retrieve'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Read evidence</strong>
+          <p>Parameters, traffic history, dates, and metrics.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='rules'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Run checks</strong>
+          <p>Activation, complete days, Pre-AA, lift, and guardrails.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='explain'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Explain results</strong>
+          <p>Use retrieved values; flag missing evidence.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='review'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Review exceptions</strong>
+          <p>Agent cross-checks and human spot checks.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='output'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>Report + dashboard</strong>
+          <p>Summarize validated findings across experiments.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='request'
+            data-edge-to='retrieve'
+            data-edge-label=''
+          >
+            Experiment + version → Read evidence
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='retrieve'
+            data-edge-to='rules'
+            data-edge-label=''
+          >
+            Read evidence → Run checks
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='rules'
+            data-edge-to='explain'
+            data-edge-label=''
+          >
+            Run checks → Explain results
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='explain'
+            data-edge-to='review'
+            data-edge-label=''
+          >
+            Explain results → Review exceptions
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='review'
+            data-edge-to='output'
+            data-edge-label=''
+          >
+            Review exceptions → Report + dashboard
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Tools supply data; rules verify it; reviewers retain the final decision.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='experiment-automation--2'
+  data-scene
+  data-chapter='AI Experiment Automation'
+  aria-labelledby='title-experiment-automation-2'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · AI Experiment Automation</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Validation</p>
+    <h2 id='title-experiment-automation-2'>Case testing exposed a missing rollout history</h2>
+    <p>A recorded test lacked the rollout trajectory; discussion led to a skill revision.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Case testing exposed a missing rollout history'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Test focus</th>
+            
+              <th scope='col'>Recorded case</th>
+            
+              <th scope='col'>Check or response</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Experiment selection</th>
+                
+                  <td>Different target experiments</td>
+                
+                  <td>Confirm report context</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Version selection</th>
+                
+                  <td>Requested treatment/model variants</td>
+                
+                  <td>Repeat checks per version</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Rollout history</th>
+                
+                  <td>Missing trajectory in one case</td>
+                
+                  <td>Discuss the gap; revise the skill</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>These cases document test coverage, not a measured accuracy rate.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Check missing and inconsistent inputs before accepting an automated conclusion.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/bytedance/'>← Back to project</a>
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/bytedance/'>E-commerce search</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/present/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/bytedance/present/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

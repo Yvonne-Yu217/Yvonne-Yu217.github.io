@@ -1,0 +1,127 @@
+.site-updated {
+  margin-left: auto;
+  white-space: nowrap;
+}
+.paper-overview {
+  padding: 36px 0 64px;
+}
+.paper-overview .breadcrumbs {
+  margin-bottom: 28px;
+}
+.paper-header h1 {
+  max-width: 1060px;
+  font-size: clamp(27px, 3vw, 36px);
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+.paper-header .paper-authors {
+  margin-top: 15px;
+  font-size: 14px;
+}
+.paper-header .project-byline {
+  margin-top: 10px;
+}
+.paper-abstract {
+  max-width: 1020px;
+  margin-top: 24px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.paper-poster {
+  position: relative;
+  border-top: 1px solid var(--line);
+}
+.legacy-work-anchor {
+  position: absolute;
+  top: 0;
+  scroll-margin-top: 95px;
+}
+.poster-panel {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 2fr);
+  gap: 24px 36px;
+  padding: 34px 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 95px;
+}
+.poster-copy h2 {
+  font-size: 24px;
+  line-height: 1.4;
+  margin: 9px 0 14px;
+}
+.poster-copy > p:last-child {
+  font-size: 15px;
+  line-height: 1.7;
+}
+.poster-panel > .brief-figure {
+  min-width: 0;
+  margin: 0;
+  align-self: center;
+}
+.poster-panel > .takeaway {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+.paper-contribution {
+  margin-top: 28px;
+  padding-left: 18px;
+  border-left: 2px solid var(--line);
+}
+.paper-contribution h2 {
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+.paper-contribution p {
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 1000px;
+}
+.paper-reading-link {
+  margin-top: 24px;
+  font-size: 14px;
+}
+.paper-deck .story-sidebar nav a {
+  font-size: 12px;
+}
+@media (max-width: 1000px) {
+  .poster-panel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .poster-copy h2 {
+    margin-bottom: 9px;
+  }
+}
+@media (max-width: 700px) {
+  .site-updated {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+  .paper-overview {
+    padding-top: 24px;
+  }
+  .paper-abstract {
+    font-size: 15px;
+  }
+  .paper-header .project-actions {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .poster-panel {
+    padding: 26px 0;
+  }
+  .poster-copy h2 {
+    font-size: 22px;
+  }
+}
+@media print {
+  .paper-overview .project-actions,
+  .paper-reading-link {
+    display: none;
+  }
+  .poster-panel {
+    grid-template-columns: minmax(0, 1fr);
+    break-inside: avoid;
+    gap: 12px;
+  }
+}

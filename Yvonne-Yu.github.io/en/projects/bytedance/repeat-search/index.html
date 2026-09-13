@@ -1,0 +1,563 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Repeat-Search Causal Analysis
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='Used user-level DML-SparseLinear and 30-day history to assess repeat-search hypotheses; reviewed reversal evidence for recall and exit strategies.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'>
+    <meta property='og:title' content='Repeat-Search Causal Analysis'>
+    <meta property='og:description' content='Used user-level DML-SparseLinear and 30-day history to assess repeat-search hypotheses; reviewed reversal evidence for recall and exit strategies.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#industry' data-return-to-list>Industry</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-repeat-search'>E-commerce search</a
+    ><span aria-hidden='true'>/</span
+    ><span>Repeat-Search Causal Analysis</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>E-commerce search / Project work</p>
+      <h1>
+        Repeat-Search Causal Analysis
+      </h1>
+      <p>
+        Used user-level DML-SparseLinear and 30-day history to assess repeat-search hypotheses; reviewed reversal evidence for recall and exit strategies.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/query-research/'
+              
+              ><span>01</span>Product & Query Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'
+              
+              ><span>02</span>A/B Experimentation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'
+              
+                aria-current='page'
+              
+              ><span>03</span>Repeat-Search Causal Analysis</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/'
+              
+              ><span>04</span>Dual-Granularity Query Foundation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/bytedance/experiment-automation/'
+              
+              ><span>05</span>AI Experiment Automation</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-repeat-search'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--1'
+  data-scene
+  data-chapter='Repeat-Search Causal Analysis'
+  aria-labelledby='title-repeat-search-1'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · Repeat-Search Causal Analysis</span>
+    <span>1 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Method</p>
+    <h2 id='title-repeat-search-1'>Define the user and time windows</h2>
+    <p>DML-SparseLinear adjusts for recorded history when studying touchpoints and later repeat search.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Define the user and time windows'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Element</th>
+            
+              <th scope='col'>Definition</th>
+            
+              <th scope='col'>Boundary</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Sample</th>
+                
+                  <td>Users searching on T</td>
+                
+                  <td>User-level records</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Outcome</th>
+                
+                  <td>First active repeat search, T+2–T+7</td>
+                
+                  <td>Exclude trivial query changes</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Controls</th>
+                
+                  <td>30 days before T</td>
+                
+                  <td>Historical behavior only</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Touchpoints</th>
+                
+                  <td>Search, content, mall before first repeat</td>
+                
+                  <td>Window ends at outcome</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Observational design; unmeasured intent may remain.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Accumulating exposure until the outcome creates unequal windows and can bias estimates.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--2'
+  data-scene
+  data-chapter='Repeat-Search Causal Analysis'
+  aria-labelledby='title-repeat-search-2'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · Repeat-Search Causal Analysis</span>
+    <span>2 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Model</p>
+    <h2 id='title-repeat-search-2'>Adjust for history before estimating effects</h2>
+    <p>DML separates historical predictability from the remaining exposure–outcome relationship.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Adjust for history before estimating effects'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='observations'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>User-level observations</strong>
+          <p>History X, touchpoint exposure A, repeat-search outcome Y.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='nuisance'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Nuisance estimation</strong>
+          <p>Predict exposure m(X) and outcome g(X) from history.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='residuals'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Residualized variables</strong>
+          <p>A − m(X); Y − g(X).</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='estimate'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>SparseLinear effect model</strong>
+          <p>Lasso-based estimation of the remaining relationship.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='observations'
+            data-edge-to='nuisance'
+            data-edge-label=''
+          >
+            User-level observations → Nuisance estimation
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='nuisance'
+            data-edge-to='residuals'
+            data-edge-label=''
+          >
+            Nuisance estimation → Residualized variables
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='residuals'
+            data-edge-to='estimate'
+            data-edge-label=''
+          >
+            Residualized variables → SparseLinear effect model
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Adjustment cannot resolve unmeasured confounding or outcome-dependent exposure windows.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--3'
+  data-scene
+  data-chapter='Repeat-Search Causal Analysis'
+  aria-labelledby='title-repeat-search-3'
+>
+  <div class='scene-meta'>
+    <span>E-commerce search · Repeat-Search Causal Analysis</span>
+    <span>3 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Interpretation</p>
+    <h2 id='title-repeat-search-3'>Translate signals into testable strategies</h2>
+    <p>Observational signals and reversal-experiment evidence play different roles.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Translate signals into testable strategies'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Signal</th>
+            
+              <th scope='col'>Evidence</th>
+            
+              <th scope='col'>Next test</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Same-interest queries</th>
+                
+                  <td>Positive observational association</td>
+                
+                  <td>Interest-based recall</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Relevant result content</th>
+                
+                  <td>Potential search-to-return link</td>
+                
+                  <td>Improve result coverage</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Repeated weak matches</th>
+                
+                  <td>Overexposure in reversal analysis</td>
+                
+                  <td>Frequency and exit experiments</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Exposure-control decisions require randomized follow-up.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>These are strategy hypotheses; the DML design alone does not establish causal effects.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-repeat-search'>← Back to project</a><a href='/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/'>Next contribution: Dual-Granularity Query Foundation →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/bytedance/#work-repeat-search'>E-commerce search</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/query-foundation/?present=1#query-foundation--1'
+      aria-label='Next contribution: Dual-Granularity Query Foundation'
+      title='Dual-Granularity Query Foundation'
+      hidden
+    >
+      <span>Next contribution →</span
+      >
+      <strong>Dual-Granularity Query Foundation</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

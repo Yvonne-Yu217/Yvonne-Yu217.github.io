@@ -1,0 +1,840 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Korn Ferry · Compensation analytics and talent segmentation
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='Built reusable compensation queries and interpretable talent profiles with Python/SQL, PCA, and K-Means.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/korn-ferry/present/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/korn-ferry/present/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/korn-ferry/present/'>
+    <meta property='og:title' content='Korn Ferry · Compensation analytics and talent segmentation'>
+    <meta property='og:description' content='Built reusable compensation queries and interpretable talent profiles with Python/SQL, PCA, and K-Means.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/korn-ferry/present/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='deck' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/korn-ferry/present/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/korn-ferry/present/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#industry' data-return-to-list>Industry</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/korn-ferry/'>Compensation and talent</a
+    ><span aria-hidden='true'>/</span
+    ><span>Present project</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>Compensation and talent / Project work</p>
+      <h1>
+        Compensation analytics and talent segmentation
+      </h1>
+      <p>
+        Built reusable compensation queries and interpretable talent profiles with Python/SQL, PCA, and K-Means.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <strong>Compensation Data Product</strong>
+            <a href='#compensation-product--1'>A traceable path from source pay to annual review</a><a href='#compensation-product--2'>Each comparison retains its transformation context</a><a href='#compensation-product--3'>Annual pay review: about two weeks to two days</a>
+          
+            <strong>Talent Segmentation</strong>
+            <a href='#talent-segmentation--1'>28 features → six components → four profiles</a><a href='#talent-segmentation--2'>Check the grouping, then explain original features</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/korn-ferry/'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='compensation-product--1'
+  data-scene
+  data-chapter='Compensation Data Product'
+  aria-labelledby='title-compensation-product-1'
+>
+  <div class='scene-meta'>
+    <span>Compensation and talent · Compensation Data Product</span>
+    <span>1 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Data architecture</p>
+    <h2 id='title-compensation-product-1'>A traceable path from source pay to annual review</h2>
+    <p>Integrated compensation and financial sources with Python and SQL.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='A traceable path from source pay to annual review'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='sources'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Source data</strong>
+          <p>Compensation and financial records.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='dimensions'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Comparable dimensions</strong>
+          <p>Currency, year, job family, industry, region.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='etl'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Python / SQL ETL</strong>
+          <p>Versioned mappings and exception rules.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='lineage'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Traceable records</strong>
+          <p>Source, transformation, quality status.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='queries'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Reusable query layer</strong>
+          <p>Market percentiles and cohort filters.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='review'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>Annual pay review</strong>
+          <p>Auditable comparison outputs.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='sources'
+            data-edge-to='dimensions'
+            data-edge-label=''
+          >
+            Source data → Comparable dimensions
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='dimensions'
+            data-edge-to='etl'
+            data-edge-label=''
+          >
+            Comparable dimensions → Python / SQL ETL
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='etl'
+            data-edge-to='lineage'
+            data-edge-label=''
+          >
+            Python / SQL ETL → Traceable records
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='lineage'
+            data-edge-to='queries'
+            data-edge-label=''
+          >
+            Traceable records → Reusable query layer
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='queries'
+            data-edge-to='review'
+            data-edge-label=''
+          >
+            Reusable query layer → Annual pay review
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Reusable queries replace repeated spreadsheet reconciliation.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='compensation-product--2'
+  data-scene
+  data-chapter='Compensation Data Product'
+  aria-labelledby='title-compensation-product-2'
+>
+  <div class='scene-meta'>
+    <span>Compensation and talent · Compensation Data Product</span>
+    <span>2 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Schema and audit</p>
+    <h2 id='title-compensation-product-2'>Each comparison retains its transformation context</h2>
+    <p>Preserved source lineage alongside normalized values.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Each comparison retains its transformation context'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Output</th>
+            
+              <th scope='col'>Retained context</th>
+            
+              <th scope='col'>Analyst check</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Normalized pay</th>
+                
+                  <td>Original currency; FX version</td>
+                
+                  <td>Verify conversion</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Comparable role</th>
+                
+                  <td>Family, level, industry, region</td>
+                
+                  <td>Review mapping</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Market percentile</th>
+                
+                  <td>Source record; transform; quality</td>
+                
+                  <td>Trace approved inputs</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Annual refresh</th>
+                
+                  <td>Versioned source snapshot</td>
+                
+                  <td>Rerun the query</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+  </figure>
+
+
+  <p class='takeaway'>Analysts can trace a reported percentile back to approved inputs.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='compensation-product--3'
+  data-scene
+  data-chapter='Compensation Data Product'
+  aria-labelledby='title-compensation-product-3'
+>
+  <div class='scene-meta'>
+    <span>Compensation and talent · Compensation Data Product</span>
+    <span>3 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Workflow result</p>
+    <h2 id='title-compensation-product-3'>Annual pay review: about two weeks to two days</h2>
+    <p>Standardization and reusable queries reduced extraction, mapping, and reconciliation work.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure bars-figure' aria-label='Annual pay review: about two weeks to two days'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>10
+          working days</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>Before</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 100.0%'
+            ></span>
+          </div>
+          <strong>≈10 days</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>After</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 20.0%'
+            ></span>
+          </div>
+          <strong>2 days</strong>
+        </div>
+      
+    </div>
+    <figcaption>Reported annual-review cycle: about two weeks to two days (approximately 10→2 working days).</figcaption>
+  </figure>
+
+
+  <p class='takeaway'>The approximately 80% reduction describes the review workflow, not a model metric.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+
+<section
+  class='story-scene brief-scene'
+  id='talent-segmentation--1'
+  data-scene
+  data-chapter='Talent Segmentation'
+  aria-labelledby='title-talent-segmentation-1'
+>
+  <div class='scene-meta'>
+    <span>Compensation and talent · Talent Segmentation</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Segmentation pipeline</p>
+    <h2 id='title-talent-segmentation-1'>28 features → six components → four profiles</h2>
+    <p>Standardized features before applying distance-based clustering.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='28 features → six components → four profiles'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='features'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>28 features</strong>
+          <p>Pay, performance, tenure.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='scale'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Standardization</strong>
+          <p>Handle missingness; align scales.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='pca'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>PCA: six components</strong>
+          <p>Compress correlated variation.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='cluster'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>K-Means: four groups</strong>
+          <p>Cluster component-space distances.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='profiles'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Original-feature profiles</strong>
+          <p>Explain group characteristics.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='planning'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>Talent planning</strong>
+          <p>Retention, succession, development, job pricing.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='features'
+            data-edge-to='scale'
+            data-edge-label=''
+          >
+            28 features → Standardization
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='scale'
+            data-edge-to='pca'
+            data-edge-label=''
+          >
+            Standardization → PCA: six components
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='pca'
+            data-edge-to='cluster'
+            data-edge-label=''
+          >
+            PCA: six components → K-Means: four groups
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='cluster'
+            data-edge-to='profiles'
+            data-edge-label=''
+          >
+            K-Means: four groups → Original-feature profiles
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='profiles'
+            data-edge-to='planning'
+            data-edge-label=''
+          >
+            Original-feature profiles → Talent planning
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Interpretation returns to original variables so profiles remain understandable.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='talent-segmentation--2'
+  data-scene
+  data-chapter='Talent Segmentation'
+  aria-labelledby='title-talent-segmentation-2'
+>
+  <div class='scene-meta'>
+    <span>Compensation and talent · Talent Segmentation</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Selection and interpretation</p>
+    <h2 id='title-talent-segmentation-2'>Check the grouping, then explain original features</h2>
+    <p>Combined statistical diagnostics with interpretable group profiles.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Check the grouping, then explain original features'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Step</th>
+            
+              <th scope='col'>Check</th>
+            
+              <th scope='col'>Purpose</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Scaling</th>
+                
+                  <td>Comparable feature scales</td>
+                
+                  <td>Avoid pay dominating distance</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>PCA</th>
+                
+                  <td>Variance and scree pattern</td>
+                
+                  <td>Choose compression depth</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Cluster count</th>
+                
+                  <td>Inertia, silhouette, initialization consistency</td>
+                
+                  <td>Compare candidate groupings</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Profiles</th>
+                
+                  <td>Original pay, tenure, performance</td>
+                
+                  <td>Explain talent-planning differences</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+  </figure>
+
+
+  <p class='takeaway'>Four groups support discussion; they are not individual performance grades.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+          <div class='chapter-appendix has-demo' data-chapter-id='talent-segmentation'>
+            <section class='demo' data-demo='segments'>
+  <p class='eyebrow'>Explore the idea</p>
+  <h3>
+    A cluster is a question, not a verdict.
+  </h3>
+  <p class='demo-note'>Illustrative data · not actual business or research results</p>
+  <div
+    class='demo-step-buttons'
+    role='group'
+    aria-label='Synthetic profiles'
+  >
+    <button
+        type='button'
+        data-segment='1'
+        aria-pressed='true'
+      >
+        Profile
+        1
+      </button><button
+        type='button'
+        data-segment='2'
+        aria-pressed='false'
+      >
+        Profile
+        2
+      </button><button
+        type='button'
+        data-segment='3'
+        aria-pressed='false'
+      >
+        Profile
+        3
+      </button><button
+        type='button'
+        data-segment='4'
+        aria-pressed='false'
+      >
+        Profile
+        4
+      </button>
+  </div>
+  <div class='demo-output' data-segment-output role='status' aria-live='polite'>
+    <p>
+      Select a synthetic profile to explore an advisory question. These are fictional examples,
+        not the project’s actual clusters.
+    </p>
+  </div>
+</section>
+
+              <p class='demo-print-summary'>
+                Synthetic profiles illustrate four advisory questions: development opportunities,
+                  retention factors, role fit and support, and knowledge transfer. They do not
+                  represent actual employee records or the project's clusters.
+              </p>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/korn-ferry/'>← Back to project</a>
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/korn-ferry/'>Compensation and talent</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/korn-ferry/present/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/korn-ferry/present/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

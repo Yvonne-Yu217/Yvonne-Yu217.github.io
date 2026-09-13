@@ -1,0 +1,537 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      协作失效分析
+       | 余奕
+    </title>
+    <meta name='description' content='采用配对 McNemar 检验和自助法区间；答案投票、辩论与裁判策略在三个短上下文基准上均降低准确率，报告 p &lt; 0.05。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'>
+    <meta property='og:title' content='协作失效分析'>
+    <meta property='og:description' content='采用配对 McNemar 检验和自助法区间；答案投票、辩论与裁判策略在三个短上下文基准上均降低准确率，报告 p &lt; 0.05。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#research' data-return-to-list>科研经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-failure-diagnosis'>小语言模型协作研究</a
+    ><span aria-hidden='true'>/</span
+    ><span>协作失效分析</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>小语言模型协作研究 / 工作概览</p>
+      <h1>
+        协作失效分析
+      </h1>
+      <p>
+        采用配对 McNemar 检验和自助法区间；答案投票、辩论与裁判策略在三个短上下文基准上均降低准确率，报告 p < 0.05。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/benchmark-design/'
+              
+              ><span>01</span>基准评估设计</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'
+              
+                aria-current='page'
+              
+              ><span>02</span>协作失效分析</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'
+              
+              ><span>03</span>证据协作流程设计</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/validation-audit/'
+              
+              ><span>04</span>效果验证与证据审计</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-failure-diagnosis'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='failure-diagnosis--1'
+  data-scene
+  data-chapter='协作失效分析'
+  aria-labelledby='title-failure-diagnosis-1'
+>
+  <div class='scene-meta'>
+    <span>小语言模型协作研究 · 协作失效分析</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>统计比较</p>
+    <h2 id='title-failure-diagnosis-1'>在同一道题上比较方法表现</h2>
+    <p>保留逐题配对的正确性结果，用于显著性检验与不确定性区间。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='在同一道题上比较方法表现'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 4'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='solo'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>单模型预测</strong>
+          <p>记录每道题回答是否正确。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='team'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>协作模型预测</strong>
+          <p>使用同一组题目编号。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='paired'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>配对正确性记录</strong>
+          <p>逐题对齐两种方法的结果。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='mcnemar'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>McNemar 检验</strong>
+          <p>比较两种不一致结果的数量。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='bootstrap'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>配对自助法</strong>
+          <p>以题目为单位成对重采样。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='report'
+          style='grid-column: 4; grid-row: 1'
+        >
+          <strong>准确率比较</strong>
+          <p>报告方向、幅度与不确定性。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='solo'
+            data-edge-to='paired'
+            data-edge-label=''
+          >
+            单模型预测 → 配对正确性记录
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='team'
+            data-edge-to='paired'
+            data-edge-label=''
+          >
+            协作模型预测 → 配对正确性记录
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='paired'
+            data-edge-to='mcnemar'
+            data-edge-label=''
+          >
+            配对正确性记录 → McNemar 检验
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='paired'
+            data-edge-to='bootstrap'
+            data-edge-label=''
+          >
+            配对正确性记录 → 配对自助法
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='mcnemar'
+            data-edge-to='report'
+            data-edge-label=''
+          >
+            McNemar 检验 → 准确率比较
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='bootstrap'
+            data-edge-to='report'
+            data-edge-label=''
+          >
+            配对自助法 → 准确率比较
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>配对比较保留了各方法面对相同题目难度的关联。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='failure-diagnosis--2'
+  data-scene
+  data-chapter='协作失效分析'
+  aria-labelledby='title-failure-diagnosis-2'
+>
+  <div class='scene-meta'>
+    <span>小语言模型协作研究 · 协作失效分析</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>失效证据</p>
+    <h2 id='title-failure-diagnosis-2'>所测答案聚合策略均低于单模型基线</h2>
+    <p>在这三个基准上，Qwen2.5-7B 直接回答均优于所测聚合策略。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='所测答案聚合策略均低于单模型基线'
+    >
+      <table
+        class='brief-table pin-first-column'
+        style='--table-data-columns: 3'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>方法</th>
+            
+              <th scope='col'>ReClor</th>
+            
+              <th scope='col'>LogiQA</th>
+            
+              <th scope='col'>CSQA</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Qwen2.5-7B 单模型</th>
+                
+                  <td>70.6</td>
+                
+                  <td>50.8</td>
+                
+                  <td>83.5</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>多数投票</th>
+                
+                  <td>58.6</td>
+                
+                  <td>39.9</td>
+                
+                  <td>78.5</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>置信度加权投票</th>
+                
+                  <td>65.4</td>
+                
+                  <td>49.2</td>
+                
+                  <td>80.3</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>两轮辩论</th>
+                
+                  <td>65.6</td>
+                
+                  <td>46.2</td>
+                
+                  <td>79.7</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Qwen 裁判</th>
+                
+                  <td>60.6</td>
+                
+                  <td>42.1</td>
+                
+                  <td>81.7</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>表中为准确率（%）。报告配对 McNemar p < 0.05，但未说明多重检验校正。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>错误相关与置信度失准提供诊断解释，但未被单独识别为因果机制。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-failure-diagnosis'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/'>下一项贡献: 证据协作流程设计 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/#work-failure-diagnosis'>小语言模型协作研究</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/pipeline-design/?present=1#pipeline-design--1'
+      aria-label='下一项贡献: 证据协作流程设计'
+      title='证据协作流程设计'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>证据协作流程设计</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

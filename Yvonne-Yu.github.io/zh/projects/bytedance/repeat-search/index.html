@@ -1,0 +1,563 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      主动复搜因果分析
+       | 余奕
+    </title>
+    <meta name='description' content='结合用户级 DML-SparseLinear 与前 30 日行为分析复搜假设，并参考反转实验提出召回与退场方向。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'>
+    <meta property='og:title' content='主动复搜因果分析'>
+    <meta property='og:description' content='结合用户级 DML-SparseLinear 与前 30 日行为分析复搜假设，并参考反转实验提出召回与退场方向。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#industry' data-return-to-list>实习经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/bytedance/#work-repeat-search'>电商搜索</a
+    ><span aria-hidden='true'>/</span
+    ><span>主动复搜因果分析</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>电商搜索 / 工作概览</p>
+      <h1>
+        主动复搜因果分析
+      </h1>
+      <p>
+        结合用户级 DML-SparseLinear 与前 30 日行为分析复搜假设，并参考反转实验提出召回与退场方向。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/bytedance/query-research/'
+              
+              ><span>01</span>商品与词库研究</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/bytedance/ab-experiment/'
+              
+              ><span>02</span>A/B 实验评估</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'
+              
+                aria-current='page'
+              
+              ><span>03</span>主动复搜因果分析</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/bytedance/query-foundation/'
+              
+              ><span>04</span>双粒度出词数据基建</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/bytedance/experiment-automation/'
+              
+              ><span>05</span>AI 实验核验自动化</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/bytedance/#work-repeat-search'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--1'
+  data-scene
+  data-chapter='主动复搜因果分析'
+  aria-labelledby='title-repeat-search-1'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · 主动复搜因果分析</span>
+    <span>1 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>方法</p>
+    <h2 id='title-repeat-search-1'>明确用户粒度与时间窗口</h2>
+    <p>用 DML-SparseLinear 调整已记录的历史差异，研究触点与后续复搜。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='明确用户粒度与时间窗口'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>要素</th>
+            
+              <th scope='col'>定义</th>
+            
+              <th scope='col'>边界</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>样本</th>
+                
+                  <td>T 日有搜索的用户</td>
+                
+                  <td>用户级记录</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>结果</th>
+                
+                  <td>T+2 至 T+7 首次主动复搜</td>
+                
+                  <td>剔除无信息换词</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>控制变量</th>
+                
+                  <td>T 日之前 30 日</td>
+                
+                  <td>仅使用历史行为</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>触点</th>
+                
+                  <td>首次复搜前的搜索、内容、商城行为</td>
+                
+                  <td>窗口止于结果发生</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>观察性设计；仍可能存在未观测意图。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>触点累计至首次复搜，导致窗口长短不同，可能使估计产生偏差。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--2'
+  data-scene
+  data-chapter='主动复搜因果分析'
+  aria-labelledby='title-repeat-search-2'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · 主动复搜因果分析</span>
+    <span>2 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>模型</p>
+    <h2 id='title-repeat-search-2'>先调整历史差异，再估计效应</h2>
+    <p>DML 先剥离历史行为可解释的部分，再分析触点与结果的剩余关系。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='先调整历史差异，再估计效应'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='observations'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>用户级观测</strong>
+          <p>历史 X、触点 A、复搜结果 Y。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='nuisance'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>辅助模型估计</strong>
+          <p>依据历史预测触点 m(X) 与结果 g(X)。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='residuals'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>变量残差化</strong>
+          <p>A − m(X)；Y − g(X)。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='estimate'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>稀疏线性效应模型</strong>
+          <p>以 Lasso 稀疏估计剩余关系。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='observations'
+            data-edge-to='nuisance'
+            data-edge-label=''
+          >
+            用户级观测 → 辅助模型估计
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='nuisance'
+            data-edge-to='residuals'
+            data-edge-label=''
+          >
+            辅助模型估计 → 变量残差化
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='residuals'
+            data-edge-to='estimate'
+            data-edge-label=''
+          >
+            变量残差化 → 稀疏线性效应模型
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>调整历史变量无法消除未观测混杂，也不能修复结果依赖的触点窗口。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='repeat-search--3'
+  data-scene
+  data-chapter='主动复搜因果分析'
+  aria-labelledby='title-repeat-search-3'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · 主动复搜因果分析</span>
+    <span>3 / 3</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>解释</p>
+    <h2 id='title-repeat-search-3'>将信号转为待验证的策略</h2>
+    <p>区分观察性信号与反转实验证据。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='将信号转为待验证的策略'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>信号</th>
+            
+              <th scope='col'>依据</th>
+            
+              <th scope='col'>待验证方向</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>同兴趣出词</th>
+                
+                  <td>正向观察性关联</td>
+                
+                  <td>兴趣召回</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>相关结果内容</th>
+                
+                  <td>搜索承接与后续复搜的关联</td>
+                
+                  <td>完善结果承接</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>反复曝光弱相关内容</th>
+                
+                  <td>反转分析中的过曝信号</td>
+                
+                  <td>频控与退场实验</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>曝光控制仍需后续随机实验验证。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>这些结论用于提出策略假设，不能仅凭该 DML 设计认定因果效应。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/bytedance/#work-repeat-search'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/bytedance/query-foundation/'>下一项贡献: 双粒度出词数据基建 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/bytedance/#work-repeat-search'>电商搜索</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/repeat-search/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/bytedance/query-foundation/?present=1#query-foundation--1'
+      aria-label='下一项贡献: 双粒度出词数据基建'
+      title='双粒度出词数据基建'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>双粒度出词数据基建</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

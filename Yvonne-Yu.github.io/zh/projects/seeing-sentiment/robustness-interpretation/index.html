@@ -1,0 +1,464 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      稳健性检验与解释
+       | 余奕
+    </title>
+    <meta name='description' content='检验替代控制变量与图像数量安慰剂，并比较三类散户参与代理指标；图像情绪关联在创业板最强。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/seeing-sentiment/robustness-interpretation/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/'>
+    <meta property='og:title' content='稳健性检验与解释'>
+    <meta property='og:description' content='检验替代控制变量与图像数量安慰剂，并比较三类散户参与代理指标；图像情绪关联在创业板最强。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/robustness-interpretation/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#research' data-return-to-list>科研经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-robustness-interpretation'>新闻图像情绪研究</a
+    ><span aria-hidden='true'>/</span
+    ><span>稳健性检验与解释</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>新闻图像情绪研究 / 工作概览</p>
+      <h1>
+        稳健性检验与解释
+      </h1>
+      <p>
+        检验替代控制变量与图像数量安慰剂，并比较三类散户参与代理指标；图像情绪关联在创业板最强。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/research-design/'
+              
+              ><span>01</span>研究设计与数据构建</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/sentiment-measurement/'
+              
+              ><span>02</span>图文情绪测量</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/econometric-analysis/'
+              
+              ><span>03</span>计量分析</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/'
+              
+                aria-current='page'
+              
+              ><span>04</span>稳健性检验与解释</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/out-of-sample-validation/'
+              
+              ><span>05</span>样本外验证</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-robustness-interpretation'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='robustness-interpretation--1'
+  data-scene
+  data-chapter='稳健性检验与解释'
+  aria-labelledby='title-robustness-interpretation-1'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 稳健性检验与解释</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>稳健性检验</p>
+    <h2 id='title-robustness-interpretation-1'>新闻活跃度与历史收益未完全解释该信号</h2>
+    <p>通过替代控制变量和不含情绪的安慰剂检验创业板关联。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='新闻活跃度与历史收益未完全解释该信号'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>检验</th>
+            
+              <th scope='col'>做法</th>
+            
+              <th scope='col'>结果</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>流动性</th>
+                
+                  <td>加入 Amihud 非流动性指标</td>
+                
+                  <td>系数保持稳定</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>新闻数量</th>
+                
+                  <td>控制文章与图片数量</td>
+                
+                  <td>系数保持稳定</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>历史收益</th>
+                
+                  <td>加入滞后与累计收益控制</td>
+                
+                  <td>信号仍保留</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>图像数量安慰剂</th>
+                
+                  <td>用数量对数替换情绪</td>
+                
+                  <td>p = 0.57</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>安慰剂使用新闻图片数量，并非市场成交量。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>这些检验缩小了替代解释范围，但研究仍是观测性设计。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='robustness-interpretation--2'
+  data-scene
+  data-chapter='稳健性检验与解释'
+  aria-labelledby='title-robustness-interpretation-2'
+>
+  <div class='scene-meta'>
+    <span>新闻图像情绪研究 · 稳健性检验与解释</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>跨指数解释</p>
+    <h2 id='title-robustness-interpretation-2'>高波动期图像关联在创业板最强</h2>
+    <p>比较高波动子样本中标准化 PhotoPes 三阶滞后项的系数。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure bars-figure' aria-label='高波动期图像关联在创业板最强'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>0.004
+          |β|</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>创业板综指</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 82.5%'
+            ></span>
+          </div>
+          <strong>0.0033</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>中证500</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 55.0%'
+            ></span>
+          </div>
+          <strong>0.0022</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>深证综指</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 52.5%'
+            ></span>
+          </div>
+          <strong>0.0021</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>沪深300</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 40.0%'
+            ></span>
+          </div>
+          <strong>0.0016</strong>
+        </div>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>上证综指</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 35.0%'
+            ></span>
+          </div>
+          <strong>0.0014</strong>
+        </div>
+      
+    </div>
+    <figcaption>图示系数绝对值，单位为日对数收益；系数均为负，与各散户代理指标的秩相关均为0.80。见第33页表4A。</figcaption>
+  </figure>
+
+
+  <p class='takeaway'>与散户参与的对应关系属于描述性证据，五个指数不足以识别投资者层面的因果机制。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-robustness-interpretation'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/out-of-sample-validation/'>下一项贡献: 样本外验证 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/#work-robustness-interpretation'>新闻图像情绪研究</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/seeing-sentiment/robustness-interpretation/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/robustness-interpretation/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/seeing-sentiment/out-of-sample-validation/?present=1#out-of-sample-validation--1'
+      aria-label='下一项贡献: 样本外验证'
+      title='样本外验证'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>样本外验证</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

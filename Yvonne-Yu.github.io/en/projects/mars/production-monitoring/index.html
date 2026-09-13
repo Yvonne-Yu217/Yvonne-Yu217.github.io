@@ -1,0 +1,489 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Production &amp; Monitoring
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='Deployed weekly training and daily Azure ML scoring; monitored data, drift, review precision, and alerts, with shadow evaluation for changed resource types.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'>
+    <meta property='og:title' content='Production &amp; Monitoring'>
+    <meta property='og:description' content='Deployed weekly training and daily Azure ML scoring; monitored data, drift, review precision, and alerts, with shadow evaluation for changed resource types.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#industry' data-return-to-list>Industry</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/mars/#work-production-monitoring'>Cloud resource ranking</a
+    ><span aria-hidden='true'>/</span
+    ><span>Production & Monitoring</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>Cloud resource ranking / Project work</p>
+      <h1>
+        Production & Monitoring
+      </h1>
+      <p>
+        Deployed weekly training and daily Azure ML scoring; monitored data, drift, review precision, and alerts, with shadow evaluation for changed resource types.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'
+              
+              ><span>01</span>Feature & Candidate Pipeline</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'
+              
+              ><span>02</span>Supervised Ranking & Evaluation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'
+              
+                aria-current='page'
+              
+              ><span>03</span>Production & Monitoring</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/calibration-governance/'
+              
+              ><span>04</span>Calibration & Governance</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/feedback-closure/'
+              
+              ><span>05</span>Feedback & Cost Closure</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/mars/#work-production-monitoring'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='production-monitoring--1'
+  data-scene
+  data-chapter='Production &amp; Monitoring'
+  aria-labelledby='title-production-monitoring-1'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Production & Monitoring</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Deployment</p>
+    <h2 id='title-production-monitoring-1'>Weekly training, daily batch scoring in Azure ML</h2>
+    <p>Versioned releases keep training and scoring definitions consistent.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Weekly training, daily batch scoring in Azure ML'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='snapshot'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Versioned inputs</strong>
+          <p>Data snapshots and feature code.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='train'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Weekly training</strong>
+          <p>Matured operations labels.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='release'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>Model package</strong>
+          <p>Model, calibrator, Top-K policy.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='score'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Daily scoring</strong>
+          <p>Current resource features.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='queue'
+          style='grid-column: 2; grid-row: 2'
+        >
+          <strong>Review queue</strong>
+          <p>Scored candidates for operations.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='snapshot'
+            data-edge-to='train'
+            data-edge-label=''
+          >
+            Versioned inputs → Weekly training
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='train'
+            data-edge-to='release'
+            data-edge-label=''
+          >
+            Weekly training → Model package
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='release'
+            data-edge-to='score'
+            data-edge-label=''
+          >
+            Model package → Daily scoring
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='score'
+            data-edge-to='queue'
+            data-edge-label=''
+          >
+            Daily scoring → Review queue
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>New SKUs and definition changes pass backtests and shadow evaluation before release.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='production-monitoring--2'
+  data-scene
+  data-chapter='Production &amp; Monitoring'
+  aria-labelledby='title-production-monitoring-2'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Production & Monitoring</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Monitoring</p>
+    <h2 id='title-production-monitoring-2'>Power BI separates drift from reviewed performance</h2>
+    <p>Monitored data health, model behavior, and operational workload.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Power BI separates drift from reviewed performance'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Layer</th>
+            
+              <th scope='col'>Signal</th>
+            
+              <th scope='col'>Response</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Data</th>
+                
+                  <td>Coverage, missingness, delay</td>
+                
+                  <td>Check input quality</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Drift</th>
+                
+                  <td>PSI, score distribution</td>
+                
+                  <td>Investigate population changes</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Performance</th>
+                
+                  <td>Precision@K by resource type</td>
+                
+                  <td>Validate reviewed outcomes</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Workflow</th>
+                
+                  <td>Alert volume, review / appeal states</td>
+                
+                  <td>Track operational workload</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+  </figure>
+
+
+  <p class='takeaway'>PSI prompts investigation; review precision requires matured labels.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/mars/#work-production-monitoring'>← Back to project</a><a href='/Yvonne-Yu.github.io/en/projects/mars/calibration-governance/'>Next contribution: Calibration & Governance →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/mars/#work-production-monitoring'>Cloud resource ranking</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/mars/production-monitoring/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/en/projects/mars/calibration-governance/?present=1#calibration-governance--1'
+      aria-label='Next contribution: Calibration &amp; Governance'
+      title='Calibration &amp; Governance'
+      hidden
+    >
+      <span>Next contribution →</span
+      >
+      <strong>Calibration & Governance</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,481 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      A/B 实验评估
+       | 余奕
+    </title>
+    <meta name='description' content='复盘团队历史实验：新入口人均活跃天数相对提升 0.2026%，货架场人均支付订单数相对提升 0.1859%，分别核对指标口径与显著性。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/ab-experiment/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/ab-experiment/'>
+    <meta property='og:title' content='A/B 实验评估'>
+    <meta property='og:description' content='复盘团队历史实验：新入口人均活跃天数相对提升 0.2026%，货架场人均支付订单数相对提升 0.1859%，分别核对指标口径与显著性。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/bytedance/ab-experiment/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/bytedance/ab-experiment/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='主导航'>
+    <a href='/Yvonne-Yu.github.io/zh/#industry' data-return-to-list>实习经历</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/zh/projects/bytedance/#work-ab-experiment'>电商搜索</a
+    ><span aria-hidden='true'>/</span
+    ><span>A/B 实验评估</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>电商搜索 / 工作概览</p>
+      <h1>
+        A/B 实验评估
+      </h1>
+      <p>
+        复盘团队历史实验：新入口人均活跃天数相对提升 0.2026%，货架场人均支付订单数相对提升 0.1859%，分别核对指标口径与显著性。
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      演示模式
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>章节目录</span>
+      <nav aria-label='章节目录'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/bytedance/query-research/'
+              
+              ><span>01</span>商品与词库研究</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/bytedance/ab-experiment/'
+              
+                aria-current='page'
+              
+              ><span>02</span>A/B 实验评估</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'
+              
+              ><span>03</span>主动复搜因果分析</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/bytedance/query-foundation/'
+              
+              ><span>04</span>双粒度出词数据基建</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/projects/bytedance/experiment-automation/'
+              
+              ><span>05</span>AI 实验核验自动化</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/zh/projects/bytedance/#work-ab-experiment'
+        >← 返回项目</a>
+      <button type='button' class='button primary reading-present' hidden>
+        从当前段落演示
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='ab-experiment--1'
+  data-scene
+  data-chapter='A/B 实验评估'
+  aria-labelledby='title-ab-experiment-1'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · A/B 实验评估</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>团队历史实验</p>
+    <h2 id='title-ab-experiment-1'>在排序中加入复访价值预测</h2>
+    <p>团队历史实验：在排序中考虑用户后续同类目复访。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='在排序中加入复访价值预测'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 3'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='click'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>点击概率</strong>
+          <p>用户点击卡片的概率。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='revisit'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>点击后的复访概率</strong>
+          <p>首次点击卡片后 14 日内，从新入口主动访问并点击同类目商品。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='joint'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>估计联合复访概率</strong>
+          <p>点击概率 × 点击后的复访概率。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='ranking'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>实验组排序</strong>
+          <p>加入经过缩放的复访价值项。</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='readout'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>A/B 结果评估</strong>
+          <p>检查分组、完整日、实验前平衡与护栏。</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='图中关系'>
+        
+          
+          
+          <li
+            data-edge-from='click'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            点击概率 → 估计联合复访概率
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='revisit'
+            data-edge-to='joint'
+            data-edge-label=''
+          >
+            点击后的复访概率 → 估计联合复访概率
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='joint'
+            data-edge-to='ranking'
+            data-edge-label=''
+          >
+            估计联合复访概率 → 实验组排序
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='ranking'
+            data-edge-to='readout'
+            data-edge-label=''
+          >
+            实验组排序 → A/B 结果评估
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>预测分定义策略，随机实验评估策略增量。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='ab-experiment--2'
+  data-scene
+  data-chapter='A/B 实验评估'
+  aria-labelledby='title-ab-experiment-2'
+>
+  <div class='scene-meta'>
+    <span>电商搜索 · A/B 实验评估</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>证据</p>
+    <h2 id='title-ab-experiment-2'>历史实验中两项指标相对提升</h2>
+    <p>实验发生于实习之前；我的贡献是复盘与核对证据。</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>左右滑动查看完整图表</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='历史实验中两项指标相对提升'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>指标</th>
+            
+              <th scope='col'>结果</th>
+            
+              <th scope='col'>口径</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>人均活跃天数</th>
+                
+                  <td>+0.2026%；p < 0.001</td>
+                
+                  <td>商城新入口；近 30 日指标</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>人均支付订单数</th>
+                
+                  <td>+0.1859%；p = 0.0063</td>
+                
+                  <td>货架场</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>实验窗口</th>
+                
+                  <td>12 个完整天</td>
+                
+                  <td>2025-12-26 至 2026-01-07</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>相对对照组的提升；平台舍入显示的 p = 0 规范写为 p < 0.001。</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>各项相对提升均应限定指标、人群与观察窗口解释。</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    演示这一页
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='项目贡献'>
+    <a href='/Yvonne-Yu.github.io/zh/projects/bytedance/#work-ab-experiment'>← 返回项目</a><a href='/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/'>下一项贡献: 主动复搜因果分析 →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/zh/projects/bytedance/#work-ab-experiment'>电商搜索</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>章节目录</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>动手理解方法</button>
+  <nav class='language-switch' aria-label='语言切换'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/bytedance/ab-experiment/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/bytedance/ab-experiment/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+        aria-current='true'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    退出演示
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='上一页'>
+    ← <span>上一页</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>← → 翻页 · Esc 返回</small>
+  </div>
+  <button type='button' data-next aria-label='下一页'>
+    <span>下一页</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/zh/projects/bytedance/repeat-search/?present=1#repeat-search--1'
+      aria-label='下一项贡献: 主动复搜因果分析'
+      title='主动复搜因果分析'
+      hidden
+    >
+      <span>下一项贡献 →</span
+      >
+      <strong>主动复搜因果分析</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>动手理解方法</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      返回演示
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

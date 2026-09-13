@@ -1,0 +1,459 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Supervised Ranking &amp; Evaluation
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='Trained XGBoost on operations labels with time splits and class weights; manual Precision@100 reached approximately 85%, with SHAP reason codes.'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'>
+    <meta property='og:title' content='Supervised Ranking &amp; Evaluation'>
+    <meta property='og:description' content='Trained XGBoost on operations labels with time splits and class weights; manual Precision@100 reached approximately 85%, with SHAP reason codes.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#industry' data-return-to-list>Industry</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/mars/#work-supervised-ranking'>Cloud resource ranking</a
+    ><span aria-hidden='true'>/</span
+    ><span>Supervised Ranking & Evaluation</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>Cloud resource ranking / Project work</p>
+      <h1>
+        Supervised Ranking & Evaluation
+      </h1>
+      <p>
+        Trained XGBoost on operations labels with time splits and class weights; manual Precision@100 reached approximately 85%, with SHAP reason codes.
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/candidate-pipeline/'
+              
+              ><span>01</span>Feature & Candidate Pipeline</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'
+              
+                aria-current='page'
+              
+              ><span>02</span>Supervised Ranking & Evaluation</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'
+              
+              ><span>03</span>Production & Monitoring</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/calibration-governance/'
+              
+              ><span>04</span>Calibration & Governance</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/mars/feedback-closure/'
+              
+              ><span>05</span>Feedback & Cost Closure</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/mars/#work-supervised-ranking'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='supervised-ranking--1'
+  data-scene
+  data-chapter='Supervised Ranking &amp; Evaluation'
+  aria-labelledby='title-supervised-ranking-1'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Supervised Ranking & Evaluation</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Training and validation</p>
+    <h2 id='title-supervised-ranking-1'>XGBoost learns from mature operations labels</h2>
+    <p>Ranked candidates for a fixed review budget.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='XGBoost learns from mature operations labels'
+    >
+      <table
+        class='brief-table'
+        style='--table-data-columns: 2'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Stage</th>
+            
+              <th scope='col'>Implementation</th>
+            
+              <th scope='col'>Purpose</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Labels</th>
+                
+                  <td>Confirmed idle / valid use</td>
+                
+                  <td>Unreviewed ≠ negative</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Time split</th>
+                
+                  <td>Earlier training; later testing</td>
+                
+                  <td>Prevent temporal leakage</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>XGBoost</th>
+                
+                  <td>Class weights</td>
+                
+                  <td>Learn rare positive cases</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Review output</th>
+                
+                  <td>Ranked candidates + SHAP</td>
+                
+                  <td>Resource-level reasons</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+  </figure>
+
+
+  <p class='takeaway'>SHAP explains a resource score; it does not establish causality.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='supervised-ranking--2'
+  data-scene
+  data-chapter='Supervised Ranking &amp; Evaluation'
+  aria-labelledby='title-supervised-ranking-2'
+>
+  <div class='scene-meta'>
+    <span>Cloud resource ranking · Supervised Ranking & Evaluation</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Manual validation</p>
+    <h2 id='title-supervised-ranking-2'>Approximately 85% precision in the reviewed top 100</h2>
+    <p>Operations checked whether ranked candidates were releasable or downsizable.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure bars-figure' aria-label='Approximately 85% precision in the reviewed top 100'>
+    <div class='bar-axis' aria-hidden='true'>
+      <div class='bar-axis-track'>
+        <span>0</span
+        ><span>100
+          %</span>
+      </div>
+    </div>
+    <div class='brief-bars'>
+      
+        <div class='brief-bar-row'>
+          <span class='bar-label'>Precision@100</span>
+          <div class='bar-track'>
+            <span
+              class='bar-fill'
+              style='width: 85.0%'
+            ></span>
+          </div>
+          <strong>≈85%</strong>
+        </div>
+      
+    </div>
+    <figcaption>About 85 confirmed cases among the top 100 manually reviewed candidates.</figcaption>
+  </figure>
+
+
+  <p class='takeaway'>This is queue-specific Precision@100, not accuracy across all cloud resources.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+          <div class='chapter-appendix has-demo' data-chapter-id='supervised-ranking'>
+            <section class='demo' data-demo='ranking' aria-label='Explore the idea'>
+  <p class='eyebrow'>Explore the idea</p>
+  <h3>
+    Who gets reviewed first?
+  </h3>
+  <p class='demo-note'>Illustrative data · not actual business or research results</p>
+  <div class='demo-controls'>
+    <label for='review-budget'>Review budget K</label
+    ><input id='review-budget' type='range' min='5' max='50' step='5' value='15'
+    ><output for='review-budget' data-budget>15</output
+    ><button class='button secondary' type='button' data-reset>Reset</button>
+  </div>
+  <div class='demo-metrics' role='status' aria-live='polite'>
+    <div>
+      <strong data-precision>—</strong
+      ><span>Simulated Precision@K</span>
+    </div>
+    <div>
+      <strong data-reviewed>15 / 50</strong><span>Candidates reviewed</span>
+    </div>
+  </div>
+  <div class='demo-grid' aria-hidden='true'></div>
+  <div class='demo-legend'>
+    <span>Confirmed idle</span><span>Not idle</span>
+  </div>
+  <p class='demo-note'>
+    Each square is one synthetic candidate, ordered by a fixed score. Increasing K spends more
+      review capacity; precision can fall as less certain candidates enter the queue. This example
+      does not reproduce the reported Precision@100.
+  </p>
+  <noscript>
+    <p>
+      Enable JavaScript to adjust the simulation. The reported project evaluation remains
+        available above.
+    </p>
+  </noscript>
+</section>
+
+          </div>
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/mars/#work-supervised-ranking'>← Back to project</a><a href='/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/'>Next contribution: Production & Monitoring →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/mars/#work-supervised-ranking'>Cloud resource ranking</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/mars/supervised-ranking/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/mars/supervised-ranking/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/en/projects/mars/production-monitoring/?present=1#production-monitoring--1'
+      aria-label='Next contribution: Production &amp; Monitoring'
+      title='Production &amp; Monitoring'
+      hidden
+    >
+      <span>Next contribution →</span
+      >
+      <strong>Production & Monitoring</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

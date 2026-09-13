@@ -1,0 +1,537 @@
+<!doctype html>
+<html
+  lang='en'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      Failure Diagnosis
+       | Yvonne Yu
+    </title>
+    <meta name='description' content='I applied paired McNemar tests and bootstrap intervals; answer voting, debate, and judging reduced accuracy on three short-context benchmarks (reported p &lt; 0.05).'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'>
+    <meta property='og:title' content='Failure Diagnosis'>
+    <meta property='og:description' content='I applied paired McNemar tests and bootstrap intervals; answer voting, debate, and judging reduced accuracy on three short-context benchmarks (reported p &lt; 0.05).'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='en' data-kind='contribution' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/en/#about'
+          data-section='about'
+        >About</a>
+        <nav class='main-nav' aria-label='Main navigation'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#education'
+              data-section='education'
+            >Education</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#research'
+              data-section='research'
+            >Research</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/#industry'
+              data-section='industry'
+            >Industry</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>Notes</a>
+        </nav>
+        <nav class='language-switch' aria-label='Language'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+              aria-current='true'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container contribution-page brief-page'>
+  <nav class='breadcrumbs' aria-label='Main navigation'>
+    <a href='/Yvonne-Yu.github.io/en/#research' data-return-to-list>Research</a
+    ><span aria-hidden='true'>/</span
+    ><a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-failure-diagnosis'>Small-LLM Teaming</a
+    ><span aria-hidden='true'>/</span
+    ><span>Failure Diagnosis</span>
+  </nav>
+  <header class='contribution-header'>
+    <div>
+      <p class='eyebrow'>Small-LLM Teaming / Project work</p>
+      <h1>
+        Failure Diagnosis
+      </h1>
+      <p>
+        I applied paired McNemar tests and bootstrap intervals; answer voting, debate, and judging reduced accuracy on three short-context benchmarks (reported p < 0.05).
+      </p>
+    </div>
+    <button type='button' class='button primary enter-presentation' hidden>
+      Presentation mode
+      <span aria-hidden='true'>▷</span>
+    </button>
+  </header>
+  <div class='story-layout'>
+    <aside class='story-sidebar'>
+      <span class='small-label'>Chapter outline</span>
+      <nav aria-label='Chapter outline'>
+        
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/benchmark-design/'
+              
+              ><span>01</span>Benchmark Design</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'
+              
+                aria-current='page'
+              
+              ><span>02</span>Failure Diagnosis</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'
+              
+              ><span>03</span>Pipeline Design</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/en/projects/llm-teaming/validation-audit/'
+              
+              ><span>04</span>Validation & Audit</a>
+          
+        
+      </nav>
+      <a class='back-link' href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-failure-diagnosis'
+        >← Back to project</a>
+      <button type='button' class='button primary reading-present' hidden>
+        Present this section
+        <span aria-hidden='true'>▷</span>
+      </button>
+    </aside>
+    <div class='story-content'>
+      
+
+<section
+  class='story-scene brief-scene'
+  id='failure-diagnosis--1'
+  data-scene
+  data-chapter='Failure Diagnosis'
+  aria-labelledby='title-failure-diagnosis-1'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Failure Diagnosis</span>
+    <span>1 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Statistical comparison</p>
+    <h2 id='title-failure-diagnosis-1'>Compare methods question by question</h2>
+    <p>I preserved paired correctness outcomes for significance tests and uncertainty intervals.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure framework-figure' tabindex='0' aria-label='Compare methods question by question'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div class='framework-graph' data-graph style='--graph-columns: 4'>
+      <svg class='framework-edges' aria-hidden='true' focusable='false'></svg>
+      
+        <div
+          class='framework-node'
+          data-node='solo'
+          style='grid-column: 1; grid-row: 1'
+        >
+          <strong>Solo predictions</strong>
+          <p>Correct or incorrect by question.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='team'
+          style='grid-column: 1; grid-row: 2'
+        >
+          <strong>Team predictions</strong>
+          <p>The same question IDs.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='paired'
+          style='grid-column: 2; grid-row: 1'
+        >
+          <strong>Paired correctness</strong>
+          <p>Align outcomes question by question.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='mcnemar'
+          style='grid-column: 3; grid-row: 1'
+        >
+          <strong>McNemar test</strong>
+          <p>Compare discordant outcomes.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='bootstrap'
+          style='grid-column: 3; grid-row: 2'
+        >
+          <strong>Paired bootstrap</strong>
+          <p>Resample question pairs together.</p>
+        </div>
+      
+        <div
+          class='framework-node'
+          data-node='report'
+          style='grid-column: 4; grid-row: 1'
+        >
+          <strong>Accuracy comparison</strong>
+          <p>Direction, magnitude, uncertainty.</p>
+        </div>
+      
+      <ul class='graph-connections' aria-label='Connections'>
+        
+          
+          
+          <li
+            data-edge-from='solo'
+            data-edge-to='paired'
+            data-edge-label=''
+          >
+            Solo predictions → Paired correctness
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='team'
+            data-edge-to='paired'
+            data-edge-label=''
+          >
+            Team predictions → Paired correctness
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='paired'
+            data-edge-to='mcnemar'
+            data-edge-label=''
+          >
+            Paired correctness → McNemar test
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='paired'
+            data-edge-to='bootstrap'
+            data-edge-label=''
+          >
+            Paired correctness → Paired bootstrap
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='mcnemar'
+            data-edge-to='report'
+            data-edge-label=''
+          >
+            McNemar test → Accuracy comparison
+          </li>
+        
+          
+          
+          <li
+            data-edge-from='bootstrap'
+            data-edge-to='report'
+            data-edge-label=''
+          >
+            Paired bootstrap → Accuracy comparison
+          </li>
+        
+      </ul>
+    </div>
+  </figure>
+
+
+  <p class='takeaway'>Pairing preserves shared question difficulty when comparing accuracy.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+
+<section
+  class='story-scene brief-scene'
+  id='failure-diagnosis--2'
+  data-scene
+  data-chapter='Failure Diagnosis'
+  aria-labelledby='title-failure-diagnosis-2'
+>
+  <div class='scene-meta'>
+    <span>Small-LLM Teaming · Failure Diagnosis</span>
+    <span>2 / 2</span>
+  </div>
+  <div class='scene-heading'>
+    <p class='eyebrow'>Failure evidence</p>
+    <h2 id='title-failure-diagnosis-2'>Tested answer aggregators underperform the solo baseline</h2>
+    <p>Qwen2.5-7B direct answering leads each tested aggregator on these three benchmarks.</p>
+  </div>
+  
+
+
+  <figure class='brief-figure table-figure'>
+    <p class='diagram-hint'>Scroll horizontally to view the full figure</p>
+    <div
+      class='brief-table-scroll'
+      tabindex='0'
+      role='region'
+      aria-label='Tested answer aggregators underperform the solo baseline'
+    >
+      <table
+        class='brief-table pin-first-column'
+        style='--table-data-columns: 3'
+      >
+        <thead>
+          <tr>
+            
+              <th scope='col'>Method</th>
+            
+              <th scope='col'>ReClor</th>
+            
+              <th scope='col'>LogiQA</th>
+            
+              <th scope='col'>CSQA</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              
+                  <th scope='row'>Qwen2.5-7B solo</th>
+                
+                  <td>70.6</td>
+                
+                  <td>50.8</td>
+                
+                  <td>83.5</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Majority vote</th>
+                
+                  <td>58.6</td>
+                
+                  <td>39.9</td>
+                
+                  <td>78.5</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Confidence vote</th>
+                
+                  <td>65.4</td>
+                
+                  <td>49.2</td>
+                
+                  <td>80.3</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Two-round debate</th>
+                
+                  <td>65.6</td>
+                
+                  <td>46.2</td>
+                
+                  <td>79.7</td>
+                
+            </tr>
+          
+            <tr>
+              
+                  <th scope='row'>Qwen judge</th>
+                
+                  <td>60.6</td>
+                
+                  <td>42.1</td>
+                
+                  <td>81.7</td>
+                
+            </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    
+      <figcaption>Accuracy (%). Reported paired McNemar p < 0.05; multiplicity correction is unspecified.</figcaption>
+    
+  </figure>
+
+
+  <p class='takeaway'>Correlated errors and unreliable confidence are diagnostic explanations, not separately identified causes.</p>
+  <button type='button' class='button secondary scene-present' data-present-scene hidden>
+    Present this slide
+    <span aria-hidden='true'>▷</span>
+  </button>
+</section>
+
+        
+        
+        
+      
+    </div>
+  </div>
+  <nav class='contribution-bottom' aria-label='Contributions'>
+    <a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-failure-diagnosis'>← Back to project</a><a href='/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/'>Next contribution: Pipeline Design →</a
+            >
+  </nav>
+</div>
+<div class='presentation-top' hidden>
+  <a class='presentation-project' href='/Yvonne-Yu.github.io/en/projects/llm-teaming/#work-failure-diagnosis'>Small-LLM Teaming</a>
+  <div class='presentation-select'>
+    <label class='sr-only' for='presentation-scene'>Chapter outline</label
+    ><select id='presentation-scene' data-scene-select></select>
+  </div>
+  <button type='button' data-demo-open hidden>Explore the idea</button>
+  <nav class='language-switch' aria-label='Language'>
+    <a
+      href='/Yvonne-Yu.github.io/en/projects/llm-teaming/failure-diagnosis/'
+      lang='en'
+      hreflang='en'
+      data-language='en'
+      
+        aria-current='true'
+      
+      >EN</a
+    ><span aria-hidden='true'>/</span
+    ><a
+      href='/Yvonne-Yu.github.io/zh/projects/llm-teaming/failure-diagnosis/'
+      lang='zh-CN'
+      hreflang='zh-Hans'
+      data-language='zh'
+      
+      >中文</a
+    >
+  </nav>
+  <button type='button' data-exit>
+    Exit presentation
+    <span aria-hidden='true'>×</span>
+  </button>
+</div>
+<div class='presentation-controls' hidden>
+  <button type='button' data-prev aria-label='Previous'>
+    ← <span>Previous</span>
+  </button>
+  <div>
+    <span data-progress role='status' aria-live='polite'></span><small>Use ← → to navigate · Esc to return</small>
+  </div>
+  <button type='button' data-next aria-label='Next'>
+    <span>Next</span> →
+  </button>
+  
+    
+    <a
+      class='presentation-continue'
+      data-next-contribution
+      href='/Yvonne-Yu.github.io/en/projects/llm-teaming/pipeline-design/?present=1#pipeline-design--1'
+      aria-label='Next contribution: Pipeline Design'
+      title='Pipeline Design'
+      hidden
+    >
+      <span>Next contribution →</span
+      >
+      <strong>Pipeline Design</strong>
+    </a>
+  
+</div>
+<dialog class='demo-dialog' data-demo-dialog aria-labelledby='demo-dialog-title'>
+  <div class='demo-dialog-header'>
+    <h2 id='demo-dialog-title'>Explore the idea</h2>
+    <button class='button secondary' type='button' data-demo-close>
+      Back to presentation
+      <span aria-hidden='true'>×</span>
+    </button>
+  </div>
+  <div data-demo-dialog-body></div>
+</dialog>
+
+</main>
+    <footer class='site-footer'>
+      <span>Yvonne Yu
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>New York University · Data Science</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        Last updated:
+        <time datetime='2026-09-14'>
+          Sep 14, 2026
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>

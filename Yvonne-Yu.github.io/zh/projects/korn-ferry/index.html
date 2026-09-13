@@ -1,0 +1,230 @@
+<!doctype html>
+<html
+  lang='zh-CN'
+  
+>
+  
+  
+  
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>
+      光辉国际 · 薪酬分析与人才分群
+       | 余奕
+    </title>
+    <meta name='description' content='用 Python/SQL 建设可复用薪酬查询库，并通过 PCA 与 K-Means 构建人才画像。'>
+    <meta name='theme-color' content='#ffffff'>
+    <link rel='canonical' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/korn-ferry/'>
+    <link rel='alternate' hreflang='en' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/en/projects/korn-ferry/'>
+    <link rel='alternate' hreflang='zh-Hans' href='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/korn-ferry/'>
+    <meta property='og:title' content='光辉国际 · 薪酬分析与人才分群'>
+    <meta property='og:description' content='用 Python/SQL 建设可复用薪酬查询库，并通过 PCA 与 K-Means 构建人才画像。'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/zh/projects/korn-ferry/'>
+    <meta property='og:image' content='https://yvonne-yu217.github.io/Yvonne-Yu.github.io/assets/share-card.png'>
+    
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/site.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/graphics.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/academic.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/briefs.css?v=20260914013746'
+    >
+    <link
+      rel='stylesheet'
+      href='/Yvonne-Yu.github.io/assets/styles/research.css?v=20260914013746'
+    >
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/briefs.js'></script>
+    <script type='module' src='/Yvonne-Yu.github.io/assets/scripts/site.js'></script>
+  </head>
+  <body data-lang='zh' data-kind='project' data-base='/Yvonne-Yu.github.io'>
+    <a class='skip-link' href='#main'>跳至正文</a>
+    <header class='site-header'>
+      <div class='header-inner'>
+        <a
+          class='wordmark'
+          href='/Yvonne-Yu.github.io/zh/#about'
+          data-section='about'
+        >简介</a>
+        <nav class='main-nav' aria-label='主导航'>
+          
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#education'
+              data-section='education'
+            >教育背景</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#research'
+              data-section='research'
+            >科研经历</a>
+          
+            <a
+              href='/Yvonne-Yu.github.io/zh/#industry'
+              data-section='industry'
+            >实习经历</a>
+          
+          <a href='/Yvonne-Yu.github.io/notes/'>学习笔记</a>
+        </nav>
+        <nav class='language-switch' aria-label='语言切换'>
+          <a
+            href='/Yvonne-Yu.github.io/en/projects/korn-ferry/'
+            lang='en'
+            hreflang='en'
+            data-language='en'
+            
+            >EN</a
+          ><span aria-hidden='true'>/</span
+          ><a
+            href='/Yvonne-Yu.github.io/zh/projects/korn-ferry/'
+            lang='zh-CN'
+            hreflang='zh-Hans'
+            data-language='zh'
+            
+              aria-current='true'
+            
+            >中文</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id='main'>
+
+
+
+
+<div class='container academic-layout'>
+  <aside class='author-sidebar' aria-label='个人信息与联系方式'>
+  <div class='author-identity'>
+    <div class='author-avatar'>
+      <img
+        src='/Yvonne-Yu.github.io/assets/images/yvonne-yu.jpg'
+        alt='余奕'
+        width='2316'
+        height='3088'
+        decoding='async'
+      >
+    </div>
+    <div class='author-details'>
+      <a class='author-name' href='/Yvonne-Yu.github.io/zh/'>余奕</a>
+      <p class='author-degree'>数据科学硕士在读</p>
+      <p class='author-affiliation'>纽约大学</p>
+    </div>
+  </div>
+  <div class='profile-contact' id='contact'>
+    <span class='profile-email'>
+      <svg viewBox='0 0 24 24' aria-hidden='true'>
+        <rect x='3' y='5' width='18' height='14' rx='1'/><path d='m3 6 9 7 9-7'/>
+      </svg>
+      <span>yy5919 at nyu dot edu</span>
+    </span>
+    <a href='https://www.linkedin.com/in/yvonne-yu-76364531b/' rel='noopener noreferrer'>
+      <svg viewBox='0 0 24 24' aria-hidden='true'>
+        <rect x='3' y='3' width='18' height='18' rx='2'/><path d='M7 10v7M7 7v.1M11 17v-7m0 3a3 3 0 0 1 6 0v4'/>
+      </svg>
+      <span>LinkedIn</span>
+    </a>
+    <a href='https://github.com/Yvonne-Yu217' rel='noopener noreferrer'>
+      <svg viewBox='0 0 24 24' aria-hidden='true'>
+        <path d='m8 5-5 7 5 7m8-14 5 7-5 7m-3-16-2 18'/>
+      </svg>
+      <span>GitHub</span>
+    </a>
+  </div>
+  <div class='profile-resumes'>
+    <a href='/Yvonne-Yu.github.io/assets/documents/yvonne-yu-research.pdf'>科研简历
+      <span>PDF</span></a
+    >
+    
+    
+    <a href='/Yvonne-Yu.github.io/assets/documents/yvonne-yu-industry-zh.pdf'>行业简历
+      <span>PDF</span></a
+    >
+    <small>科研简历：英文 · 行业简历：中文</small>
+  </div>
+</aside>
+
+  <article class='academic-main project-overview compact-project'>
+    <nav class='breadcrumbs' aria-label='主导航'>
+      <a href='/Yvonne-Yu.github.io/zh/#industry' data-return-to-list>实习经历</a>
+      <span aria-hidden='true'>/</span><span>薪酬与人才分析</span>
+    </nav>
+    <header class='compact-project-header'>
+      <h1>
+        光辉国际 · 薪酬分析与人才分群
+      </h1>
+      <p class='project-byline'>
+        数据科学咨询实习生
+        <span>2024 年 8–12 月</span>
+      </p>
+      
+      <p class='project-question'>用 Python/SQL 建设可复用薪酬查询库，并通过 PCA 与 K-Means 构建人才画像。</p>
+      
+    </header>
+    <section class='project-work' aria-labelledby='project-work-title'>
+      <h2 id='project-work-title'>工作概览</h2>
+      <ol class='work-list'>
+        
+          
+          <li id='work-compensation-product' data-unit='compensation-product'>
+            <span class='work-number' aria-hidden='true'>01</span>
+            <div>
+              <h3>
+                <a href='/Yvonne-Yu.github.io/zh/projects/korn-ferry/compensation-product/'>薪酬数据产品</a>
+              </h3>
+              <p>建设 Python／SQL ETL 与可追溯薪酬查询层，统一比较口径，将年度薪酬审查从约两周缩短至两天。</p>
+              <a class='work-present' href='/Yvonne-Yu.github.io/zh/projects/korn-ferry/compensation-product/?present=1'>
+                演示 · 3
+                页
+                <span aria-hidden='true'>→</span>
+              </a>
+            </div>
+          </li>
+        
+          
+          <li id='work-talent-segmentation' data-unit='talent-segmentation'>
+            <span class='work-number' aria-hidden='true'>02</span>
+            <div>
+              <h3>
+                <a href='/Yvonne-Yu.github.io/zh/projects/korn-ferry/talent-segmentation/'>人才分群</a>
+              </h3>
+              <p>标准化薪酬、绩效和任职年限等 28 项特征，以 PCA 降至 6 维、K-Means 形成 4 类，再解释画像以支持人才规划。</p>
+              <a class='work-present' href='/Yvonne-Yu.github.io/zh/projects/korn-ferry/talent-segmentation/?present=1'>
+                演示 · 2
+                页
+                <span aria-hidden='true'>→</span>
+              </a>
+            </div>
+          </li>
+        
+      </ol>
+    </section>
+    
+      <p class='public-note'>业务敏感数值已省略，示例均有标注。</p>
+    
+  </article>
+</div>
+</main>
+    <footer class='site-footer'>
+      <span>余奕
+        <span aria-hidden='true'>©</span> 2026</span
+      ><span>纽约大学 · 数据科学</span><span>yy5919 at nyu dot edu</span>
+      <span class='site-updated'>
+        最后更新:
+        <time datetime='2026-09-14'>
+          2026年9月14日
+        </time>
+      </span>
+    </footer>
+  </body>
+</html>
