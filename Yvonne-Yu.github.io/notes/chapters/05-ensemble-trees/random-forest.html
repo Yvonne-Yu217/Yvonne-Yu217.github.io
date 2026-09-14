@@ -504,7 +504,7 @@ window.Quarto = {
 <p><span class="math display">\[\operatorname{Var}(\bar f)=0.2(0.09)+\frac{0.8}{100}(0.09)=0.01872.\]</span></p>
 <p>With infinitely many such trees, the variance floor is still <span class="math inline">\(0.018\)</span>. Lowering correlation is therefore often more valuable than adding another hundred nearly identical trees.</p>
 <p>For eight indexed observations, a bootstrap sample might be <span class="math inline">\((1,1,3,3,5,7,8,8)\)</span>. Its OOB set is <span class="math inline">\(\{2,4,6\}\)</span>. Repeated observations count repeatedly during tree fitting. Observation 1 must <strong>not</strong> receive an OOB prediction from this tree. A new observation is evaluated by every tree, whereas each training observation’s OOB score uses only eligible trees.</p>
-<p>The three-tree admissions walkthrough from the source notes makes the distinction concrete. Each row lists the sampled IDs and the IDs that tree did not see:</p>
+<p>The three-tree admissions walkthrough makes the distinction concrete. Each row lists the sampled IDs and the IDs that tree did not see:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -613,7 +613,7 @@ window.Quarto = {
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<p>Source coverage: <em>ML and Causal Lecture Notes</em>, Random Forest, all subsections. Further reading: Breiman, <em>Random Forests</em> (2001).</p>
+<p>Further reading: Breiman, <em>Random Forests</em> (2001).</p>
 
 
 </section>

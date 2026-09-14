@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Data Science Interview Notes",
     "section": "",
-    "text": "How to use this book\nThis book turns my course review and interview-preparation notes into a connected set of explanations. Each chapter begins with a concrete question, works through a small example, then develops the mathematical assumptions and practical limits. The interview questions at the end are prompts for practice, not transcripts of actual interviews.\nThe chapters draw on two source documents: an IDS 2–13 review sheet covering probability, statistical inference, regression, classification, and unsupervised learning; and my longer lecture notes on ensemble trees, clustering, causal inference, and time series. Where a source statement was too broad or incorrect, the chapter explains the corrected condition. Worked numbers explicitly identified as examples are teaching data.\nThe book is maintained alongside my English portfolio and 中文个人网站.",
+    "text": "How to use this book\nThis book turns my course review and interview-preparation notes into a connected set of explanations. Each chapter begins with a concrete question, works through a small example, then develops the mathematical assumptions and practical limits. The interview questions at the end are prompts for practice, not transcripts of actual interviews.\nThe chapters synthesize NYU DS-GA 1001 course content (IDS 2–13) with extended explanations of ensemble trees, clustering, causal inference, and time series. Where a statement was too broad or incorrect, the chapter explains the corrected condition. Worked numbers explicitly identified as examples are teaching data.\nThe book is maintained alongside my English portfolio and 中文个人网站.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Data Science Interview Notes</span>"
     ]
@@ -111,7 +111,7 @@
     "href": "chapters/01-foundations/probability.html#references",
     "title": "Probability, Random Variables, and Distribution Shape",
     "section": "References",
-    "text": "References\n\nIDS Review: Complete Modules (IDS 2–13), source PDF interview_preparation/1001.pdf, p. 1 (IDS 2); Cauchy continuation on p. 2.",
+    "text": "References\n\nNYU DS-GA 1001 course content, IDS 2: probability, random variables, and distribution shape.",
     "crumbs": [
       "Probability and descriptive statistics",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Probability, Random Variables, and Distribution Shape</span>"
@@ -199,7 +199,7 @@
     "href": "chapters/01-foundations/descriptive-statistics.html#references",
     "title": "Descriptive Statistics, Association, and Visual Checks",
     "section": "References",
-    "text": "References\n\nIDS Review: Complete Modules (IDS 2–13), source PDF interview_preparation/1001.pdf, pp. 2–3 (IDS 3).",
+    "text": "References\n\nNYU DS-GA 1001 course content, IDS 3: descriptive statistics, association, and visual checks.",
     "crumbs": [
       "Probability and descriptive statistics",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Descriptive Statistics, Association, and Visual Checks</span>"
@@ -243,7 +243,7 @@
     "href": "chapters/02-inference/scientific-reasoning.html#theory-and-assumptions",
     "title": "Scientific Reasoning and Hypothesis Testing",
     "section": "Theory and assumptions",
-    "text": "Theory and assumptions\n\nThe testing decision\nChoose hypotheses and a statistic \\(T\\) before evaluating evidence. Under \\(H_0\\), calculate a reference distribution that accounts for the study design. For a two-sided statistic, a p-value often has the form \\(P_{H_0}(|T|\\ge|T_{\\rm obs}|)\\); the exact “as extreme” rule depends on the test. Compare it with a prespecified threshold \\(\\alpha\\). If the null distribution and assumptions are correct, \\(\\alpha\\) controls the long-run probability of rejecting a true null, not the probability that any particular rejected null is false.\n\n\nLogic and scientific limits\nThe source notes connect null testing to proof by contradiction. That is a useful intuition, but statistical rejection is probabilistic: outcomes rare under \\(H_0\\) can still occur when \\(H_0\\) is true. Rejecting a simple null gives evidence against that null in the specified model; it does not uniquely prove the chosen alternative. Likewise, a high p-value may reflect a small effect, high noise, poor measurement, or low sample size.",
+    "text": "Theory and assumptions\n\nThe testing decision\nChoose hypotheses and a statistic \\(T\\) before evaluating evidence. Under \\(H_0\\), calculate a reference distribution that accounts for the study design. For a two-sided statistic, a p-value often has the form \\(P_{H_0}(|T|\\ge|T_{\\rm obs}|)\\); the exact “as extreme” rule depends on the test. Compare it with a prespecified threshold \\(\\alpha\\). If the null distribution and assumptions are correct, \\(\\alpha\\) controls the long-run probability of rejecting a true null, not the probability that any particular rejected null is false.\n\n\nLogic and scientific limits\nNull testing connects naturally to proof by contradiction. That is a useful intuition, but statistical rejection is probabilistic: outcomes rare under \\(H_0\\) can still occur when \\(H_0\\) is true. Rejecting a simple null gives evidence against that null in the specified model; it does not uniquely prove the chosen alternative. Likewise, a high p-value may reflect a small effect, high noise, poor measurement, or low sample size.",
     "crumbs": [
       "Statistical inference",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Scientific Reasoning and Hypothesis Testing</span>"
@@ -287,7 +287,7 @@
     "href": "chapters/02-inference/scientific-reasoning.html#references",
     "title": "Scientific Reasoning and Hypothesis Testing",
     "section": "References",
-    "text": "References\n\nIDS Review: Complete Modules (IDS 2–13), source PDF interview_preparation/1001.pdf, pp. 3–4 (IDS 4 and hypothesis-testing introduction).",
+    "text": "References\n\nNYU DS-GA 1001 course content, IDS 4: scientific reasoning and hypothesis-testing foundations.",
     "crumbs": [
       "Statistical inference",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Scientific Reasoning and Hypothesis Testing</span>"
@@ -375,7 +375,7 @@
     "href": "chapters/02-inference/sampling-experiments.html#references",
     "title": "Sampling, Standard Error, and Experimental Design",
     "section": "References",
-    "text": "References\n\nIDS Review: Complete Modules (IDS 2–13), source PDF interview_preparation/1001.pdf, pp. 3–4 (IDS 5).",
+    "text": "References\n\nNYU DS-GA 1001 course content, IDS 5: sampling, experiments, and uncertainty.",
     "crumbs": [
       "Statistical inference",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Sampling, Standard Error, and Experimental Design</span>"
@@ -463,7 +463,7 @@
     "href": "chapters/02-inference/classical-tests.html#references",
     "title": "Classical Tests: z, t, Ranks, and Distributions",
     "section": "References",
-    "text": "References\n\nIDS Review: Complete Modules (IDS 2–13), source PDF interview_preparation/1001.pdf, pp. 4–5 (IDS 6). The Mann–Whitney rank-sum orientation is stated explicitly to resolve differing sign conventions.",
+    "text": "References\n\nNYU DS-GA 1001 course content, IDS 6: classical and rank-based tests. The Mann–Whitney rank-sum orientation is stated explicitly to resolve differing sign conventions.",
     "crumbs": [
       "Statistical inference",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Classical Tests: z, t, Ranks, and Distributions</span>"
@@ -551,7 +551,7 @@
     "href": "chapters/02-inference/permutation-tests.html#references",
     "title": "Permutation Tests and Exchangeability",
     "section": "References",
-    "text": "References\n\nIDS Review: Complete Modules (IDS 2–13), source PDF interview_preparation/1001.pdf, pp. 5–6 (IDS 7).",
+    "text": "References\n\nNYU DS-GA 1001 course content, IDS 7: permutation tests and resampling logic.",
     "crumbs": [
       "Statistical inference",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Permutation Tests and Exchangeability</span>"
@@ -573,7 +573,7 @@
     "href": "chapters/02-inference/replication-effect-sizes.html#intuition",
     "title": "Replication, Effect Size, and Research Flexibility",
     "section": "Intuition",
-    "text": "Intuition\nGiven enough independent data, even a tiny nonzero effect can produce a small p-value. That result might be real but irrelevant to a decision. Conversely, a useful effect can look inconclusive in an underpowered study. An effect size reports the magnitude on a meaningful scale; uncertainty tells us how precisely that magnitude is known.\nThe replication crisis concerns findings that do not hold up when studies are repeated. Causes vary by field, but the source notes emphasize small samples, selective publication, flexible stopping, multiple unreported analyses, and incentives to publish novelty. Numerical replication-rate claims depend on definitions, time period, and sample of studies; a single percentage should not be carried forward as a universal fact.",
+    "text": "Intuition\nGiven enough independent data, even a tiny nonzero effect can produce a small p-value. That result might be real but irrelevant to a decision. Conversely, a useful effect can look inconclusive in an underpowered study. An effect size reports the magnitude on a meaningful scale; uncertainty tells us how precisely that magnitude is known.\nThe replication crisis concerns findings that do not hold up when studies are repeated. Common causes include small samples, selective publication, flexible stopping, multiple unreported analyses, and incentives to publish novelty. Numerical replication-rate claims depend on definitions, time period, and sample of studies; a single percentage should not be carried forward as a universal fact.",
     "crumbs": [
       "Statistical inference",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Replication, Effect Size, and Research Flexibility</span>"
@@ -639,7 +639,7 @@
     "href": "chapters/02-inference/replication-effect-sizes.html#references",
     "title": "Replication, Effect Size, and Research Flexibility",
     "section": "References",
-    "text": "References\n\nIDS Review: Complete Modules (IDS 2–13), source PDF interview_preparation/1001.pdf, pp. 6–7 (IDS 8). The numerical replication-rate and effect-size examples in the source are treated as illustrative, not universal benchmarks.",
+    "text": "References\n\nNYU DS-GA 1001 course content, IDS 8: replication, reproducibility, and effect sizes. Numerical examples are treated as illustrative, not universal benchmarks.",
     "crumbs": [
       "Statistical inference",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Replication, Effect Size, and Research Flexibility</span>"
@@ -727,7 +727,7 @@
     "href": "chapters/02-inference/power-confidence-resampling.html#references",
     "title": "Power, Confidence Intervals, Bootstrap, and Jackknife",
     "section": "References",
-    "text": "References\n\nIDS Review: Complete Modules (IDS 2–13), source PDF interview_preparation/1001.pdf, pp. 7–8 (IDS 9).",
+    "text": "References\n\nNYU DS-GA 1001 course content, IDS 9: power, confidence intervals, and resampling.",
     "crumbs": [
       "Statistical inference",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Power, Confidence Intervals, Bootstrap, and Jackknife</span>"
@@ -815,7 +815,7 @@
     "href": "chapters/03-bayesian/bayesian-inference.html#references",
     "title": "Bayesian Updating, Bayes Factors, and Predictive Value",
     "section": "References",
-    "text": "References\n\nIDS Review: Complete Modules (IDS 2–13), source PDF interview_preparation/1001.pdf, pp. 8–10 (IDS 10). The simplified method-choice decision tree in the source is replaced by explicit consideration of prior quality, data quality, and sensitivity.",
+    "text": "References\n\nNYU DS-GA 1001 course content, IDS 10: Bayesian inference and diagnostic testing. The simplified method-choice tree is replaced by explicit consideration of prior quality, data quality, and sensitivity.",
     "crumbs": [
       "Bayesian inference",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Bayesian Updating, Bayes Factors, and Predictive Value</span>"
@@ -903,7 +903,7 @@
     "href": "chapters/04-regression-classification/linear-regression.html#references",
     "title": "Linear Regression: Projection, Interpretation, and Assessment",
     "section": "References",
-    "text": "References\nSource coverage: 1001 cheatsheet, IDS 11, regression foundations, OLS, regression to the mean, assessment, multiple regression, and multicollinearity. Implementation reference: scikit-learn linear models.",
+    "text": "References\nNYU DS-GA 1001 course content, IDS 11: regression foundations, OLS, regression to the mean, assessment, multiple regression, and multicollinearity. Implementation reference: scikit-learn linear models.",
     "crumbs": [
       "Regression and classification",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Linear Regression: Projection, Interpretation, and Assessment</span>"
@@ -991,7 +991,7 @@
     "href": "chapters/04-regression-classification/regularization.html#references",
     "title": "Regularization and Cross-Validation",
     "section": "References",
-    "text": "References\nSource coverage: 1001, IDS 11, complexity, bias–variance, regularization, cross-validation, ridge, lasso, and elastic net. scikit-learn linear-model reference supplies implementation details.",
+    "text": "References\nNYU DS-GA 1001 course content, IDS 11: complexity, bias–variance, regularization, cross-validation, ridge, lasso, and elastic net. scikit-learn linear-model reference supplies implementation details.",
     "crumbs": [
       "Regression and classification",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Regularization and Cross-Validation</span>"
@@ -1079,7 +1079,7 @@
     "href": "chapters/04-regression-classification/logistic-classification.html#references",
     "title": "Logistic Regression and Classification Metrics",
     "section": "References",
-    "text": "References\nSource coverage: 1001, IDS 12, classification foundations, logistic link, cross-entropy, confusion matrix, diagnostic metrics, ROC and AUROC. scikit-learn logistic regression.",
+    "text": "References\nNYU DS-GA 1001 course content, IDS 12: classification foundations, logistic link, cross-entropy, confusion matrix, diagnostic metrics, ROC and AUROC. scikit-learn logistic regression.",
     "crumbs": [
       "Regression and classification",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Logistic Regression and Classification Metrics</span>"
@@ -1167,7 +1167,7 @@
     "href": "chapters/04-regression-classification/support-vector-machines.html#references",
     "title": "Support Vector Machines: Margins and Hinge Loss",
     "section": "References",
-    "text": "References\nSource coverage: 1001, IDS 12, hard margin, hyperplane geometry, support vectors, slack, and hinge loss. Further reading: Cortes and Vapnik, Support-Vector Networks (1995).",
+    "text": "References\nNYU DS-GA 1001 course content, IDS 12: hard margin, hyperplane geometry, support vectors, slack, and hinge loss. Further reading: Cortes and Vapnik, Support-Vector Networks (1995).",
     "crumbs": [
       "Regression and classification",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Support Vector Machines: Margins and Hinge Loss</span>"
@@ -1255,7 +1255,7 @@
     "href": "chapters/05-ensemble-trees/decision-trees.html#references",
     "title": "Decision Trees: From a Rule to CART",
     "section": "References",
-    "text": "References\nSource coverage: ML and Causal Lecture Notes, Decision Tree/CART, all subsections. Further reading: Breiman, Friedman, Olshen, and Stone, Classification and Regression Trees (1984).",
+    "text": "References\nFurther reading: Breiman, Friedman, Olshen, and Stone, Classification and Regression Trees (1984).",
     "crumbs": [
       "Tree ensembles",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Decision Trees: From a Rule to CART</span>"
@@ -1288,7 +1288,7 @@
     "href": "chapters/05-ensemble-trees/random-forest.html#worked-example",
     "title": "Random Forest: Averaging, Correlation, and OOB Evaluation",
     "section": "Worked example",
-    "text": "Worked example\nSuppose each tree’s prediction at a point has variance \\(\\sigma^2=0.09\\), with pairwise correlation \\(\\rho=0.2\\). For \\(B=100\\) trees,\n\\[\\operatorname{Var}(\\bar f)=0.2(0.09)+\\frac{0.8}{100}(0.09)=0.01872.\\]\nWith infinitely many such trees, the variance floor is still \\(0.018\\). Lowering correlation is therefore often more valuable than adding another hundred nearly identical trees.\nFor eight indexed observations, a bootstrap sample might be \\((1,1,3,3,5,7,8,8)\\). Its OOB set is \\(\\{2,4,6\\}\\). Repeated observations count repeatedly during tree fitting. Observation 1 must not receive an OOB prediction from this tree. A new observation is evaluated by every tree, whereas each training observation’s OOB score uses only eligible trees.\nThe three-tree admissions walkthrough from the source notes makes the distinction concrete. Each row lists the sampled IDs and the IDs that tree did not see:\n\n\n\n\n\n\n\n\n\nTree\nBootstrap IDs\nOOB IDs\nIllustrative rule\n\n\n\n\n1\n\\(1,1,3,3,5,7,8,8\\)\n\\(2,4,6\\)\nGPA \\(&gt;3.7\\) votes Y; otherwise N\n\n\n2\n\\(2,2,4,5,5,6,7,8\\)\n\\(1,3\\)\nRecommendation \\(\\ge5\\) and experience \\(&gt;1\\) votes Y\n\n\n3\n\\(1,3,3,4,4,6,7,8\\)\n\\(2,5\\)\nGPA \\(&gt;3.55\\) votes Y; otherwise N\n\n\n\nFor a new candidate with GPA \\(3.8\\), experience \\(2\\), and recommendation \\(5\\), all three illustrative rules vote Y, so the majority vote is Y. For training candidate 1, only Tree 2 is eligible for an OOB prediction; for candidate 2, Trees 1 and 3 are eligible. The original lecture example swaps these OOB memberships and uses GPA \\(3.7\\) with a strict \\(&gt;3.7\\) rule while calling the vote Y. Those arithmetic details are corrected here. Three small trees also leave some rows with very few OOB votes, so the example illustrates mechanics rather than a reliable error estimate.",
+    "text": "Worked example\nSuppose each tree’s prediction at a point has variance \\(\\sigma^2=0.09\\), with pairwise correlation \\(\\rho=0.2\\). For \\(B=100\\) trees,\n\\[\\operatorname{Var}(\\bar f)=0.2(0.09)+\\frac{0.8}{100}(0.09)=0.01872.\\]\nWith infinitely many such trees, the variance floor is still \\(0.018\\). Lowering correlation is therefore often more valuable than adding another hundred nearly identical trees.\nFor eight indexed observations, a bootstrap sample might be \\((1,1,3,3,5,7,8,8)\\). Its OOB set is \\(\\{2,4,6\\}\\). Repeated observations count repeatedly during tree fitting. Observation 1 must not receive an OOB prediction from this tree. A new observation is evaluated by every tree, whereas each training observation’s OOB score uses only eligible trees.\nThe three-tree admissions walkthrough makes the distinction concrete. Each row lists the sampled IDs and the IDs that tree did not see:\n\n\n\n\n\n\n\n\n\nTree\nBootstrap IDs\nOOB IDs\nIllustrative rule\n\n\n\n\n1\n\\(1,1,3,3,5,7,8,8\\)\n\\(2,4,6\\)\nGPA \\(&gt;3.7\\) votes Y; otherwise N\n\n\n2\n\\(2,2,4,5,5,6,7,8\\)\n\\(1,3\\)\nRecommendation \\(\\ge5\\) and experience \\(&gt;1\\) votes Y\n\n\n3\n\\(1,3,3,4,4,6,7,8\\)\n\\(2,5\\)\nGPA \\(&gt;3.55\\) votes Y; otherwise N\n\n\n\nFor a new candidate with GPA \\(3.8\\), experience \\(2\\), and recommendation \\(5\\), all three illustrative rules vote Y, so the majority vote is Y. For training candidate 1, only Tree 2 is eligible for an OOB prediction; for candidate 2, Trees 1 and 3 are eligible. The original lecture example swaps these OOB memberships and uses GPA \\(3.7\\) with a strict \\(&gt;3.7\\) rule while calling the vote Y. Those arithmetic details are corrected here. Three small trees also leave some rows with very few OOB votes, so the example illustrates mechanics rather than a reliable error estimate.",
     "crumbs": [
       "Tree ensembles",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Random Forest: Averaging, Correlation, and OOB Evaluation</span>"
@@ -1343,7 +1343,7 @@
     "href": "chapters/05-ensemble-trees/random-forest.html#references",
     "title": "Random Forest: Averaging, Correlation, and OOB Evaluation",
     "section": "References",
-    "text": "References\nSource coverage: ML and Causal Lecture Notes, Random Forest, all subsections. Further reading: Breiman, Random Forests (2001).",
+    "text": "References\nFurther reading: Breiman, Random Forests (2001).",
     "crumbs": [
       "Tree ensembles",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Random Forest: Averaging, Correlation, and OOB Evaluation</span>"
@@ -1431,7 +1431,7 @@
     "href": "chapters/05-ensemble-trees/gradient-boosting.html#references",
     "title": "Gradient Boosting: Learning an Update Function",
     "section": "References",
-    "text": "References\nSource coverage: ML and Causal Lecture Notes, GBDT, all subsections including the five-step gradient derivation and comparison table. Further reading: Friedman, Greedy Function Approximation: A Gradient Boosting Machine (2001).",
+    "text": "References\nFurther reading: Friedman, Greedy Function Approximation: A Gradient Boosting Machine (2001).",
     "crumbs": [
       "Tree ensembles",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Gradient Boosting: Learning an Update Function</span>"
@@ -1519,7 +1519,7 @@
     "href": "chapters/05-ensemble-trees/xgboost.html#references",
     "title": "XGBoost: Deriving Leaf Weights and Split Gain",
     "section": "References",
-    "text": "References\nSource coverage: ML and Causal Lecture Notes, XGBoost, all derivation steps, worked round, engineering optimizations, and parameter comparison. Further reading: Chen and Guestrin, XGBoost: A Scalable Tree Boosting System (2016); official boosted-tree tutorial.",
+    "text": "References\nFurther reading: Chen and Guestrin, XGBoost: A Scalable Tree Boosting System (2016); official boosted-tree tutorial.",
     "crumbs": [
       "Tree ensembles",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>XGBoost: Deriving Leaf Weights and Split Gain</span>"
@@ -1607,7 +1607,7 @@
     "href": "chapters/05-ensemble-trees/lightgbm.html#references",
     "title": "LightGBM: Histograms, Sampling, and Leaf Growth",
     "section": "References",
-    "text": "References\nSource coverage: ML and Causal Lecture Notes, LightGBM, all four innovations, categorical handling, and parameter comparisons. Further reading: Ke et al., LightGBM: A Highly Efficient Gradient Boosting Decision Tree (2017); official feature reference.",
+    "text": "References\nFurther reading: Ke et al., LightGBM: A Highly Efficient Gradient Boosting Decision Tree (2017); official feature reference.",
     "crumbs": [
       "Tree ensembles",
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>LightGBM: Histograms, Sampling, and Leaf Growth</span>"
@@ -1695,7 +1695,7 @@
     "href": "chapters/06-unsupervised/pca-svd.html#references",
     "title": "PCA and SVD: A Smaller Representation",
     "section": "References",
-    "text": "References\nSource coverage: 1001, IDS 13, supervised versus unsupervised learning, dimensionality reduction, PCA eigen-decomposition, SVD, and compression.",
+    "text": "References\nNYU DS-GA 1001 course content, IDS 13: supervised versus unsupervised learning, dimensionality reduction, PCA eigen-decomposition, SVD, and compression.",
     "crumbs": [
       "Unsupervised learning",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>PCA and SVD: A Smaller Representation</span>"
@@ -1783,7 +1783,7 @@
     "href": "chapters/06-unsupervised/kmeans.html#references",
     "title": "K-Means: Optimization, Initialization, and Choosing K",
     "section": "References",
-    "text": "References\nSource coverage: 1001, IDS 13, K-means and silhouette; ML and Causal Lecture Notes, K-Means, objective, Lloyd updates, convergence, initialization, all K-selection methods, complexity, geometric pitfalls, and segmentation workflow. Further reading: Tibshirani, Walther, and Hastie, Estimating the Number of Clusters in a Data Set via the Gap Statistic (2001).",
+    "text": "References\nNYU DS-GA 1001 course content, IDS 13: K-means and silhouette. This chapter also develops initialization, convergence, K-selection, complexity, geometric pitfalls, and a segmentation workflow. Further reading: Tibshirani, Walther, and Hastie, Estimating the Number of Clusters in a Data Set via the Gap Statistic (2001).",
     "crumbs": [
       "Unsupervised learning",
       "<span class='chapter-number'>21</span>  <span class='chapter-title'>K-Means: Optimization, Initialization, and Choosing K</span>"
@@ -1871,7 +1871,7 @@
     "href": "chapters/06-unsupervised/clustering-variants.html#references",
     "title": "Clustering Variants: Medoids, Mini-Batches, and Directions",
     "section": "References",
-    "text": "References\nSource coverage: ML and Causal Lecture Notes, K-Medoids/PAM, full swap example and complexity, CLARA/CLARANS, Mini-Batch K-Means, Spherical K-Means, and mentions of K-Modes, Kernel K-Means, and Spectral Clustering. scikit-learn clustering reference provides implementations and algorithm comparisons.",
+    "text": "References\nscikit-learn clustering reference provides implementations and algorithm comparisons.",
     "crumbs": [
       "Unsupervised learning",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Clustering Variants: Medoids, Mini-Batches, and Directions</span>"
@@ -1959,7 +1959,7 @@
     "href": "chapters/06-unsupervised/gaussian-mixtures.html#references",
     "title": "Gaussian Mixtures and Expectation–Maximization",
     "section": "References",
-    "text": "References\nSource coverage: ML and Causal Lecture Notes, GMM, generation, latent variables, E/M derivations, numerical example, convergence, K-means limit, advantages, and covariance degeneracy.",
+    "text": "References",
     "crumbs": [
       "Unsupervised learning",
       "<span class='chapter-number'>23</span>  <span class='chapter-title'>Gaussian Mixtures and Expectation–Maximization</span>"
@@ -2047,7 +2047,7 @@
     "href": "chapters/06-unsupervised/density-clustering.html#references",
     "title": "DBSCAN, OPTICS, and Density Connectivity",
     "section": "References",
-    "text": "References\nSource coverage: 1001, IDS 13, DBSCAN and OPTICS; ML and Causal Lecture Notes, DBSCAN algorithm, parameters, complexity, and comparisons, plus OPTICS/HDBSCAN alternatives. scikit-learn clustering reference.",
+    "text": "References\nNYU DS-GA 1001 course content, IDS 13: DBSCAN and OPTICS. This chapter also develops parameters, complexity, comparisons, and OPTICS/HDBSCAN alternatives. scikit-learn clustering reference.",
     "crumbs": [
       "Unsupervised learning",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>DBSCAN, OPTICS, and Density Connectivity</span>"
@@ -2135,7 +2135,7 @@
     "href": "chapters/06-unsupervised/isolation-forest.html#references",
     "title": "Isolation Forest: From Short Paths to Useful Alerts",
     "section": "References",
-    "text": "References\nSource coverage: ML and Causal Lecture Notes, Anomaly Detection and Isolation Forest, every subsection including the resource-review workflow, thresholds, evaluation, complexity, alternatives, and failures. Further reading: Liu, Ting, and Zhou, Isolation Forest (2008).",
+    "text": "References\nFurther reading: Liu, Ting, and Zhou, Isolation Forest (2008).",
     "crumbs": [
       "Unsupervised learning",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>Isolation Forest: From Short Paths to Useful Alerts</span>"
@@ -2179,7 +2179,7 @@
     "href": "chapters/07-causal/potential-outcomes.html#worked-example",
     "title": "Potential Outcomes and Causal Identification",
     "section": "Worked example",
-    "text": "Worked example\n\nThe coupon counterfactual\nIn a hypothetical pair of worlds, a customer would spend 100 with a coupon and 60 without it, so her effect is 40. If she receives the coupon we see 100, not 60. A nonrecipient spending 50 is not automatically a valid replacement for her missing 60: targeting may favor people who already intend to buy.\nSuppose 40% of a population receives treatment, and the true subgroup effects are ATT = 8 and ATU = 3. Then\n\\[\\operatorname{ATE}=0.4(8)+0.6(3)=5.\\]\n\n\n\n\n\n\n\n\nEstimand\nDefinition\nBusiness question\n\n\n\n\nATE\n\\(E[Y(1)-Y(0)]\\)\nWhat would treating everyone change on average?\n\n\nATT\n\\(E[Y(1)-Y(0)\\mid T=1]\\)\nWhat did the intervention change for recipients?\n\n\nATU\n\\(E[Y(1)-Y(0)\\mid T=0]\\)\nWhat might expansion change for current nonrecipients?\n\n\nCATE\n\\(\\tau(x)=E[Y(1)-Y(0)\\mid X=x]\\)\nWhich observable groups benefit?\n\n\n\nA high-frequency customer’s CATE might be 12 while a low-frequency customer’s is 1. These are hypothetical group averages, not measured individual effects. The identity ATE = \\(P(T=1)\\)ATT + \\(P(T=0)\\)ATU follows directly from total expectation.\n\n\nAssignment versus behavior\nA ranking experiment randomly assigns users to a new strategy. Its direct effect is the intention-to-treat (ITT) effect of assignment. Whether users actually click the resulting card is a later, self-selected behavior. Comparing clickers with nonclickers discards randomization.\nA worked case in the source notes adds a score proportional to predicted click-through rate times predicted active return to a ranking policy. The transferable design lesson is to analyze the assigned policy at the randomization unit, with predeclared activity/order outcomes and platform guardrails. Those observations cannot identify the causal effect of clicking merely because the ranking assignment was randomized.",
+    "text": "Worked example\n\nThe coupon counterfactual\nIn a hypothetical pair of worlds, a customer would spend 100 with a coupon and 60 without it, so her effect is 40. If she receives the coupon we see 100, not 60. A nonrecipient spending 50 is not automatically a valid replacement for her missing 60: targeting may favor people who already intend to buy.\nSuppose 40% of a population receives treatment, and the true subgroup effects are ATT = 8 and ATU = 3. Then\n\\[\\operatorname{ATE}=0.4(8)+0.6(3)=5.\\]\n\n\n\n\n\n\n\n\nEstimand\nDefinition\nBusiness question\n\n\n\n\nATE\n\\(E[Y(1)-Y(0)]\\)\nWhat would treating everyone change on average?\n\n\nATT\n\\(E[Y(1)-Y(0)\\mid T=1]\\)\nWhat did the intervention change for recipients?\n\n\nATU\n\\(E[Y(1)-Y(0)\\mid T=0]\\)\nWhat might expansion change for current nonrecipients?\n\n\nCATE\n\\(\\tau(x)=E[Y(1)-Y(0)\\mid X=x]\\)\nWhich observable groups benefit?\n\n\n\nA high-frequency customer’s CATE might be 12 while a low-frequency customer’s is 1. These are hypothetical group averages, not measured individual effects. The identity ATE = \\(P(T=1)\\)ATT + \\(P(T=0)\\)ATU follows directly from total expectation.\n\n\nAssignment versus behavior\nA ranking experiment randomly assigns users to a new strategy. Its direct effect is the intention-to-treat (ITT) effect of assignment. Whether users actually click the resulting card is a later, self-selected behavior. Comparing clickers with nonclickers discards randomization.\nA worked ranking case adds a score proportional to predicted click-through rate times predicted active return to a ranking policy. The transferable design lesson is to analyze the assigned policy at the randomization unit, with predeclared activity/order outcomes and platform guardrails. Those observations cannot identify the causal effect of clicking merely because the ranking assignment was randomized.",
     "crumbs": [
       "Causal inference",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Potential Outcomes and Causal Identification</span>"
@@ -2234,7 +2234,7 @@
     "href": "chapters/07-causal/potential-outcomes.html#references",
     "title": "Potential Outcomes and Causal Identification",
     "section": "References",
-    "text": "References\n\nAdapted from ML Models & Causal Inference Lecture Notes, “Potential Outcomes” and its worked examples.\nHolland (1986), “Statistics and Causal Inference,” Journal of the American Statistical Association.\nHernán and Robins, Causal Inference: What If.",
+    "text": "References\n\nHolland (1986), “Statistics and Causal Inference,” Journal of the American Statistical Association.\nHernán and Robins, Causal Inference: What If.",
     "crumbs": [
       "Causal inference",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Potential Outcomes and Causal Identification</span>"
@@ -2333,7 +2333,7 @@
     "href": "chapters/07-causal/propensity-score-matching.html#references",
     "title": "Propensity Scores: Matching and Weighting",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “PSM”: theorem, seven-step walkthrough, matching methods, IPTW proof, feature selection, SMD, and project narrative.\nRosenbaum and Rubin (1983), The central role of the propensity score.\nAbadie and Imbens (2006), “Large Sample Properties of Matching Estimators for Average Treatment Effects,” Econometrica.\nAbadie and Imbens (2008), “On the Failure of the Bootstrap for Matching Estimators,” linked above.",
+    "text": "References\n\nRosenbaum and Rubin (1983), The central role of the propensity score.\nAbadie and Imbens (2006), “Large Sample Properties of Matching Estimators for Average Treatment Effects,” Econometrica.\nAbadie and Imbens (2008), “On the Failure of the Bootstrap for Matching Estimators,” linked above.",
     "crumbs": [
       "Causal inference",
       "<span class='chapter-number'>27</span>  <span class='chapter-title'>Propensity Scores: Matching and Weighting</span>"
@@ -2432,7 +2432,7 @@
     "href": "chapters/07-causal/propensity-diagnostics.html#references",
     "title": "Overlap, Polarized Scores, and Sensitivity Analysis",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “XGBoost Propensity Polarization,” “Sensitivity Analysis,” and the PSM walkthrough.\nRosenbaum, Observational Studies.\nVanderWeele and Ding (2017), Sensitivity Analysis in Observational Research: Introducing the E-Value.\nCrump, Hotz, Imbens, and Mitnik (2009), “Dealing with Limited Overlap in Estimation of Average Treatment Effects,” Biometrika.",
+    "text": "References\n\nRosenbaum, Observational Studies.\nVanderWeele and Ding (2017), Sensitivity Analysis in Observational Research: Introducing the E-Value.\nCrump, Hotz, Imbens, and Mitnik (2009), “Dealing with Limited Overlap in Estimation of Average Treatment Effects,” Biometrika.",
     "crumbs": [
       "Causal inference",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>Overlap, Polarized Scores, and Sensitivity Analysis</span>"
@@ -2531,7 +2531,7 @@
     "href": "chapters/07-causal/difference-in-differences.html#references",
     "title": "Difference-in-Differences and Event Studies",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “DiD,” including regression interpretation, TWFE, event studies, staggered adoption, and interview questions.\nCallaway and Sant’Anna (2021), Difference-in-Differences with Multiple Time Periods.\nSun and Abraham (2021), Estimating Dynamic Treatment Effects in Event Studies with Heterogeneous Treatment Effects.\nGoodman-Bacon (2021), Difference-in-Differences with Variation in Treatment Timing.",
+    "text": "References\n\nCallaway and Sant’Anna (2021), Difference-in-Differences with Multiple Time Periods.\nSun and Abraham (2021), Estimating Dynamic Treatment Effects in Event Studies with Heterogeneous Treatment Effects.\nGoodman-Bacon (2021), Difference-in-Differences with Variation in Treatment Timing.",
     "crumbs": [
       "Causal inference",
       "<span class='chapter-number'>29</span>  <span class='chapter-title'>Difference-in-Differences and Event Studies</span>"
@@ -2630,7 +2630,7 @@
     "href": "chapters/07-causal/synthetic-control.html#references",
     "title": "Synthetic Control",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “Synthetic Control,” including donor weighting, comparison with DiD, and placebo interpretation.\nAbadie, Diamond, and Hainmueller (2010), Synthetic Control Methods for Comparative Case Studies.\nAbadie and Gardeazabal (2003), “The Economic Costs of Conflict: A Case Study of the Basque Country,” American Economic Review.",
+    "text": "References\n\nAbadie, Diamond, and Hainmueller (2010), Synthetic Control Methods for Comparative Case Studies.\nAbadie and Gardeazabal (2003), “The Economic Costs of Conflict: A Case Study of the Basque Country,” American Economic Review.",
     "crumbs": [
       "Causal inference",
       "<span class='chapter-number'>30</span>  <span class='chapter-title'>Synthetic Control</span>"
@@ -2696,7 +2696,7 @@
     "href": "chapters/07-causal/instrumental-variables.html#practice-and-pitfalls",
     "title": "Instrumental Variables, 2SLS, and LATE",
     "section": "Practice and pitfalls",
-    "text": "Practice and pitfalls\nHistorical candidate instruments illustrate the argument and its vulnerabilities:\n\n\n\n\n\n\n\n\nCandidate\nIntended treatment variation\nMain question to defend\n\n\n\n\nBirth quarter and schooling\nCompulsory-schooling rules\nCould season of birth relate to wages through other channels?\n\n\nCollege proximity\nCost/access to education\nCould geography also affect labor markets or family background?\n\n\nDraft lottery\nMilitary service\nIs exclusion plausible for the specific outcome and design?\n\n\nRandomized recommendation\nActual engagement\nDoes the recommendation affect outcome without engagement?\n\n\nRainfall and rides\nRide usage\nWeather directly changes travel demand: exclusion is doubtful\n\n\n\nThe source notes include these as motivating examples; none should be described as valid merely because the story sounds external. In particular, weather is often a poor instrument for downstream travel outcomes because it directly changes them.\nReport the treatment units, first stage, reduced form, LATE, confidence interval, compliance interpretation, and threats to exclusion. Distinguish “effect of offering the program” from “effect of participation for induced participants.”",
+    "text": "Practice and pitfalls\nHistorical candidate instruments illustrate the argument and its vulnerabilities:\n\n\n\n\n\n\n\n\nCandidate\nIntended treatment variation\nMain question to defend\n\n\n\n\nBirth quarter and schooling\nCompulsory-schooling rules\nCould season of birth relate to wages through other channels?\n\n\nCollege proximity\nCost/access to education\nCould geography also affect labor markets or family background?\n\n\nDraft lottery\nMilitary service\nIs exclusion plausible for the specific outcome and design?\n\n\nRandomized recommendation\nActual engagement\nDoes the recommendation affect outcome without engagement?\n\n\nRainfall and rides\nRide usage\nWeather directly changes travel demand: exclusion is doubtful\n\n\n\nThese are motivating examples; none should be described as valid merely because the story sounds external. In particular, weather is often a poor instrument for downstream travel outcomes because it directly changes them.\nReport the treatment units, first stage, reduced form, LATE, confidence interval, compliance interpretation, and threats to exclusion. Distinguish “effect of offering the program” from “effect of participation for induced participants.”",
     "crumbs": [
       "Causal inference",
       "<span class='chapter-number'>31</span>  <span class='chapter-title'>Instrumental Variables, 2SLS, and LATE</span>"
@@ -2729,7 +2729,7 @@
     "href": "chapters/07-causal/instrumental-variables.html#references",
     "title": "Instrumental Variables, 2SLS, and LATE",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “IV”: two-stage walkthrough, compliance types, weak instruments, examples, and interview questions.\nImbens and Angrist (1994), Identification and Estimation of Local Average Treatment Effects.\nAngrist, Imbens, and Rubin (1996), “Identification of Causal Effects Using Instrumental Variables,” JASA.\nStaiger and Stock (1997), “Instrumental Variables Regression with Weak Instruments,” Econometrica.",
+    "text": "References\n\nImbens and Angrist (1994), Identification and Estimation of Local Average Treatment Effects.\nAngrist, Imbens, and Rubin (1996), “Identification of Causal Effects Using Instrumental Variables,” JASA.\nStaiger and Stock (1997), “Instrumental Variables Regression with Weak Instruments,” Econometrica.",
     "crumbs": [
       "Causal inference",
       "<span class='chapter-number'>31</span>  <span class='chapter-title'>Instrumental Variables, 2SLS, and LATE</span>"
@@ -2828,7 +2828,7 @@
     "href": "chapters/08-treatment-effects/double-machine-learning.html#references",
     "title": "Double Machine Learning",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “DML,” including the full return-search workflow, residualization, cross-fitting, overlap, and robustness qualifications.\nChernozhukov et al. (2018), Double/Debiased Machine Learning for Treatment and Structural Parameters.\nRobinson (1988), “Root-N-Consistent Semiparametric Regression,” Econometrica.",
+    "text": "References\n\nChernozhukov et al. (2018), Double/Debiased Machine Learning for Treatment and Structural Parameters.\nRobinson (1988), “Root-N-Consistent Semiparametric Regression,” Econometrica.",
     "crumbs": [
       "Treatment effects and experiments",
       "<span class='chapter-number'>32</span>  <span class='chapter-title'>Double Machine Learning</span>"
@@ -2927,7 +2927,7 @@
     "href": "chapters/08-treatment-effects/uplift-learners.html#references",
     "title": "Uplift Modeling and Heterogeneous Effects",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “Uplift Modeling”: four quadrants, all five learner families, worked examples, and interview comparisons.\nKünzel et al. (2019), Metalearners for Estimating Heterogeneous Treatment Effects Using Machine Learning.\nNie and Wager (2021), Quasi-Oracle Estimation of Heterogeneous Treatment Effects.\nWager and Athey (2018), Estimation and Inference of Heterogeneous Treatment Effects Using Random Forests.",
+    "text": "References\n\nKünzel et al. (2019), Metalearners for Estimating Heterogeneous Treatment Effects Using Machine Learning.\nNie and Wager (2021), Quasi-Oracle Estimation of Heterogeneous Treatment Effects.\nWager and Athey (2018), Estimation and Inference of Heterogeneous Treatment Effects Using Random Forests.",
     "crumbs": [
       "Treatment effects and experiments",
       "<span class='chapter-number'>33</span>  <span class='chapter-title'>Uplift Modeling and Heterogeneous Effects</span>"
@@ -2982,7 +2982,7 @@
     "href": "chapters/08-treatment-effects/uplift-evaluation.html#theory-and-assumptions",
     "title": "Evaluating Uplift: Gains, Qini, and Policy Value",
     "section": "Theory and assumptions",
-    "text": "Theory and assumptions\n\nOne explicit convention\nRank held-out observations by a model fitted without their outcomes, and let \\(S_k\\) be the top \\(k\\) fraction. With known randomized assignment probabilities \\(p_i\\), use\n\\[G(k)=\\sum_{i\\in S_k}\\left[\\frac{T_iY_i}{p_i}-\\frac{(1-T_i)Y_i}{1-p_i}\\right].\\]\nConditional on the fixed ranking features and under randomization/consistency, its expectation is the total treatment effect among selected users. Define \\(g(k)=G(k)/n\\) for gain per member of the full evaluation population. Then \\(g(1)\\) estimates ATE and \\(G(1)\\) estimates \\(n\\times ATE\\).\nThe random-ranking benchmark is the line \\(kG(1)\\) in expectation. Under this convention,\n\\[AUUC=\\int_0^1G(k)\\,dk,\\]\nand a baseline-adjusted area can be defined as\n\\[Qini=\\int_0^1[G(k)-kG(1)]\\,dk.\\]\nLibraries use different names, scales, and normalizations. Publish the equation, denominator, treatment-allocation assumptions, and baseline definition alongside the metric.\n\n\nRelating common formulas\nAnother cumulative contrast is \\(\\sum_{S_k,T=1}Y-(n_T/n_C)\\sum_{S_k,T=0}Y\\). With constant assignment probability and a corresponding overall arm ratio, it is on a treatment-arm-scaled total rather than the full-population total scale. Dividing it by \\(n\\) does not make its endpoint \\(n\\times ATE\\). This distinction corrects the inconsistent normalization in the source notes.\nPrefix arm-count normalization is another convention and may be unstable when an arm count is zero. An IPW convention using known assignment probabilities avoids dividing by random prefix counts, though variance remains high for small prefixes or rare assignment.\n\n\nObservational evaluation\nIf assignment is observational, a raw treated-control prefix contrast is generally confounded. Under conditional exchangeability and overlap, evaluate with suitable estimated propensity adjustment or a cross-fitted doubly robust score. Independent evaluation, correct covariate timing, and uncertainty still matter. In-sample ranking by noisy fitted effects creates optimism even when the original treatment was randomized.",
+    "text": "Theory and assumptions\n\nOne explicit convention\nRank held-out observations by a model fitted without their outcomes, and let \\(S_k\\) be the top \\(k\\) fraction. With known randomized assignment probabilities \\(p_i\\), use\n\\[G(k)=\\sum_{i\\in S_k}\\left[\\frac{T_iY_i}{p_i}-\\frac{(1-T_i)Y_i}{1-p_i}\\right].\\]\nConditional on the fixed ranking features and under randomization/consistency, its expectation is the total treatment effect among selected users. Define \\(g(k)=G(k)/n\\) for gain per member of the full evaluation population. Then \\(g(1)\\) estimates ATE and \\(G(1)\\) estimates \\(n\\times ATE\\).\nThe random-ranking benchmark is the line \\(kG(1)\\) in expectation. Under this convention,\n\\[AUUC=\\int_0^1G(k)\\,dk,\\]\nand a baseline-adjusted area can be defined as\n\\[Qini=\\int_0^1[G(k)-kG(1)]\\,dk.\\]\nLibraries use different names, scales, and normalizations. Publish the equation, denominator, treatment-allocation assumptions, and baseline definition alongside the metric.\n\n\nRelating common formulas\nAnother cumulative contrast is \\(\\sum_{S_k,T=1}Y-(n_T/n_C)\\sum_{S_k,T=0}Y\\). With constant assignment probability and a corresponding overall arm ratio, it is on a treatment-arm-scaled total rather than the full-population total scale. Dividing it by \\(n\\) does not make its endpoint \\(n\\times ATE\\). Keeping the scale explicit prevents an inconsistent normalization.\nPrefix arm-count normalization is another convention and may be unstable when an arm count is zero. An IPW convention using known assignment probabilities avoids dividing by random prefix counts, though variance remains high for small prefixes or rare assignment.\n\n\nObservational evaluation\nIf assignment is observational, a raw treated-control prefix contrast is generally confounded. Under conditional exchangeability and overlap, evaluate with suitable estimated propensity adjustment or a cross-fitted doubly robust score. Independent evaluation, correct covariate timing, and uncertainty still matter. In-sample ranking by noisy fitted effects creates optimism even when the original treatment was randomized.",
     "crumbs": [
       "Treatment effects and experiments",
       "<span class='chapter-number'>34</span>  <span class='chapter-title'>Evaluating Uplift: Gains, Qini, and Policy Value</span>"
@@ -3026,7 +3026,7 @@
     "href": "chapters/08-treatment-effects/uplift-evaluation.html#references",
     "title": "Evaluating Uplift: Gains, Qini, and Policy Value",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “Qini / AUUC,” including the 100-user illustration, ranking intuition, budget interpretation, and coupon policy example.\nKünzel et al. (2019), “Metalearners for Estimating Heterogeneous Treatment Effects Using Machine Learning,” PNAS.\nAthey and Wager (2021), Policy Learning with Observational Data.",
+    "text": "References\n\nKünzel et al. (2019), “Metalearners for Estimating Heterogeneous Treatment Effects Using Machine Learning,” PNAS.\nAthey and Wager (2021), Policy Learning with Observational Data.",
     "crumbs": [
       "Treatment effects and experiments",
       "<span class='chapter-number'>34</span>  <span class='chapter-title'>Evaluating Uplift: Gains, Qini, and Policy Value</span>"
@@ -3125,7 +3125,7 @@
     "href": "chapters/08-treatment-effects/cuped.html#references",
     "title": "CUPED and Experiment Variance Reduction",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “CUPED”: full five-step derivation, ATE proof, regression relationship, covariate choices, failure cases, DiD comparison, and experimental reading example.\nDeng, Xu, Kohavi, and Walker (2013), Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data.",
+    "text": "References\n\nDeng, Xu, Kohavi, and Walker (2013), Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data.",
     "crumbs": [
       "Treatment effects and experiments",
       "<span class='chapter-number'>35</span>  <span class='chapter-title'>CUPED and Experiment Variance Reduction</span>"
@@ -3224,7 +3224,7 @@
     "href": "chapters/09-time-series/arima.html#references",
     "title": "ARIMA and Seasonal ARIMA",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “ARIMA”: GMV walkthrough, notation, stationarity, AR/MA, differencing, SARIMA, ACF/PACF, diagnostics, and model comparisons.\nHyndman and Athanasopoulos, Forecasting: Principles and Practice — ARIMA Models.",
+    "text": "References\n\nHyndman and Athanasopoulos, Forecasting: Principles and Practice — ARIMA Models.",
     "crumbs": [
       "Time series",
       "<span class='chapter-number'>36</span>  <span class='chapter-title'>ARIMA and Seasonal ARIMA</span>"
@@ -3323,7 +3323,7 @@
     "href": "chapters/09-time-series/ets.html#references",
     "title": "Exponential Smoothing and ETS",
     "section": "References",
-    "text": "References\n\nAdapted from the source lecture notes, “ETS”: seven-day calculations, SES, Holt, damping, additive/multiplicative Holt–Winters, seasonal indexing, state-space notation, and ARIMA comparison.\nHyndman and Athanasopoulos, Forecasting: Principles and Practice — Exponential Smoothing.",
+    "text": "References\n\nHyndman and Athanasopoulos, Forecasting: Principles and Practice — Exponential Smoothing.",
     "crumbs": [
       "Time series",
       "<span class='chapter-number'>37</span>  <span class='chapter-title'>Exponential Smoothing and ETS</span>"
@@ -3422,7 +3422,7 @@
     "href": "chapters/10-reference/interview-reference.html#references",
     "title": "Interview Reference and Method Selection",
     "section": "References",
-    "text": "References\n\nAdapted from all four appendix sections of the source lecture notes: model matrix, causal selection route, formula recall, and further resources.\nHastie, Tibshirani, and Friedman, The Elements of Statistical Learning.\nCunningham, Causal Inference: The Mixtape.\nFacure, Causal Inference for the Brave and True.\nHyndman and Athanasopoulos, Forecasting: Principles and Practice.\nImplementation references: EconML, DoWhy, and CausalML. Check each estimator’s actual assumptions and inference support before use.",
+    "text": "References\n\nHastie, Tibshirani, and Friedman, The Elements of Statistical Learning.\nCunningham, Causal Inference: The Mixtape.\nFacure, Causal Inference for the Brave and True.\nHyndman and Athanasopoulos, Forecasting: Principles and Practice.\nImplementation references: EconML, DoWhy, and CausalML. Check each estimator’s actual assumptions and inference support before use.",
     "crumbs": [
       "Reference",
       "<span class='chapter-number'>38</span>  <span class='chapter-title'>Interview Reference and Method Selection</span>"

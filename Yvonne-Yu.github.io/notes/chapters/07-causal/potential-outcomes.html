@@ -558,7 +558,7 @@ window.Quarto = {
 <section id="assignment-versus-behavior" class="level3">
 <h3 class="anchored" data-anchor-id="assignment-versus-behavior">Assignment versus behavior</h3>
 <p>A ranking experiment randomly assigns users to a new strategy. Its direct effect is the <strong>intention-to-treat (ITT)</strong> effect of assignment. Whether users actually click the resulting card is a later, self-selected behavior. Comparing clickers with nonclickers discards randomization.</p>
-<p>A worked case in the source notes adds a score proportional to predicted click-through rate times predicted active return to a ranking policy. The transferable design lesson is to analyze the assigned policy at the randomization unit, with predeclared activity/order outcomes and platform guardrails. Those observations cannot identify the causal effect of clicking merely because the ranking assignment was randomized.</p>
+<p>A worked ranking case adds a score proportional to predicted click-through rate times predicted active return to a ranking policy. The transferable design lesson is to analyze the assigned policy at the randomization unit, with predeclared activity/order outcomes and platform guardrails. Those observations cannot identify the causal effect of clicking merely because the ranking assignment was randomized.</p>
 </section>
 </section>
 <section id="theory-and-assumptions" class="level2">
@@ -633,7 +633,6 @@ E[Y\mid T=t,X=x]
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
-<li>Adapted from <em>ML Models &amp; Causal Inference Lecture Notes</em>, “Potential Outcomes” and its worked examples.</li>
 <li>Holland (1986), “Statistics and Causal Inference,” <em>Journal of the American Statistical Association</em>.</li>
 <li>Hernán and Robins, <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Causal Inference: What If</a>.</li>
 </ul>

@@ -537,7 +537,7 @@ window.Quarto = {
 </section>
 <section id="relating-common-formulas" class="level3">
 <h3 class="anchored" data-anchor-id="relating-common-formulas">Relating common formulas</h3>
-<p>Another cumulative contrast is <span class="math inline">\(\sum_{S_k,T=1}Y-(n_T/n_C)\sum_{S_k,T=0}Y\)</span>. With constant assignment probability and a corresponding overall arm ratio, it is on a treatment-arm-scaled total rather than the full-population total scale. Dividing it by <span class="math inline">\(n\)</span> does <strong>not</strong> make its endpoint <span class="math inline">\(n\times ATE\)</span>. This distinction corrects the inconsistent normalization in the source notes.</p>
+<p>Another cumulative contrast is <span class="math inline">\(\sum_{S_k,T=1}Y-(n_T/n_C)\sum_{S_k,T=0}Y\)</span>. With constant assignment probability and a corresponding overall arm ratio, it is on a treatment-arm-scaled total rather than the full-population total scale. Dividing it by <span class="math inline">\(n\)</span> does <strong>not</strong> make its endpoint <span class="math inline">\(n\times ATE\)</span>. Keeping the scale explicit prevents an inconsistent normalization.</p>
 <p>Prefix arm-count normalization is another convention and may be unstable when an arm count is zero. An IPW convention using known assignment probabilities avoids dividing by random prefix counts, though variance remains high for small prefixes or rare assignment.</p>
 </section>
 <section id="observational-evaluation" class="level3">
@@ -566,7 +566,6 @@ window.Quarto = {
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
-<li>Adapted from the source lecture notes, “Qini / AUUC,” including the 100-user illustration, ranking intuition, budget interpretation, and coupon policy example.</li>
 <li>Künzel et al.&nbsp;(2019), “Metalearners for Estimating Heterogeneous Treatment Effects Using Machine Learning,” <em>PNAS</em>.</li>
 <li>Athey and Wager (2021), <a href="https://doi.org/10.3982/ECTA15732">Policy Learning with Observational Data</a>.</li>
 </ul>
