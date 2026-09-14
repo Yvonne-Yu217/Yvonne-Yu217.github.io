@@ -1871,7 +1871,7 @@
     "href": "chapters/06-unsupervised/clustering-variants.html#references",
     "title": "Clustering Variants: Medoids, Mini-Batches, and Directions",
     "section": "References",
-    "text": "References\nscikit-learn clustering reference provides implementations and algorithm comparisons.",
+    "text": "References\n\nscikit-learn clustering reference provides implementations and algorithm comparisons.",
     "crumbs": [
       "Unsupervised learning",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Clustering Variants: Medoids, Mini-Batches, and Directions</span>"
@@ -1959,7 +1959,7 @@
     "href": "chapters/06-unsupervised/gaussian-mixtures.html#references",
     "title": "Gaussian Mixtures and Expectation–Maximization",
     "section": "References",
-    "text": "References",
+    "text": "References\n\nscikit-learn Gaussian mixture models.",
     "crumbs": [
       "Unsupervised learning",
       "<span class='chapter-number'>23</span>  <span class='chapter-title'>Gaussian Mixtures and Expectation–Maximization</span>"
@@ -2234,7 +2234,7 @@
     "href": "chapters/07-causal/potential-outcomes.html#references",
     "title": "Potential Outcomes and Causal Identification",
     "section": "References",
-    "text": "References\n\nHolland (1986), “Statistics and Causal Inference,” Journal of the American Statistical Association.\nHernán and Robins, Causal Inference: What If.",
+    "text": "References\nThis chapter is a self-contained review; no additional external reference is required.",
     "crumbs": [
       "Causal inference",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>Potential Outcomes and Causal Identification</span>"
@@ -2333,7 +2333,7 @@
     "href": "chapters/07-causal/propensity-score-matching.html#references",
     "title": "Propensity Scores: Matching and Weighting",
     "section": "References",
-    "text": "References\n\nRosenbaum and Rubin (1983), The central role of the propensity score.\nAbadie and Imbens (2006), “Large Sample Properties of Matching Estimators for Average Treatment Effects,” Econometrica.\nAbadie and Imbens (2008), “On the Failure of the Bootstrap for Matching Estimators,” linked above.",
+    "text": "References\n\nRosenbaum and Rubin (1983), The central role of the propensity score.\nAbadie and Imbens (2006), “Large Sample Properties of Matching Estimators for Average Treatment Effects,” Econometrica.\nAbadie and Imbens (2008), On the Failure of the Bootstrap for Matching Estimators.",
     "crumbs": [
       "Causal inference",
       "<span class='chapter-number'>27</span>  <span class='chapter-title'>Propensity Scores: Matching and Weighting</span>"
