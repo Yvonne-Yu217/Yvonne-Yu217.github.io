@@ -557,6 +557,13 @@ q=z(r_1)-z(r_2)\approx1.099-0.203=0.896.
 </main> <!-- /main -->
 <script>
 (() => {
+  const makeWideTablesFocusable = () => {
+    for (const table of document.querySelectorAll('main.content table')) {
+      if (table.scrollWidth > table.clientWidth + 1) table.tabIndex = 0;
+    }
+  };
+  makeWideTablesFocusable();
+  window.addEventListener('resize', makeWideTablesFocusable);
   for (const image of document.querySelectorAll('main.content figure img')) {
     const region = image.parentElement;
     region.classList.add('figure-pan');

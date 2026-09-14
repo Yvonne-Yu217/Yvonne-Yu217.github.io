@@ -615,6 +615,13 @@ s(1.3)=2^{-3.8/3.436}\approx0.465.\]</span></p>
 </main> <!-- /main -->
 <script>
 (() => {
+  const makeWideTablesFocusable = () => {
+    for (const table of document.querySelectorAll('main.content table')) {
+      if (table.scrollWidth > table.clientWidth + 1) table.tabIndex = 0;
+    }
+  };
+  makeWideTablesFocusable();
+  window.addEventListener('resize', makeWideTablesFocusable);
   for (const image of document.querySelectorAll('main.content figure img')) {
     const region = image.parentElement;
     region.classList.add('figure-pan');

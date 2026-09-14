@@ -590,6 +590,13 @@ n\approx\left[\frac{(z_{1-\alpha/2}+z_{1-\beta})\sigma}{\delta}\right]^2.
 </main> <!-- /main -->
 <script>
 (() => {
+  const makeWideTablesFocusable = () => {
+    for (const table of document.querySelectorAll('main.content table')) {
+      if (table.scrollWidth > table.clientWidth + 1) table.tabIndex = 0;
+    }
+  };
+  makeWideTablesFocusable();
+  window.addEventListener('resize', makeWideTablesFocusable);
   for (const image of document.querySelectorAll('main.content figure img')) {
     const region = image.parentElement;
     region.classList.add('figure-pan');

@@ -705,6 +705,13 @@ s_t&amp;=\gamma\frac{Y_t}{\ell_{t-1}+b_{t-1}}+(1-\gamma)s_{t-m},\\
 </main> <!-- /main -->
 <script>
 (() => {
+  const makeWideTablesFocusable = () => {
+    for (const table of document.querySelectorAll('main.content table')) {
+      if (table.scrollWidth > table.clientWidth + 1) table.tabIndex = 0;
+    }
+  };
+  makeWideTablesFocusable();
+  window.addEventListener('resize', makeWideTablesFocusable);
   for (const image of document.querySelectorAll('main.content figure img')) {
     const region = image.parentElement;
     region.classList.add('figure-pan');
