@@ -2230,17 +2230,6 @@
     ]
   },
   {
-    "objectID": "chapters/07-causal/potential-outcomes.html#references",
-    "href": "chapters/07-causal/potential-outcomes.html#references",
-    "title": "Potential Outcomes and Causal Identification",
-    "section": "References",
-    "text": "References\nThis chapter is a self-contained review; no additional external reference is required.",
-    "crumbs": [
-      "Causal inference",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Potential Outcomes and Causal Identification</span>"
-    ]
-  },
-  {
     "objectID": "chapters/07-causal/propensity-score-matching.html",
     "href": "chapters/07-causal/propensity-score-matching.html",
     "title": "Propensity Scores: Matching and Weighting",
