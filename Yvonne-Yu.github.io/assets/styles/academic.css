@@ -90,6 +90,9 @@ h2 {
   top: 75%;
   transform: translate(-50%, -75%);
 }
+.author-avatar picture {
+  display: block;
+}
 .author-degree,
 .author-affiliation {
   line-height: 1.65;
